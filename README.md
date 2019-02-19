@@ -16,7 +16,7 @@ Il s'agit d'une répartition des tâches sur plusieurs niveaux, à savoir l'enca
 | Résponsabilité     | Membres          |
 | :---------------   |---------------:|
 | Base de donnée            | Steph, Bougary, Blaise      |
-| Cahier des charges        | Ilyes, Imed                 |
+| Cahier des charges        | Ilyes, Bougary, Othmane                 |
 | Cas d'utilisation         | Blaise, Abdellah, Ilyes     |
 | Convention de nommage     | Abdellah, Imed, Khalil      |
 | Diagramme de navigation   | Philippe, Miguel            |
