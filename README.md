@@ -1,5 +1,5 @@
 # SIOMassy2019
-
+#test flo
 Conception et production. Projet E4 de BTS SIO 2019, Greta Massy 91
 
 Cette épreuve vise à  évaluer les compétences acquises par le candidat dans le domaine de la conception et de la maintenance de solutions informatiques pour chacun des parcours du diplôme. Ces compétences sont évaluées à  partir de situations professionnelles permettant de mesurer la capacité du candidat à :
