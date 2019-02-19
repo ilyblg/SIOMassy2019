@@ -47,6 +47,6 @@ Il est rappelé que ce projet est à vocation étudiante, dans le cadre d'un cur
 
 -----
   
-*Rédacteur du présent document, responsable github/ProjetE4: Miguel.M* --Test1
+*Rédacteur du présent document, responsable github/ProjetE4: Miguel.M*
 
   [1]: https://www.gnu.org/licenses/gpl-3.0.fr.html
