@@ -74,7 +74,7 @@ BEGIN
     (2, 'Réunion d''inscription', date_effet - INTERVAL 1 MONTH);
     
 
-  INSERT INTO formation(id_formation, nom, description) VALUES
+    INSERT INTO formation(id_formation, nom, description) VALUES
     (1, 'SIO SLAM', 'BTS SIO option programmation'),
     (2, 'SIO SISR', 'BTS SIO option réseaux');
 
@@ -103,27 +103,65 @@ BEGIN
     (14,'Baxter','Wallace','massa.lobortis@pede.edu','0342156271','654 Sit Av.','34850','Racine','sed'),
     (15,'Kelly','Lyle','ac@eutempor.org','0303946453','972-3256 Purus, Rd.','50280','Vorst','ligula'),
     (16,'Riddle','Doris','cubilia.Curae@purusac.net','0742542658','631-9977 Ac Street','87970','Herstappe','nisl'),
-    (17,'Sherman','Graiden','Duis.mi.enim@duinec.com','0300155826','P.O. Box 859, 3456 In Avenue','49070','Ibadan','tempor'),
-    (18,'Blevins','Yuli','justo@insodaleselit.co.uk','0141434990','Ap #827-9792 Nonummy. Avenue','97517','Reinbek','Integer'),
-    (19,'Casey','Cole','diam@adui.edu','0213304936','P.O. Box 570, 2006 Amet, Avenue','14663','Muiden','Integer'),
-    (20,'Dejesus','Germaine','nisl.elementum@dolorFusce.com','0543978310','4198 Ac St.','39857','Darlington','Mauris'),
-    (21,'Hughes','Zachary','accumsan.convallis@scelerisque.com','0646791441','663-8962 Mi Street','59919','Chiusa/Klausen','parturient'),
-    (22,'Lowery','Mira','mi.enim@eget.ca','0623765886','7126 Cras Rd.','16920','Çaldıran','Etiam'),
-    (23,'Horton','Coby','horton.coby@free.fr','0617098852','Ap #836-190 Eleifend Avenue','48560','Lieferinge','luctus'),
-    (24,'Perry','Risa','vehicula.et.rutrum@vestibulumnec.ca','0244675879','349-3030 Quis St.','75013','Belgaum','rutrum'),
-    (25,'Salas','Dawn','suscipit.nonummy@nuncnullavulputate.com','0906234912','3575 Sed, Rd.','69390','Slijpe','velit'),
-    (26,'Mack','Jamalia','est.Nunc.ullamcorper@eratin.net','0686512886','740-7306 Pellentesque Road','33310','Sarreguemines','dolor'),
-    (27,'Hurley','Sydnee','facilisis.eget@tricesiaculis.com','0423930467','P.O. Box 411, 3268 Eu St.','86635','Nanded','ac'),
-    (28, 'Marie', 'Durand', 'marie.durand@free.fr', '0612345678', '5 Place de la République', '75010', 'Paris', '12345678'),
-    (29, 'Lucie', 'Dupuis', 'lucie.dupuis@free.fr', '0602457866', '10 Bd Beamarchais', '75011', 'Paris', 'azerty');
+    (17,'Sherman','Graiden','Duis.mi.enim@duinec.com','0300155826','P.O. Box 859, 3456 In Avenue','49070','Ibadan','tempor');
     
-    
-  INSERT INTO session_formation(id_session_formation, id_formation, date_debut, date_fin, est_ouverte) VALUES
+    INSERT INTO echange(id_echange, id_personne, id_type_echange, instant, texte) VALUES
+    (1, 2, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 5 MONTH, 'Demande d''information concernant la formation'),
+    (2, 2, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH, 'Demande d''inscription'),
+    (3, 2, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH, 'Confirmation de l''invitation a la journée d''information'),
+    (4, 22, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 1 DAY, 'Contact 1'),
+    (5, 22, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 3 DAY, 'Contact 2'),
+    (6, 22, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 5 DAY, 'Contact 3'),
+    (7, 22, 4, date_effet - INTERVAL 2 YEAR + INTERVAL 8 MONTH, 'Contact 4'),
+    (8, 22, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 8 MONTH + INTERVAL 1 DAY, 'Contact 5'),
+    (9, 2, 3, date_effet - INTERVAL 2 DAY, 'Demande d''information'),
+    (10, 2, 3, date_effet, 'Demande d''annulation d''inscription');
+   
+    INSERT INTO invitation(id_personne, id_evenement) VALUES
+    (1, 1),
+    (2, 1),
+    (2, 2),
+    (22, 2);
+
+    INSERT INTO qcm(id_qcm, date_creation, titre, id_formateur) VALUES
+    (1, date_effet, '', 23),
+    (2, date_effet, '', 25),
+    (3, date_effet, '', 24),
+    (4, date_effet, '', 23);
+
+    INSERT INTO session_formation(id_session_formation, id_formation, date_debut, date_fin, est_ouverte) VALUES
     (1, 1, date_effet - INTERVAL 2 YEAR, date_effet - INTERVAL 1 YEAR, false), -- passé
     (2, 1, date_effet - INTERVAL 8 MONTH, date_effet + INTERVAL 6 MONTH, false), -- en cours
     (3, 2, date_effet - INTERVAL 2 MONTH, date_effet + INTERVAL 1 YEAR, false), -- en cours
     (4, 2, date_effet + INTERVAL 6 MONTH, date_effet + INTERVAL 2 YEAR, true); -- ouverte a candidature
     
+    INSERT INTO avis(id_personne, id_questionnaire, commentaire, note, date_avis) VALUES
+    (2,  1, 'Commentaire inutile', 6,  date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (1,  3, 'Commentaire inutile', 12, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (16, 2, 'Commentaire inutile', 3,  date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (8,  4, 'Commentaire inutile', 16, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (12, 1, 'Commentaire inutile', 7,  date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (1,  3, 'Commentaire inutile', 14, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (10, 2, 'Commentaire inutile', 8,  date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+    (6,  4, 'Commentaire inutile', 10, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
+
+    INSERT INTO evaluation(id_evaluation, id_session_formation, id_module, id_formateur, date_debut, nb_minutes, titre) VALUES
+    (1, 1, 1, 23, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 120, 'Evaluation finale de mathématique'),
+    (2, 1, 2, 24, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 240, 'Evaluation mise en place d''un serveur LAMP'),
+    (3, 2, 2, 24, date_effet, 60, 'Evaluation réseau 2'),
+    (4, 3, 2, 24, date_effet + INTERVAL 4 MONTH, 60, 'Evaluation réseau 3'),
+    (5, 3, 1, 23, date_effet, 60, 'Math 2'),
+    (6, 3, 1, 23, date_effet + INTERVAL 4 MONTH, 120, 'Math 3');
+
+
+
+
+
+
+
+
+
+
     INSERT INTO candidature(id_personne, id_session_formation, id_etat_candidature, date_effet) VALUES
     (1, 1, 6, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH),
     (2, 1, 6, date_effet - INTERVAL 2 YEAR - INTERVAL 2 MONTH + INTERVAL 2 DAY),
@@ -168,15 +206,7 @@ BEGIN
     (10, 3, 24, 2, date_effet + INTERVAL 3 MONTH, 4),
     (11, 3, 23, 1, date_effet, 2),
     (12, 3, 23, 1, date_effet + INTERVAL 3 MONTH + INTERVAL 1 DAY, 1);
-    
-    INSERT INTO evaluation(id_evaluation, id_session_formation, id_module, id_formateur, date_debut, nb_minutes, titre) VALUES
-    (1, 1, 1, 23, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 120, 'Evaluation finale de mathématique'),
-    (2, 1, 2, 24, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 240, 'Evaluation mise en place d''un serveur LAMP'),
-    (3, 2, 2, 24, date_effet, 60, 'Evaluation réseau 2'),
-    (4, 3, 2, 24, date_effet + INTERVAL 4 MONTH, 60, 'Evaluation réseau 3'),
-    (5, 3, 1, 23, date_effet, 60, 'Math 2'),
-    (6, 3, 1, 23, date_effet + INTERVAL 4 MONTH, 120, 'Math 3');
-    
+        
     INSERT INTO note(id_personne, id_evaluation, note) VALUES
     (1, 1, 14),
     (2, 1, 8),
@@ -245,24 +275,6 @@ BEGIN
     (3, 'Appel tel reçu'),
     (4, 'Appel tel émis'),
     (5, 'Présence');
-
-    INSERT INTO echange(id_echange, id_personne, id_type_echange, instant, texte) VALUES
-    (1, 2, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 5 MONTH, 'Demande d''information concernant la formation'),
-    (2, 2, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH, 'Demande d''inscription'),
-    (3, 2, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH, 'Confirmation de l''invitation a la journée d''information'),
-    (4, 22, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 1 DAY, 'Contact 1'),
-    (5, 22, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 3 DAY, 'Contact 2'),
-    (6, 22, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH + INTERVAL 5 DAY, 'Contact 3'),
-    (7, 22, 4, date_effet - INTERVAL 2 YEAR + INTERVAL 8 MONTH, 'Contact 4'),
-    (8, 22, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 8 MONTH + INTERVAL 1 DAY, 'Contact 5'),
-    (9, 2, 3, date_effet - INTERVAL 2 DAY, 'Demande d''information'),
-    (10, 2, 3, date_effet, 'Demande d''annulation d''inscription');
-    
-    INSERT INTO invitation(id_personne, id_evenement) VALUES
-    (1, 1),
-    (2, 1),
-    (2, 2),
-    (22, 2);
 
     INSERT INTO document(id_document, id_proprietaire, nom, chemin, date_depot) VALUES
     (1, 23, 'document_1', '/agriotes2018/documents/', date_effet - INTERVAL 5 MONTH),
