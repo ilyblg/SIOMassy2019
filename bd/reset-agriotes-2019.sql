@@ -66,22 +66,18 @@ BEGIN
     (4, 'liste d''attente'),
     (5, 'accepté'),
     (6, 'inscrit'),
-    (7, 'desisté');
-    
+    (7, 'desisté');    
 
 	INSERT INTO evenement(id_evenement, nom, date_effet) VALUES
     (1, 'Remise des Diplome', date_effet - INTERVAL 2 YEAR),
     (2, 'Remise des Diplome', date_effet - INTERVAL 1 YEAR),
     (3, 'Remise des Diplome', date_effet - INTERVAL 1 YEAR),
     (4, 'Remise des Diplome', date_effet - INTERVAL 2 MONTH),
-    (5, 'Réunion d''inscription', date_effet - INTERVAL 1 MONTH);
-    
+    (5, 'Réunion d''inscription', date_effet - INTERVAL 1 MONTH);    
 
     INSERT INTO formation(id_formation, nom, description) VALUES
     (1, 'SIO SLAM', 'BTS SIO option programmation'),
     (2, 'SIO SISR', 'BTS SIO option réseaux');
-
-
 
 	INSERT INTO module(id_module, nom) VALUES
 	(1, 'Math'),
@@ -89,24 +85,23 @@ BEGIN
 	(3, 'Bases de données'),
     (4, 'Android'),
     (5, 'Culture Générale'),
-    (6, 'Economie - droit');
+    (6, 'Economie - droit');	
 	
-
-	INSERT INTO personne(id_personne, nom, prenom, mail, tel, adresse, code_postal, ville, mot_de_passe, est_formateur, est_administrateur, date_inscription) VALUES
+    INSERT INTO personne(id_personne, nom, prenom, mail, tel, adresse, code_postal, ville, mot_de_passe, est_formateur, est_administrateur, date_inscription) VALUES
     (1,'Théo','Moreau',         't,moreau@proboite.net',       '0691564808','82, Cours Marechal-Joffre','78180','MONTIGNY-LE-BRETONNEUX','condimentum', 0, 1,   date_effet - INTERVAL 1 YEAR + INTERVAL 2 DAY), # administrateur
-    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL','aubertfraterie', 1, 0,                date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur
-    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE','motdepasserigoureux', 0, 0,       date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur
+    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL','aubertfraterie', 1, 0,                date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur - 2
+    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE','motdepasserigoureux', 0, 0,       date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur - 3
     (4,'Mirabelle','Huppé',     'm.huppé@gougleu.com',         '0646971033','56, rue Jean-Monnet','95190','GOUSSAINVILLE','gousshupp', 0, 0,                    date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
     (5,'Silvia','Gonzalez',     's.gonzalez@gmale.edu',        '0648369680','53, rue du Faubourg National','95150','TAVERNY','rictusmaloficus', 0, 0,           date_effet - INTERVAL 6 MONTH + INTERVAL 1 DAY),
     (6,'Dylan','Briar',         'd.briar@classprepa.edu',      '0187396561','52, boulevard Bryas','92400','COURBEVOIE','12340000', 0, 0,                        date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
-    (7,'Alexandre','Morel',     'a.lexandre@gougleu.com',      '0783484403','56, rue des Soeurs','LA CELLE-SAINT-CLOUD','Sed', 1, 0,                            date_effet - INTERVAL 5 MONTH + INTERVAL 8 DAY), # formateur
+    (7,'Alexandre','Morel',     'a.lexandre@gougleu.com',      '0783484403','56, rue des Soeurs','LA CELLE-SAINT-CLOUD','Sed', 1, 0,                            date_effet - INTERVAL 5 MONTH + INTERVAL 8 DAY), # formateur - 7
     (8,'Montoya','Lester',      'm.lester@amasone.com',        '0182954239','73, rue du Château','78100','SAINT-GERMAIN-EN-LAYE','lorem', 0, 0,                 date_effet - INTERVAL 4 MONTH + INTERVAL 4 DAY),
     (9,'Figueroa','Christian',  'f.christian@gmale.fr',        '0114629593','90, rue du Président Roosevelt','91600','SAVIGNY-SUR-ORGE ','dictum', 0, 0,        date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
     (10,'Marwane','Roche',      'm.roche@gmale.com',           '0128645819','71, rue La Boétie','75015','PARIS','risus', 0, 0,                                  date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
-    (11,'Justice','Charles',    'j.charles@freelance.edu',     '0131323259','35, rue Lenotre','93240','STAINS','pede', 0, 0,                                    date_effet - INTERVAL 4 MONTH + INTERVAL 1 DAY), # formateur
+    (11,'Justice','Charles',    'j.charles@freelance.edu',     '0131323259','35, rue Lenotre','93240','STAINS','pede', 0, 0,                                    date_effet - INTERVAL 4 MONTH + INTERVAL 1 DAY), # formateur - 11
     (12,'Nicolas','Colin',      'n.colin@formation.net',       '0133847860','33, rue de Groussay','93230','ROMAINVILLE','venenatis', 0, 1,                      date_effet - INTERVAL 3 MONTH + INTERVAL 1 DAY),
     (13,'Didier','Vasseur',     'd.vasseur@classprepa.edu',    '0771775852','18, rue Victor Hugo','91940','LES ULIS','risus', 1, 0,                             date_effet - INTERVAL 2 MONTH + INTERVAL 3 DAY),
-    (14,'Stephanie','Platano',  's.platano@proboite.net',      '0642156271','88, rue du Fossé des Tanneurs','75008','PARIS','sed', 1, 1,                        date_effet - INTERVAL 2 MONTH + INTERVAL 4 DAY), # formateur & admin
+    (14,'Stephanie','Platano',  's.platano@proboite.net',      '0642156271','88, rue du Fossé des Tanneurs','75008','PARIS','sed', 1, 1,                        date_effet - INTERVAL 2 MONTH + INTERVAL 4 DAY), # formateur & admin - 14
     (15,'Brigitte','Masson',    'b.masson@gougleu.com',        '0103946453','15, rue du Clair Bocage','75013','PARIS','ligula', 0, 0,                           date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
     (16,'Othmane','Fernandez',  'o.fernandez@gmale.net',       '0742542658','23, rue des six frères Ruellan','75018','PARIS','nisl', 0, 0,                      date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
     (17,'Samuel','Tisserand', 's.tisserand@formation.net',     '0645507077','86, Place Napoléon','59130','LAMBERSART','passwordsecured', 0, 1,                  date_effet - INTERVAL 1 MONTH); # administrateur
@@ -200,58 +195,63 @@ BEGIN
     (4, 23, 1, 'Maintient d''un site web', date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH, date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH),
     (5, 23, 1, 'Maintient d''un site web', date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH, date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH),
     (6, 23, 1, 'Maintient d''un site web', date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH, date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH);
-
-
-
-    # =================================================================================================================================
-    #  TOP = OK, BOTTOM = NOT IMPLEMENTED YET
-    # =================================================================================================================================
-
-
-
+    
+    INSERT INTO question(id_question, enonce, id_questionnaire, est_correcte) VALUES
+    (1, 'Quel est la couleur du cheval blanc d''Henry IV ?', 1, 0),
+    (2, 'Quel est la couleur de l''oie blanche du Parc Venteux ?', 1, 1),
+    (3, 'Quel est la couleur de mon pull ?', 1, 1),
+    (4, 'Quel est la couleur de l''automobile du formateur ?', 2, 0),
+    (5, 'Quel est le résultat de 2+2 = ?', 2, 1),
+    (6, 'Quelles sont les pointures disponibles pour vos chaussures ?', 3, 1),
+    (7, 'Quel est ma question ? (Plusieurs choix possibles)', 3, 1),
+    (8, 'Quelle est la bonne longueur pour sauter jusqu''à là ?', 3, 0),
+    (9, 'Combien de pommes pour une tarte ?', 4, 1),
+    (10, 'Quel est la commande permettant d''ajouter une valeur en base de donnée ?', 4, 1),
+    (11, 'Quelles sont les congruances pour 4 ?', 4, 0),
+    (12, 'Quel est la couleur de la chêvre ?', 4, 1),
+  
     INSERT INTO seance(id_seance, id_session_formation, id_formateur, id_module, jour, creneau) VALUES
-    (1, 1, 23, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 1),
-    (2, 2, 23, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 2),
-    (3, 3, 23, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH + INTERVAL 1 DAY, 1),
-    (4, 1, 23, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH + INTERVAL 1 DAY, 2),
-    (5, 2, 24, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 1),
-    (6, 3, 24, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 2),
-    (7, 1, 23, 1, date_effet - INTERVAL 1 YEAR, 2),
-    (8, 1, 24, 2, date_effet - INTERVAL 1 YEAR, 4),
-    (9, 2, 24, 2, date_effet, 2),
-    (10, 3, 24, 2, date_effet + INTERVAL 3 MONTH, 4),
-    (11, 3, 23, 1, date_effet, 2),
-    (12, 3, 23, 1, date_effet + INTERVAL 3 MONTH + INTERVAL 1 DAY, 1);
-        
+    (1, 1, 2, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 1),
+    (2, 2, 7, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 2),
+    (3, 3, 3, 2, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH + INTERVAL 1 DAY, 1),
+    (4, 1, 11, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH + INTERVAL 1 DAY, 2),
+    (5, 2, 11, 3, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 1),
+    (6, 3, 14, 4, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 2),
+    (7, 1, 3, 3, date_effet - INTERVAL 1 YEAR, 2),
+    (8, 1, 3, 4, date_effet - INTERVAL 1 YEAR, 4),
+    (9, 2, 2, 2, date_effet, 2),
+    (10, 3, 11, 6, date_effet + INTERVAL 3 MONTH, 4),
+    (11, 3, 7, 5, date_effet, 2),
+    (12, 3, 7, 5, date_effet + INTERVAL 3 MONTH + INTERVAL 1 DAY, 1);
+  
+    INSERT INTO equipe(id_equipe, id_projet, id_createur) VALUES
+    (1, 1, 2),
+    (2, 2, 3),
+    (3, 3, 3),
+    (4, 4, 14),
+    (5, 5, 14),
+    (6, 6, 2),    
+
     INSERT INTO note(id_personne, id_evaluation, note) VALUES
-    (1, 1, 14),
-    (2, 1, 8),
-    (3, 1, 11),
-    (4, 1, null),
-    (5, 1, null),
-    (1, 2, null),
-    (2, 2, null),
-    (3, 2, 3),
-    (4, 2, null),
+    (4, 1, 16,75),
+    (5, 1, 2,50),
+    (4, 2, 12,20),
     (5, 2, 18),
-    (6, 3, null),
-    (7, 3, null),
-    (8, 3, null),
-    (9, 3, null),
-    (10, 3, null),
-    (11, 3, null),
-    (13, 4, null),
-    (14, 4, null),
-    (15, 4, null),
-    (16, 4, null),
-    (13, 5, null),
-    (14, 5, null),
-    (15, 5, null),
-    (16, 5, null),
-    (13, 6, null),
-    (14, 6, null),
-    (15, 6, null),
-    (16, 6, null);
+    (6, 3, 14,50),
+    (8, 3, 1,20),
+    (9, 3, 12,20),
+    (10, 3, 12,20),
+    (13, 4, 14.10),
+    (10, 4, 14,50),
+    (15, 4, 14,50),
+    (16, 4, 16,75),
+    (13, 5, 12,20),
+    (15, 5, 14,50),
+    (16, 5, 15),
+    (13, 6, 12,20),
+    (10, 6, 16,75),
+    (15, 6, 14,50),
+    (16, 6, 0);
     
     -- La table presence est alimentee par un déclencheur sur seance, qui gere des lignes
     -- de valeur est-present à NULL.
@@ -259,14 +259,14 @@ BEGIN
     UPDATE presence SET est_present=1
     WHERE (id_seance, id_personne) IN
 	(
-		(1, 1), (1, 2), (1,3), (1, 4),
-        (2, 6), (2, 7), (2, 10), (2, 11),
-        (3, 14), (3, 15), (3, 16),
-        (4, 3), (4, 4), (4, 4),
-        (5, 6), (5, 7), (5,8), (5, 9), (5, 11),
-        (6, 14), (6, 15),
-        (7, 3), (7, 5),
-        (8, 3), (8, 5)
+		(1, 4), (1, 8), (1,10), (1, 12),
+        (2, 6), (2, 4), (2, 10), (2, 10),
+        (3, 5), (3, 15), (3, 16),
+        (4, 9), (4, 4), (4, 6),
+        (5, 6), (5, 5), (5,8), (5, 9), (5, 13),
+        (6, 5), (6, 15),
+        (7, 9), (7, 5),
+        (8, 9), (8, 5)
 	);
     UPDATE presence SET est_present=0
     WHERE (id_seance, id_personne) IN
@@ -274,40 +274,29 @@ BEGIN
 		(1, 5),
         (2, 8), (2, 9),
         (3, 13),
-        (4, 1), (4, 2), (4, 5),
+        (4, 8), (4, 2), (4, 5),
         (5, 10),
         (6, 13), (6, 16),
         (7, 1), (6, 2), (6, 3), (6, 4), (6, 5),
         (8, 1), (8, 2)
 	);
    
-
-    
-    INSERT INTO type_echange(id_type_echange, libelle) VALUES
-    (1, 'Email reçu'),
-    (2, 'Email envoyé'),
-    (3, 'Appel tel reçu'),
-    (4, 'Appel tel émis'),
-    (5, 'Présence');
-
-    INSERT INTO document(id_document, id_proprietaire, nom, chemin, date_depot) VALUES
-    (1, 23, 'document_1', '/agriotes2018/documents/', date_effet - INTERVAL 5 MONTH),
-    (2, 23, 'HTML pour les nuls', '/agriotes2018/documents/', date_effet - INTERVAL 2 YEAR + INTERVAL 3 MONTH),
-    (3, 24, 'Calcule des matrice', '/agriotes2018/documents/', date_effet - INTERVAL 8 MONTH),
-    (4, 25, 'L_art_de_la_gestion_de_stock',  '/agriotes2018/documents/', date_effet - INTERVAL 1 YEAR + INTERVAL 6 MONTH),
-    (5, 24, 'Bescherelle', '/agriotes2018/documents/Bescherelle', date_effet);
-
-    INSERT INTO droit_sur_document(id_document, id_session_formation) VALUES
-    (1, 1),
-    (1, 2),
-    (1, 3),
-    (2, 1),
-    (2, 2),
-    (3, 1),
+    INSERT INTO reponse(id_question, id_passage_questionnaire) VALUES
+    (4, 1),
+    (5, 1),
     (3, 2),
     (3, 3),
-    (4, 2),
-    (5, 1);
+    (3, 4),
+    (1, 4),
+    (1, 5),
+    (2, 5),   
+    (3, 6),
+    (7, 7),
+    (8, 7),
+    (9, 7),
+    (10, 8),
+    (11, 8),
+    (12, 8);
 
 END$$
 
