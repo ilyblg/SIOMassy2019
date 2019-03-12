@@ -4,10 +4,6 @@ import entity.Personne;
 
 public class DaoSessionImpl{
 
-	public void inscription(Personne personne) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public void seConnecter(String login, String mdp) {
 		// TODO Auto-generated method stub
