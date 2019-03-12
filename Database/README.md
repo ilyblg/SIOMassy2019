@@ -11,14 +11,23 @@ Vous trouverez ici les fichiers :
  * schema-agriotes2019.png : Image du schéma de la base
  * triggers-agriotes2019.sql : Les déclencheurs
  
- ## Executer ##
+ ## Comment l'installer ? ##
+ ### Etape 1 ###
+ 
  Il vous suffit d'ouvrir le fichier : **create-agriotes2019.sql**
  et d'exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
  
- Puis,
+ ### Etape 2 ###
  
- D'ouvrir le fichier : **hydrate-agriotes2019.sql**
- et d'exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
+ Ouvrez le fichier : **hydrate-agriotes2019.sql**
+ et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
+
+ ## Purger la base de donnée  ##
+
+ Ouvrez le fichier : **reset-agriotes2019.sql**
+ et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
+
+Votre base sera réinitialisée avec les valeurs prédéfinis et prête à être utilisée.
 
 **Attention**
 Veuillez avoir votre serveur démarré et d'y être connecté.
