@@ -19,8 +19,11 @@ Vous trouverez ici les fichiers :
  
  ### Etape 2 ###
  
+**Attention**
+Veuillez avoir votre serveur démarré et d'y être connecté.
+ 
  Ouvrez le fichier : **hydrate-agriotes2019.sql**
- et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
+ et exécuter le code SQL s'y trouvant sur la base de donnée précédement créée, dans *Workbench* par exemple.
 
  ## Purger la base de donnée  ##
 
@@ -28,9 +31,6 @@ Vous trouverez ici les fichiers :
  et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
 
 Votre base sera réinitialisée avec les valeurs prédéfinis et prête à être utilisée.
-
-**Attention**
-Veuillez avoir votre serveur démarré et d'y être connecté.
 
 -----
 *Rédacteur du présent document, responsable github/ProjetE4: Miguel.M*
