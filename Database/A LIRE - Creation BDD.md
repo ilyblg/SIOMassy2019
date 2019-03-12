@@ -12,12 +12,12 @@ Vous trouverez ici les fichiers :
  
  ## Executer ##
  Il vous suffit d'ouvrir le fichier : **create-agriotes2019.sql**
- et d'exécuter le code SQL s'y trouvant, dans workbench par exemple
+ et d'exécuter le code SQL s'y trouvant, dans workbench par exemple.
  
  Puis,
  
  D'ouvrir le fichier : **hydrate-agriotes2019.sql**
- et d'exécuter le code SQL s'y trouvant, dans workbench par exemple
+ et d'exécuter le code SQL s'y trouvant, dans workbench par exemple.
 
 **Attention**
-Veuillez avoir votre serveur lancer et de vous y connecter.
+Veuillez avoir votre serveur démarré et d'y être connecté.
