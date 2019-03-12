@@ -283,4 +283,4 @@ BEGIN
 
 END$$
 
-CALL agriotes2018_reset(now())$$
+CALL agriotes2019_reset(now())$$
