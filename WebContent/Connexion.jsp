@@ -8,5 +8,13 @@
 </head>
 <body>
 
+	<form action="Connexion" method="post">
+	
+		<label For="login">Login : </label> <input type="text" name="login">
+		<label For="mdp">Password : </label> <input type="text" nam="mdp">
+		<button type="submit" name="connexion">Connexion</button>
+		
+	</form>
+
 </body>
 </html>

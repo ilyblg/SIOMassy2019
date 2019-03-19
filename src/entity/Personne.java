@@ -3,9 +3,14 @@ package entity;
 public class Personne {
 	String nom;
 	String prenom;
-	Contact contact;
-	Session session;
-	Fonction fonction;
+	int numero;
+	String rue;
+	String ville;
+	int cp;
+	String telephoneMobile;
+	String telephoneFixe;
+	String mail;
+	String mdp;
 	
 	public String getNom() {
 		return nom;
@@ -23,54 +28,100 @@ public class Personne {
 		this.prenom = prenom;
 	}
 	
-	public Contact getContact() {
-		return contact;
+	public int getNumero() {
+		return numero;
 	}
 	
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
 	
-	public Session getSession() {
-		return session;
+	public String getRue() {
+		return rue;
 	}
 	
-	public void setSession(Session session) {
-		this.session = session;
+	public void setRue(String rue) {
+		this.rue = rue;
 	}
 	
-	public Fonction getFonction() {
-		return fonction;
+	public String getVille() {
+		return ville;
 	}
 	
-	public void setFonction(Fonction fonction) {
-		this.fonction = fonction;
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+	
+	public int getCp() {
+		return cp;
+	}
+	
+	public void setCp(int cp) {
+		this.cp = cp;
+	}
+	
+	public String getTelephoneMobile() {
+		return telephoneMobile;
+	}
+	
+	public void setTelephoneMobile(String telephoneMobile) {
+		this.telephoneMobile = telephoneMobile;
+	}
+	
+	public String getTelephoneFixe() {
+		return telephoneFixe;
+	}
+	
+	public void setTelephoneFixe(String telephoneFixe) {
+		this.telephoneFixe = telephoneFixe;
+	}
+	
+	public String getMail() {
+		return mail;
+	}
+	
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+	
+	public String getMdp() {
+		return mdp;
+	}
+	
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 	
 	public Personne() {
 		
 	}
 	
-	public Personne(String nom, String prenom, int numero, String rue, String ville, int cp, String telephoneMobile, String telephoneFixe, String mail, String login, String mdp, int id, String nomF) {
+	public Personne(String prenom, String mdp) {
+		this.prenom = prenom;
+		this.mdp = mdp;
+	}
+
+	public Personne(String nom, String prenom, int numero, String rue, String ville, int cp, String telephoneMobile, String telephoneFixe, String mail, String mdp) {
 		this.nom = nom;
 		this.prenom = prenom;
-		
-		contact = new Contact();
-		contact.setNumero(numero);
-		contact.setRue(rue);
-		contact.setVille(ville);
-		contact.setCp(cp);
-		contact.setTelephoneMobile(telephoneMobile);
-		contact.setTelephoneFixe(telephoneFixe);
-		contact.setMail(mail);
-		
-		session = new Session();
-		session.setLogin(login);
-		session.setMdp(mdp);
-		
-		fonction = new Fonction();
-		fonction.setId(id);
-		fonction.setNom(nomF);
+		this.numero = numero;
+		this.rue = rue;
+		this.ville = ville;
+		this.cp = cp;
+		this.telephoneMobile = telephoneMobile;
+		this.telephoneFixe = telephoneFixe;
+		this.mail = mail;
+		this.mdp = mdp;
 	}
+
+	@Override
+	public String toString() {
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", numero=" + numero + ", rue=" + rue + ", ville="
+				+ ville + ", cp=" + cp + ", telephoneMobile=" + telephoneMobile + ", telephoneFixe=" + telephoneFixe
+				+ ", mail=" + mail + ", mdp=" + mdp + "]";
+	}
+	
+	
+	
 
 }
