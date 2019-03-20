@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="agriotesMassy2019">
+    <wb-module deploy-name="20-FONC-inscription.confimation.courriel">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="agriotesMassy2019"/>
-        <property name="java-output-path" value="/agriotesMassy2019/build/classes"/>
+        <property name="context-root" value="20-FONC-inscription.confimation.courriel"/>
+        <property name="java-output-path" value="/20-FONC-inscription.confimation.courriel/build/classes"/>
     </wb-module>
 </project-modules>
