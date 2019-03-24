@@ -13,17 +13,35 @@ Formulaire d'inscription <br>
 			<!-- zone de connexion -->     
 		    <form action="InscriptionServlet" method="POST">
 		    	<fieldset>
-			 		<legend>Ajouter un client</legend>
+			 		<legend>Ajouter un eleve</legend>
 		    	    <label for="nom">Nom</label>
 		            <input type="text" placeholder="" name="nom" required>
 		            <br>
-		            
-		            <label for="prenom">Prenom</label>
+		        	<label for="prenom">Prenom</label>
 		            <input type="text" placeholder="" name="prenom" required>
 		            <br>
-		            
-		<label for = "mail"> Mail : </label>
-		<input type = "text" name = "mail" id="mail"/> <br>
+		            <label for="adresse">adresse</label>
+		            <input type="text" placeholder="" name="adresse" required>
+		            <br>
+		            <label for="cp">Code postal</label>
+		            <input type="text" placeholder="" name="cp" required>
+		            <br>
+		            <label for="ville">Ville</label>
+		            <input type="text" placeholder="" name="ville" required>
+		            <br>
+		            <label for="telephone">Telephone</label>
+		            <input type="text" placeholder="" name="telephone" required>
+		            <br>
+		            <label for="mail">Email</label>
+		            <input type="text" placeholder="" name="mail" required>
+		            <br>
+		            <label for="mailVerif">Email pour vérification</label>
+		            <input type="text" placeholder="" name="mailVerif" required>
+		            <br>
+		            <label for="password">Mot de passe</label>
+		            <input type="text" placeholder="" name="password" required>
+		            <br>	            
+		
 		           	<button type="submit">Ajouter</button>
 		     	</fieldset>
 		     </form>
