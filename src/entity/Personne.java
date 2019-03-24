@@ -17,6 +17,37 @@ public class Personne {
 
 	Session session;	
 	
+	// Sans isFormateur et isAdmin
+	public Personne(String nom, String prenom, String adresse,
+			 int cp, String ville, String telephone, String mail, String password, Timestamp dateInscrip) {		
+		setNom(nom);
+		setPrenom(prenom);
+		setAdresse(adresse);
+		setCp(cp);
+		setVille(ville);
+		setTelephone(telephone);
+		setMail(mail);
+		setPassword(password);
+		setDateInscription(dateInscrip);
+	}
+	
+	// Full parameters
+	public Personne(String nom, String prenom, String adresse,
+			 int cp, String ville, String telephone, String mail, String password,
+			 boolean estFormateur, boolean estAdmin, Timestamp dateInscrip) {		
+		setNom(nom);
+		setPrenom(prenom);
+		setAdresse(adresse);
+		setCp(cp);
+		setVille(ville);
+		setTelephone(telephone);
+		setMail(mail);
+		setPassword(password);
+		setEstFormateur(estFormateur);
+		setEstAdmin(estAdmin);
+		setDateInscription(dateInscrip);
+	}
+	
 	public String getNom() {
 		return nom;
 	}
@@ -79,6 +110,8 @@ public class Personne {
 	}
 
 	public void setPassword(String password) {
+		
+		// CRYPTER ICI
 		this.password = password;
 	}
 
@@ -117,22 +150,6 @@ public class Personne {
 	public Personne() {
 		
 	}
-	
-	public Personne(String nom, String prenom, String adresse,
-			 int cp, String ville, String telephone, String mail, String password,
-			 boolean estFormateur, boolean estAdmin, Timestamp dateInscrip) {		
-		setNom(nom);
-		setPrenom(prenom);
-		setAdresse(adresse);
-		setCp(cp);
-		setVille(ville);
-		setTelephone(telephone);
-		setMail(mail);
-		setPassword(password);
-		setEstFormateur(estFormateur);
-		setEstAdmin(estAdmin);
-		setDateInscription(dateInscrip);
-	}
 
 	@Override
 	public String toString() {
@@ -140,6 +157,4 @@ public class Personne {
 				+ ville + ", telephone=" + telephone + ", mail=" + mail + ", estFormateur=" + estFormateur
 				+ ", estAdmin=" + estAdmin + ", dateInscription=" + dateInscription + "]";
 	}
-	
-	
 }

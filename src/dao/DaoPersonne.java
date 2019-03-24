@@ -5,13 +5,8 @@ import entity.Personne;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 import dao.Database;
-import entity.Personne;
 
 public class DaoPersonne{
 
@@ -67,28 +62,58 @@ public class DaoPersonne{
 		
 		Statement stmt = Database.getConnection().createStatement();
 		String sql = "SELECT nom, prenom, mail FROM personne WHERE nom=\""+personne.getNom()+
-				"\" AND prenom =\""+personne.getPrenom()+"\" AND mail=\""+personne.getMail()+"\"";
+				"\" AND prenom =\""+personne.getPrenom()+"\"";
 		ResultSet rs = stmt.executeQuery(sql);
 		
-		if (!rs.next()) {
-			ifValid = true;			
+		if (rs.next()) {
+			ifValid = true;
 		}
+		rs.close();
 		return ifValid;		
 	}
 	
+	/**
+	 * Indique la presence ou nom d'un courriel dans la liste en base des personnes enregistrés
+	 * @param mail
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean checkEmail(String mail) throws SQLException {
-		boolean isValid = false;
-		
-		boolean yesOrNot = false;
+		boolean ifValid = false;
 		
 		Statement stmt = Database.getConnection().createStatement();
 		String sql = "SELECT * FROM personne WHERE mail=\""+mail+"\"";
 		ResultSet rs = stmt.executeQuery(sql);
-		
 		if (!rs.next()) {
-			yesOrNot = true;			
+			ifValid = true;
 		}
-		return isValid;
+		rs.close();
+		return ifValid;
+	}
+	
+	/**
+	 * Permet d'insérer en base de données une nouvelles personne
+	 * @param personne
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean insertInDB(Personne personne) throws SQLException {
+		boolean result = false;
+		// ECRYPTER LE PASS
+		String cryptedPassword = personne.getPassword();
 		
+		Statement stmt = Database.getConnection().createStatement();
+		String sql = "INSERT INTO personne(prenom, nom, mail, tel, adresse, code_postal,"
+				+ "ville, mot_de_passe, est_formateur, est_administration, date_inscription)"
+				+"VALUES (\""+personne.getPrenom()+"\", \""+personne.getNom()+"\", \""+personne.getMail()+"\","
+				+ " \""+personne.getTelephone()+"\",\""+personne.getAdresse()+"\",\""+personne.getCp()+"\", "
+				+ "\""+personne.getVille()+"\",\""+cryptedPassword+"\", "+personne.isEstFormateur()+","
+						+ ""+personne.isEstAdmin()+", \""+personne.getDateInscription()+"\")";
+
+		// Renvoie le nombre de ligne affectées, si 1 alors insertion réalisée 
+		if(stmt.executeUpdate(sql) == 1) {
+			result = true;
+		}
+		return result;
 	}
 }

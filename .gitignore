@@ -1,0 +1,7 @@
+Database/*
+.git/*
+.settings/*
+build/*
+src/dao/Database.java
+CONVENTIONS.md
+README.md
