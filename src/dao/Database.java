@@ -41,8 +41,8 @@ public class Database {
      */
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     protected static final String DB_NAME = "agriotes2019";
-    protected static final String USER = "root";
-    protected static final String PASSWORD = "25012501";
+    protected static final String USER = "agriotes2019user";
+    protected static final String PASSWORD = "agriotes2019pwd";
 
     /**
      * Chaine de connexion (adresse TCP/IP de la base de donn�es
