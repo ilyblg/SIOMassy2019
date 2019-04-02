@@ -6,7 +6,7 @@ public class Personne {
 	String nom;
 	String prenom;
 	String adresse;
-	int cp;
+	String cp;
 	String ville;
 	String telephone;
 	String mail;
@@ -17,9 +17,22 @@ public class Personne {
 
 	Session session;	
 	
+	// Sans isFormateur et isAdmin et sans date
+	public Personne(String nom, String prenom, String adresse,
+			 String cp, String ville, String telephone, String mail, String password) {		
+		setNom(nom);
+		setPrenom(prenom);
+		setAdresse(adresse);
+		setCp(cp);
+		setVille(ville);
+		setTelephone(telephone);
+		setMail(mail);
+		setPassword(password);
+	}
+	
 	// Sans isFormateur et isAdmin
 	public Personne(String nom, String prenom, String adresse,
-			 int cp, String ville, String telephone, String mail, String password, Timestamp dateInscrip) {		
+			 String cp, String ville, String telephone, String mail, String password, Timestamp dateInscrip) {		
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
@@ -32,9 +45,9 @@ public class Personne {
 	}
 	
 	// Full parameters
-	public Personne(String nom, String prenom, String adresse,
-			 int cp, String ville, String telephone, String mail, String password,
-			 boolean estFormateur, boolean estAdmin, Timestamp dateInscrip) {		
+	public Personne(String nom, String prenom, String mail,
+			 String telephone, String adresse, String cp, String ville, String password,
+			 boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {		
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
@@ -45,7 +58,7 @@ public class Personne {
 		setPassword(password);
 		setEstFormateur(estFormateur);
 		setEstAdmin(estAdmin);
-		setDateInscription(dateInscrip);
+		setDateInscription(dateInscription);
 	}
 	
 	public String getNom() {
@@ -73,11 +86,11 @@ public class Personne {
 		this.adresse = adresse;
 	}
 
-	public int getCp() {
+	public String getCp() {
 		return cp;
 	}
 
-	public void setCp(int cp) {
+	public void setCp(String cp) {
 		this.cp = cp;
 	}
 
