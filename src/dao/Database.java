@@ -4,11 +4,11 @@ import java.sql.*;
 import java.time.LocalDateTime;
 
 /**
- * Représente la base de données. Fournit une connexion à cette base (via
+ * Reprï¿½sente la base de donnï¿½es. Fournit une connexion ï¿½ cette base (via
  * <code>getConnection()</code>.
  *
- * ATTENTION : ajouter dans cette classe tous les codes erreur prévus par les
- * déclencheurs écrits par nous dans MySQL (après FOREIGN_KEY_NOT_FOUND).
+ * ATTENTION : ajouter dans cette classe tous les codes erreur prï¿½vus par les
+ * dï¿½clencheurs ï¿½crits par nous dans MySQL (aprï¿½s FOREIGN_KEY_NOT_FOUND).
  *
  * @author plasse
  */
@@ -37,23 +37,23 @@ public class Database {
     public static final int FOREIGN_KEY_NOT_FOUND = 1452;
 
     /**
-     * Pilote MySQL (bibliothèque contenant les implémentations de jdbc)
+     * Pilote MySQL (bibliothï¿½que contenant les implï¿½mentations de jdbc)
      */
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     protected static final String DB_NAME = "agriotes2019";
     protected static final String USER = "root";
-    protected static final String PASSWORD = "";
+    protected static final String PASSWORD = "25012501";
 
     /**
-     * Chaine de connexion (adresse TCP/IP de la base de données
+     * Chaine de connexion (adresse TCP/IP de la base de donnï¿½es
      */
     protected static String URL = "jdbc:mysql://localhost/" + DB_NAME;
-    // La chaine de connexion diffère d'un SGBD à l'autre.
+    // La chaine de connexion diffï¿½re d'un SGBD ï¿½ l'autre.
     // Pour Oracle : "jdbc:oracle:oci8:@localhost:1521:XE/" + DB_NAME
-    // Pour Derby (BD en mémoire en Java) : "jdbc:derby://localhost:1527/" + DB_NAME
+    // Pour Derby (BD en mï¿½moire en Java) : "jdbc:derby://localhost:1527/" + DB_NAME
     // Pour MySQL : "jdbc:mysql://localhost/" + DB_NAME;
 
-    // Bloc d'initialisation pour les variables static, ne s'exécute qu'une fois
+    // Bloc d'initialisation pour les variables static, ne s'exï¿½cute qu'une fois
     static {
         try {
             Class.forName(DRIVER_NAME).newInstance();
@@ -61,7 +61,7 @@ public class Database {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException exc) {
             // Depuis java 1.7, on peut rassembler ainsi les exceptions
             exc.printStackTrace();
-            throw new RuntimeException("Pilote pas chargé");
+            throw new RuntimeException("Pilote pas chargï¿½");
         }
     }
 
@@ -70,10 +70,10 @@ public class Database {
     }
 
     /**
-     * Fournit une connexion à la base de données. Ne fait pas appel à un pool
-     * de connexion, même si cela est envisageable plus tard (ne changerait rien
-     * à l'appel de la méthode)
-     * <br><strong>Requiert</strong> que le pilote soir chargé
+     * Fournit une connexion ï¿½ la base de donnï¿½es. Ne fait pas appel ï¿½ un pool
+     * de connexion, mï¿½me si cela est envisageable plus tard (ne changerait rien
+     * ï¿½ l'appel de la mï¿½thode)
+     * <br><strong>Requiert</strong> que le pilote soir chargï¿½
      *
      * @throws java.sql.SQLException
      */
@@ -82,7 +82,7 @@ public class Database {
     }
 
     /**
-     * Réinitialise la base à la date passée en paramètre. Si ce paramètre vaut
+     * Rï¿½initialise la base ï¿½ la date passï¿½e en paramï¿½tre. Si ce paramï¿½tre vaut
      * null, prend l'instant courant.
      */
     public static void reset(LocalDateTime date) throws SQLException {
