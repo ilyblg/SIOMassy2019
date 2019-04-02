@@ -6,10 +6,8 @@ __Ce qui suit introduit des manipulations SQL__
 Vous trouverez ici les fichiers :
  * agriotes2019.mwb : Le fichier Wokbench de la base
  * create-agriotes2019.sql : Créer la base vide
- * hydrate-agriotes2019.sql : Ajouter déclencheurs et données
- * reset-agriotes2019.sql : Effacer et réinjecter les données
+ * hydrate-agriotes2019.sql : Ajouter déclencheurs et jeu de données
  * schema-agriotes2019.png : Image du schéma de la base
- * triggers-agriotes2019.sql : Les déclencheurs
  
  ## Comment l'installer ? ##
  ### Etape 1 ###
@@ -27,8 +25,8 @@ Veuillez avoir votre serveur démarré et d'y être connecté.
 
  ## Purger la base de donnée  ##
 
- Ouvrez le fichier : **reset-agriotes2019.sql**
- et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple.
+ Ouvrez le fichier : **hydrate-agriotes2019.sql**
+ et exécuter le code SQL s'y trouvant, dans *Workbench* par exemple avec le **serveur démarré et connecté**.
 
 Votre base sera réinitialisée avec les valeurs prédéfinis et prête à être utilisée.
 
