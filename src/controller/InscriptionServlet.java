@@ -46,25 +46,36 @@ public class InscriptionServlet extends HttpServlet {
 		// Vérifie le formulaire, si valide vérifie présence en base de donnée de la
 		// personne
 		// et son instanciation pour traitement
+		
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("nom");
+		String mail = request.getParameter("mail");
+		String telephone = request.getParameter("telephone");
+		String adresse = request.getParameter("adresse");
+		String cp = request.getParameter("cp");
+		String ville = request.getParameter("ville");
+		String password = request.getParameter("password");	
+		
 		try {
+			// Preparation des attributs pour remplissage des champs sur la vue
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("mail", mail);
+			request.setAttribute("telephone", telephone);
+			request.setAttribute("cp", cp);
+			request.setAttribute("ville", ville);
+			request.setAttribute("password", password);
+			
+			// Vérification et insertion de la personne en base de données
 			DaoPersonne daoPers = new DaoPersonne();
 			if (checkFormData(request)) {
 				// Instanciation de notre objet personne
-				Personne personne = new Personne(request.getParameter("nom"), request.getParameter("prenom"),
-						request.getParameter("mail"), request.getParameter("telephone"), request.getParameter("adresse"),
-						request.getParameter("cp"), request.getParameter("ville"),
-						request.getParameter("password"), false, false,
-						Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
+				Personne personne = new Personne(nom, prenom, mail, telephone, adresse, cp, ville, password, 
+						false, false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
 
-				// Si formulaire verifié valide et que la personne n'est pas enregistrée
-				// - VERIFICATION DU MAIL EN VERIF FORMULAIRE ET DE PRESENCE DE PERSONNE AVEC
-				// NOM, PRENOM, MAIL -
-				// On envoie l'enregistrement en base de données et envoie le mail de
-				// confirmation
-				// Insertion de la personne en base de données
-				// Retourne un bouléen indiquant la bonne exécution de la requête
 				daoPers.inserer(personne);
-				// ENVOIE MAIL
+
+			// ENVOIE MAIL REPORTE PROBLEME PROXY
 				// GestionMail.smtpGmail();
 				// EnvoieMail.main(null);
 				// MailEnvoie2.main(null);
@@ -76,9 +87,7 @@ public class InscriptionServlet extends HttpServlet {
 			exc.printStackTrace();
 			request.setAttribute("message", exc.getMessage());
 		}
-		// response.sendRedirect(request.getContextPath() +
-		// "/WEB-INF/view/inscription.jsp");
-		System.out.println("vue : " + vue);
+		// Renvoie sur la vue selon réussite ou non de l'insertion
 		request.getRequestDispatcher(vue).forward(request, response);
 	}
 
@@ -140,7 +149,7 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
 		}
-		if (!cp.matches("/^\\d{5}$/")) {
+		if (cp.isEmpty()) { // PROBLEME : !cp.matches("/^\\d{5}$/")
 			formIsValid = false;
 			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
 		}
