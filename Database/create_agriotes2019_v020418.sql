@@ -1,5 +1,3 @@
--- MySQL Workbench Forward Engineering
-
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
@@ -32,8 +30,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`personne` (
   `est_administration` TINYINT(1) NOT NULL DEFAULT 0,
   `date_inscription` DATETIME NOT NULL,
   PRIMARY KEY (`id_personne`),
-  UNIQUE INDEX `id_personne_UNIQUE` (`id_personne` ASC) VISIBLE,
-  UNIQUE INDEX `mail_UNIQUE` (`mail` ASC) VISIBLE)
+  UNIQUE INDEX `id_personne_UNIQUE` (`id_personne` ASC),
+  UNIQUE INDEX `mail_UNIQUE` (`mail` ASC))
 ENGINE = InnoDB;
 
 
@@ -45,8 +43,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`formation` (
   `nom` VARCHAR(45) NOT NULL,
   `description` TEXT NOT NULL,
   PRIMARY KEY (`id_formation`),
-  UNIQUE INDEX `id_candidature_UNIQUE` (`id_formation` ASC) VISIBLE,
-  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC) VISIBLE)
+  UNIQUE INDEX `id_candidature_UNIQUE` (`id_formation` ASC),
+  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC))
 ENGINE = InnoDB;
 
 
@@ -59,8 +57,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`session_formation` (
   `date_debut` DATETIME NOT NULL,
   `date_fin` DATETIME NOT NULL,
   PRIMARY KEY (`id_session_formation`),
-  UNIQUE INDEX `id_session_formation_UNIQUE` (`id_session_formation` ASC) VISIBLE,
-  INDEX `fk_session_formation_formation_idx` (`id_formation` ASC) VISIBLE,
+  UNIQUE INDEX `id_session_formation_UNIQUE` (`id_session_formation` ASC),
+  INDEX `fk_session_formation_formation_idx` (`id_formation` ASC),
   CONSTRAINT `fk_session_formation_formation`
     FOREIGN KEY (`id_formation`)
     REFERENCES `agriotes2019`.`formation` (`id_formation`)
@@ -76,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`etat_candidature` (
   `id_etat_candidature` INT NOT NULL AUTO_INCREMENT,
   `libelle` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_etat_candidature`),
-  UNIQUE INDEX `id_etat_candidature_UNIQUE` (`id_etat_candidature` ASC) VISIBLE)
+  UNIQUE INDEX `id_etat_candidature_UNIQUE` (`id_etat_candidature` ASC))
 ENGINE = InnoDB;
 
 
@@ -89,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`candidature` (
   `id_etat_candidature` INT NOT NULL,
   `date_effet` DATE NULL,
   PRIMARY KEY (`id_personne`, `id_session_formation`),
-  INDEX `fk_candidature_personne1_idx` (`id_personne` ASC) VISIBLE,
-  INDEX `fk_candidature_session_formation1_idx` (`id_session_formation` ASC) VISIBLE,
+  INDEX `fk_candidature_personne1_idx` (`id_personne` ASC),
+  INDEX `fk_candidature_session_formation1_idx` (`id_session_formation` ASC),
   CONSTRAINT `fk_candidature_etat_candidature1`
     FOREIGN KEY (`id_etat_candidature`)
     REFERENCES `agriotes2019`.`etat_candidature` (`id_etat_candidature`)
@@ -116,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`module` (
   `id_module` INT NOT NULL AUTO_INCREMENT,
   `nom` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_module`),
-  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC) VISIBLE)
+  UNIQUE INDEX `nom_UNIQUE` (`nom` ASC))
 ENGINE = InnoDB;
 
 
@@ -131,10 +129,10 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`seance` (
   `jour` DATE NOT NULL,
   `creneau` TINYINT NOT NULL COMMENT '1 pour le matin, 2 pour l\'après-midi',
   PRIMARY KEY (`id_seance`),
-  INDEX `fk_seance_session_formation1_idx` (`id_session_formation` ASC) VISIBLE,
-  INDEX `fk_seance_module1_idx` (`id_module` ASC) VISIBLE,
-  UNIQUE INDEX `seance_unique_session_jour_creneau` (`id_session_formation` ASC, `jour` ASC, `creneau` ASC) VISIBLE,
-  UNIQUE INDEX `seance_unique_formateur_jour_creneau` (`id_formateur` ASC, `jour` ASC, `creneau` ASC) VISIBLE,
+  INDEX `fk_seance_session_formation1_idx` (`id_session_formation` ASC),
+  INDEX `fk_seance_module1_idx` (`id_module` ASC),
+  UNIQUE INDEX `seance_unique_session_jour_creneau` (`id_session_formation` ASC, `jour` ASC, `creneau` ASC),
+  UNIQUE INDEX `seance_unique_formateur_jour_creneau` (`id_formateur` ASC, `jour` ASC, `creneau` ASC),
   CONSTRAINT `fk_seance_session_formation1`
     FOREIGN KEY (`id_session_formation`)
     REFERENCES `agriotes2019`.`session_formation` (`id_session_formation`)
@@ -161,8 +159,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`presence` (
   `id_personne` INT NOT NULL,
   `est_present` TINYINT(1) NULL,
   PRIMARY KEY (`id_seance`, `id_personne`),
-  INDEX `fk_candidature_has_seance_seance1_idx` (`id_seance` ASC) VISIBLE,
-  INDEX `fk_presence_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_candidature_has_seance_seance1_idx` (`id_seance` ASC),
+  INDEX `fk_presence_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_candidature_has_seance_seance1`
     FOREIGN KEY (`id_seance`)
     REFERENCES `agriotes2019`.`seance` (`id_seance`)
@@ -188,9 +186,9 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`evaluation` (
   `nb_minutes` INT NULL,
   `titre` VARCHAR(45) NULL,
   PRIMARY KEY (`id_evaluation`),
-  INDEX `fk_evaluation_module1_idx` (`id_module` ASC) VISIBLE,
-  INDEX `fk_evaluation_session_formation1_idx` (`id_session_formation` ASC) VISIBLE,
-  INDEX `fk_evaluation_formateur_idx` (`id_formateur` ASC) VISIBLE,
+  INDEX `fk_evaluation_module1_idx` (`id_module` ASC),
+  INDEX `fk_evaluation_session_formation1_idx` (`id_session_formation` ASC),
+  INDEX `fk_evaluation_formateur_idx` (`id_formateur` ASC),
   CONSTRAINT `fk_evaluation_module`
     FOREIGN KEY (`id_module`)
     REFERENCES `agriotes2019`.`module` (`id_module`)
@@ -217,8 +215,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`note` (
   `id_evaluation` INT NOT NULL,
   `note` DECIMAL(3,1) NULL,
   PRIMARY KEY (`id_personne`, `id_evaluation`),
-  INDEX `fk_candidature_has_evaluation_evaluation1_idx` (`id_evaluation` ASC) VISIBLE,
-  INDEX `fk_note_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_candidature_has_evaluation_evaluation1_idx` (`id_evaluation` ASC),
+  INDEX `fk_note_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_candidature_has_evaluation_evaluation`
     FOREIGN KEY (`id_evaluation`)
     REFERENCES `agriotes2019`.`evaluation` (`id_evaluation`)
@@ -252,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`echange` (
   `instant` DATETIME NOT NULL,
   `texte` TEXT NOT NULL,
   PRIMARY KEY (`id_echange`),
-  INDEX `fk_echange_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_echange_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_echange_personne1`
     FOREIGN KEY (`id_personne`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
@@ -268,8 +266,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`invitation` (
   `id_personne` INT NOT NULL,
   `id_evenement` INT NOT NULL,
   PRIMARY KEY (`id_personne`, `id_evenement`),
-  INDEX `fk_personne_has_evenement_evenement1_idx` (`id_evenement` ASC) VISIBLE,
-  INDEX `fk_personne_has_evenement_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_personne_has_evenement_evenement1_idx` (`id_evenement` ASC),
+  INDEX `fk_personne_has_evenement_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_personne_has_evenement_personne1`
     FOREIGN KEY (`id_personne`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
@@ -294,8 +292,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`projet` (
   `date_creation` DATETIME NOT NULL,
   `date_butoir` DATETIME NOT NULL,
   PRIMARY KEY (`id_projet`),
-  INDEX `fk_projet_session_formation1_idx` (`id_session_formation` ASC) VISIBLE,
-  INDEX `fk_projet_formateur_idx` (`id_formateur` ASC) VISIBLE,
+  INDEX `fk_projet_session_formation1_idx` (`id_session_formation` ASC),
+  INDEX `fk_projet_formateur_idx` (`id_formateur` ASC),
   CONSTRAINT `fk_projet_formateur`
     FOREIGN KEY (`id_formateur`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
@@ -318,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`qcm` (
   `titre` VARCHAR(45) NOT NULL,
   `id_formateur` INT NOT NULL,
   PRIMARY KEY (`id_qcm`),
-  INDEX `fk_questionnaire_personne1_idx` (`id_formateur` ASC) VISIBLE,
+  INDEX `fk_questionnaire_personne1_idx` (`id_formateur` ASC),
   CONSTRAINT `fk_questionnaire_personne1`
     FOREIGN KEY (`id_formateur`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
@@ -332,19 +330,19 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`avis` (
   `id_personne` INT NOT NULL,
-  `id_questionnaire` INT NOT NULL,
+  `id_qcm` INT NOT NULL,
   `commentaire` TEXT NULL,
   `note` TINYINT NOT NULL,
   `date_avis` DATETIME NOT NULL,
-  PRIMARY KEY (`id_personne`, `id_questionnaire`),
-  INDEX `fk_avis_questionnaire1_idx` (`id_questionnaire` ASC) VISIBLE,
+  PRIMARY KEY (`id_personne`, `id_qcm`),
+  INDEX `fk_avis_questionnaire1_idx` (`id_qcm` ASC),
   CONSTRAINT `fk_avis_personne1`
     FOREIGN KEY (`id_personne`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_avis_questionnaire1`
-    FOREIGN KEY (`id_questionnaire`)
+    FOREIGN KEY (`id_qcm`)
     REFERENCES `agriotes2019`.`qcm` (`id_qcm`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -359,8 +357,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`equipe` (
   `id_projet` INT NOT NULL,
   `id_createur` INT NOT NULL,
   PRIMARY KEY (`id_equipe`),
-  INDEX `fk_equipe_projet1_idx` (`id_projet` ASC) VISIBLE,
-  INDEX `fk_equipe_personne1_idx` (`id_createur` ASC) VISIBLE,
+  INDEX `fk_equipe_projet1_idx` (`id_projet` ASC),
+  INDEX `fk_equipe_personne1_idx` (`id_createur` ASC),
   CONSTRAINT `fk_equipe_projet1`
     FOREIGN KEY (`id_projet`)
     REFERENCES `agriotes2019`.`projet` (`id_projet`)
@@ -381,8 +379,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`membre_equipe` (
   `id_personne` INT NOT NULL,
   `id_equipe` INT NOT NULL,
   PRIMARY KEY (`id_personne`, `id_equipe`),
-  INDEX `fk_personne_has_equipe_equipe1_idx` (`id_equipe` ASC) VISIBLE,
-  INDEX `fk_personne_has_equipe_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_personne_has_equipe_equipe1_idx` (`id_equipe` ASC),
+  INDEX `fk_personne_has_equipe_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_personne_has_equipe_personne1`
     FOREIGN KEY (`id_personne`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
@@ -402,12 +400,12 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`question` (
   `id_question` INT NOT NULL AUTO_INCREMENT,
   `enonce` VARCHAR(255) NOT NULL,
-  `id_questionnaire` INT NOT NULL,
+  `id_qcm` INT NOT NULL,
   `est_correcte` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id_question`),
-  INDEX `fk_question_questionnaire1_idx` (`id_questionnaire` ASC) VISIBLE,
+  INDEX `fk_question_questionnaire1_idx` (`id_qcm` ASC),
   CONSTRAINT `fk_question_questionnaire1`
-    FOREIGN KEY (`id_questionnaire`)
+    FOREIGN KEY (`id_qcm`)
     REFERENCES `agriotes2019`.`qcm` (`id_qcm`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -423,8 +421,8 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`passage_qcm` (
   `id_qcm` INT NOT NULL,
   `id_personne` INT NOT NULL,
   PRIMARY KEY (`id_passage_qcm`),
-  INDEX `fk_passage_questionnaire_questionnaire1_idx` (`id_qcm` ASC) VISIBLE,
-  INDEX `fk_passage_questionnaire_personne1_idx` (`id_personne` ASC) VISIBLE,
+  INDEX `fk_passage_questionnaire_questionnaire1_idx` (`id_qcm` ASC),
+  INDEX `fk_passage_questionnaire_personne1_idx` (`id_personne` ASC),
   CONSTRAINT `fk_passage_questionnaire_questionnaire1`
     FOREIGN KEY (`id_qcm`)
     REFERENCES `agriotes2019`.`qcm` (`id_qcm`)
@@ -447,7 +445,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`reponse_possible` (
   `est_correcte` TINYINT(1) NOT NULL,
   `id_question` INT NOT NULL,
   PRIMARY KEY (`id_reponse_possible`),
-  INDEX `fk_reponse_possible_question1_idx` (`id_question` ASC) VISIBLE,
+  INDEX `fk_reponse_possible_question1_idx` (`id_question` ASC),
   CONSTRAINT `fk_reponse_possible_question`
     FOREIGN KEY (`id_question`)
     REFERENCES `agriotes2019`.`question` (`id_question`)
@@ -460,13 +458,13 @@ ENGINE = InnoDB;
 -- Table `agriotes2019`.`reponse_donnee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`reponse_donnee` (
-  `id_passage_questionnaire` INT NOT NULL,
+  `id_passage_qcm` INT NOT NULL,
   `id_reponse_possible` INT NOT NULL,
-  PRIMARY KEY (`id_passage_questionnaire`, `id_reponse_possible`),
-  INDEX `fk_question_has_passage_questionnaire_passage_questionnaire_idx` (`id_passage_questionnaire` ASC) VISIBLE,
-  INDEX `fk_reponse_donnee_reponse_possible1_idx` (`id_reponse_possible` ASC) VISIBLE,
+  PRIMARY KEY (`id_passage_qcm`, `id_reponse_possible`),
+  INDEX `fk_question_has_passage_questionnaire_passage_questionnaire_idx` (`id_passage_qcm` ASC),
+  INDEX `fk_reponse_donnee_reponse_possible1_idx` (`id_reponse_possible` ASC),
   CONSTRAINT `fk_question_has_passage_questionnaire_passage_questionnaire1`
-    FOREIGN KEY (`id_passage_questionnaire`)
+    FOREIGN KEY (`id_passage_qcm`)
     REFERENCES `agriotes2019`.`passage_qcm` (`id_passage_qcm`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
@@ -492,13 +490,13 @@ USE `agriotes2019`;
 CREATE  OR REPLACE VIEW stagiaire AS
 SELECT p.*, sf.*
 FROM 
-	personne p
-		INNER JOIN
-	candidature c ON p.id_personne = c.id_personne
-		INNER JOIN
-	session_formation sf ON c.id_session_formation = sf.id_session_formation
+  personne p
+    INNER JOIN
+  candidature c ON p.id_personne = c.id_personne
+    INNER JOIN
+  session_formation sf ON c.id_session_formation = sf.id_session_formation
 WHERE 
-	c.id_etat_candidature = 6;
+  c.id_etat_candidature = 6;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
