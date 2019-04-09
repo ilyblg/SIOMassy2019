@@ -1,5 +1,6 @@
 package entity;
 
+<<<<<<< HEAD
 import dao.DaoPersonne;
 
 public class Personne {
@@ -83,4 +84,8 @@ public class Personne {
 		}
 	}
 	
+=======
+public class Personne {
+
+>>>>>>> refs/heads/abdellah
 }
