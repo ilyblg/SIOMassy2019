@@ -1,11 +1,15 @@
 package entity;
 
+import dao.DaoPersonne;
+
 public class Personne {
 	String nom;
 	String prenom;
 	Contact contact;
 	Session session;
 	Fonction fonction;
+	DaoPersonne dao;
+	int id;
 	
 	public String getNom() {
 		return nom;
@@ -73,4 +77,10 @@ public class Personne {
 		fonction.setNom(nomF);
 	}
 
+	public void creeQcm() {
+		if (dao.estFormateur(id)) {
+			
+		}
+	}
+	
 }
