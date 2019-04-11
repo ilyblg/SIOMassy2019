@@ -25,10 +25,10 @@ public class DaoPersonne {
 		String sql = "SELECT * FROM personne WHERE id_personne=" + id;
 		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
-			result = new Personne(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"),
-					rs.getString("telephone"), rs.getString("adresse"), rs.getString("code_postal"), rs.getString("ville"),
-					rs.getString("mot_de_passe"), rs.getBoolean("est_formateur"), rs.getBoolean("est_administration"),
-					rs.getTimestamp("date_inscription"));
+			result = new Personne(-1, rs.getString("nom"), rs.getString("prenom"),
+					rs.getString("mail"), rs.getString("telephone"), rs.getString("adresse"), rs.getString("code_postal"),
+					rs.getString("ville"), rs.getString("mot_de_passe"), rs.getBoolean("est_formateur"),
+					rs.getBoolean("est_administration"), rs.getTimestamp("date_inscription"));
 		}
 		return result;
 	}
@@ -42,20 +42,29 @@ public class DaoPersonne {
 	 */
 	public boolean inserer(Personne personne) throws SQLException {
 		boolean result = false;
-		// ECRYPTER LE PASS
-		String cryptedPassword = personne.getPassword();
-
-		Statement stmt = Database.getConnection().createStatement();
+		Connection db = Database.getConnection();
 		String sql = "INSERT INTO personne(prenom, nom, mail, tel, adresse, code_postal,"
-				+ "ville, mot_de_passe, est_formateur, est_administration, date_inscription)" + "VALUES (\""
-				+ personne.getPrenom() + "\", \"" + personne.getNom() + "\", \"" + personne.getMail() + "\"," + " \""
-				+ personne.getTelephone() + "\",\"" + personne.getAdresse() + "\",\"" + personne.getCp() + "\", " + "\""
-				+ personne.getVille() + "\",\"" + cryptedPassword + "\", " + personne.isEstFormateur() + "," + ""
-				+ personne.isEstAdmin() + ", \"" + personne.getDateInscription() + "\")";
+				+ "ville, mot_de_passe, est_formateur, est_administration, date_inscription)" 
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, PASSWORD(?), ?, ?, ?)";
+		PreparedStatement stmt = db.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, personne.getPrenom());
+		stmt.setString(2, personne.getNom());
+		stmt.setString(3, personne.getMail());
+		stmt.setString(4, personne.getTelephone());
+		stmt.setString(5, personne.getAdresse());
+		stmt.setString(6, personne.getCp());
+		stmt.setString(7, personne.getVille());
+		stmt.setString(8, personne.getPassword());
+		stmt.setBoolean(9, personne.isEstFormateur());
+		stmt.setBoolean(10, personne.isEstAdmin()); 
+		stmt.setTimestamp(11, personne.getDateInscription());
 
 		// Renvoie le nombre de ligne affectées, si 1 alors insertion réalisée
-		if (stmt.executeUpdate(sql) > 0) {
+		if (stmt.executeUpdate() > 0) {
 			result = true;
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.next();
+			personne.setId(rs.getInt(1));
 		}
 		return result;
 	}
@@ -70,17 +79,17 @@ public class DaoPersonne {
 		ResultSet rs = requete.executeQuery();
 		if (rs.next() ) {
 			personne = new Personne(
-					rs.getString("nom"), 
+					rs.getInt("id_personne"), 
+					rs.getString("nom"),
 					rs.getString("prenom"),
 					rs.getString("mail"),
-					rs.getString("tel"),
-					rs.getString("adresse"), 
+					rs.getString("tel"), 
+					rs.getString("adresse"),
 					rs.getString("code_postal"),
-					rs.getString("ville"),
+					rs.getString("ville"), 
 					rs.getString("mot_de_passe"), 
-					rs.getBoolean("est_formateur"), 
-					rs.getBoolean("est_administration"),
-					rs.getTimestamp("date_inscription"));
+					rs.getBoolean("est_formateur"),
+					rs.getBoolean("est_administration"), rs.getTimestamp("date_inscription"));
 		}
 		return personne;
 	}

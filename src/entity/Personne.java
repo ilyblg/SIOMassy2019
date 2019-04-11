@@ -3,6 +3,7 @@ package entity;
 import java.sql.Timestamp;
 
 public class Personne {
+	int id;
 	String nom;
 	String prenom;
 	String adresse;
@@ -17,37 +18,11 @@ public class Personne {
 
 	Session session;	
 	
-	// Sans isFormateur et isAdmin et sans date
-	public Personne(String nom, String prenom, String adresse,
-			 String cp, String ville, String telephone, String mail, String password) {		
-		setNom(nom);
-		setPrenom(prenom);
-		setAdresse(adresse);
-		setCp(cp);
-		setVille(ville);
-		setTelephone(telephone);
-		setMail(mail);
-		setPassword(password);
-	}
-	
-	// Sans isFormateur et isAdmin
-	public Personne(String nom, String prenom, String adresse,
-			 String cp, String ville, String telephone, String mail, String password, Timestamp dateInscrip) {		
-		setNom(nom);
-		setPrenom(prenom);
-		setAdresse(adresse);
-		setCp(cp);
-		setVille(ville);
-		setTelephone(telephone);
-		setMail(mail);
-		setPassword(password);
-		setDateInscription(dateInscrip);
-	}
-	
 	// Full parameters
-	public Personne(String nom, String prenom, String mail,
-			 String telephone, String adresse, String cp, String ville, String password,
-			 boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {		
+	public Personne(int idPersonne, String nom, String prenom,
+			 String mail, String telephone, String adresse, String cp, String ville,
+			 String password, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
+		this.id = idPersonne;
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
@@ -61,6 +36,20 @@ public class Personne {
 		setDateInscription(dateInscription);
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public String getNom() {
 		return nom;
 	}
