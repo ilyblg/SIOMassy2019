@@ -2,6 +2,8 @@ package dao;
 
 import entity.Personne;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -57,4 +59,30 @@ public class DaoPersonne {
 		}
 		return result;
 	}
+	
+	public Personne getByLoginMdp(String mail, String mdp)  throws SQLException {
+		Personne personne = null;
+		Connection connection = Database.getConnection();
+		String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=?";
+		PreparedStatement requete = connection.prepareStatement(sql);
+		requete.setString(1, mail);
+		requete.setString(2, mdp);
+		ResultSet rs = requete.executeQuery();
+		if (rs.next() ) {
+			personne = new Personne(
+					rs.getString("nom"), 
+					rs.getString("prenom"),
+					rs.getString("mail"),
+					rs.getString("tel"),
+					rs.getString("adresse"), 
+					rs.getString("code_postal"),
+					rs.getString("ville"),
+					rs.getString("mot_de_passe"), 
+					rs.getBoolean("est_formateur"), 
+					rs.getBoolean("est_administration"),
+					rs.getTimestamp("date_inscription"));
+		}
+		return personne;
+	}
+	
 }
