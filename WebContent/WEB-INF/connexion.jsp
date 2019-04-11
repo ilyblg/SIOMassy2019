@@ -9,21 +9,25 @@
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<fieldset>
-		<legend>CONNEXION</legend><br>
-		<p>Veuillez saisir vos information</p><br>
-		<form action="connexion" method="post">
-			<label For="mail">Email : </label> 
-			<input type="text" name="mail" value="${param['mail'] }">
-			<br/>
-			
-			<label For="mdp">Mot de passe : </label> 
-			<input type="password" name="mdp">
-			<br/>
-			
-			<button type="submit">Se connecter</button>
-			<div class="erreur">${msgConnexion}</div>
-		</form>
-	</fieldset>
+	<div  id = " bloc " >
+		<%@ include  file="./header.jsp"%>
+			<fieldset>
+				<legend>CONNEXION</legend><br>
+				<p>Veuillez saisir vos information</p><br>
+				<form action="connexion" method="post">
+					<label For="mail">Email : </label> 
+					<input type="text" name="mail" value="${param['mail'] }">
+					<br/>
+					
+					<label For="mdp">Mot de passe : </label> 
+					<input type="password" name="mdp">
+					<br/>
+					
+					<button type="submit" class="button">Se connecter</button>
+					<div class="erreur">${msgConnexion}</div>
+				</form>
+			</fieldset>
+		<%@ include  file="./footer.jsp"%>
+	</div >
 </body>
 </html>
