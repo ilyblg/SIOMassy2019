@@ -16,7 +16,7 @@ import entity.Personne;
  * Servlet implementation class Connexion
  */
 @WebServlet("/connexion")
-public class ServletConnexion extends HttpServlet {
+public class ConnexionServlet extends HttpServlet {
 	private final String FORM_PATH = "/WEB-INF/connexion.jsp";
 	private final String HOME_PATH = "./accueil";
 

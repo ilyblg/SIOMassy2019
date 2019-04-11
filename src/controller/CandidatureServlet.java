@@ -23,7 +23,7 @@ import entity.Candidature;
  * Servlet implementation class ServletCandidature
  */
 @WebServlet("/candidatures")
-public class ServletCandidature extends HttpServlet {
+public class CandidatureServlet extends HttpServlet {
 	private final String VUE_CANDIDATURES = "WEB-INF/candidatures.jsp";
 	private final String VUE_ERREUR = "WEB-INF/erreur.jsp";
 	
