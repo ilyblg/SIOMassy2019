@@ -33,8 +33,7 @@ public class DaoPersonne {
 
 	/**
 	 * Permet d'insérer en base de données une nouvelles personne
-	 * Renvoie un booléen indiquant la bonne exécution de la requete
-	 *
+	 * 
 	 * @param personne
 	 * @return
 	 * @throws SQLException
