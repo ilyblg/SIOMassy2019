@@ -16,30 +16,24 @@ import dao.DaoPersonne;
 import entity.Personne;
 import tool.EnvoieMail;
 import tool.GestionMail;
+import tool.MailEnvoie2;
 
 /**
  * Servlet implementation class InscriptionServlet
  */
-@WebServlet("/InscriptionServlet")
+@WebServlet("/Inscription")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Personne personne;
-	DaoPersonne daoPers;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public InscriptionServlet() {
-        super();
-    }
-    
-    /**
+
+	private final String VUE_FORMULAIRE = "/WEB-INF/inscription.jsp";
+	private final String VUE_OK = "/WEB-INF/connexion.jsp";
+
+	/**
 	 * @see Méthode doGet qui renvoie vers la page de formulaire
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/Inscription.jsp")
-				.forward(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher(VUE_FORMULAIRE).forward(request, response);
 	}
 
 	/**
@@ -48,78 +42,76 @@ public class InscriptionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		// Vérifie le formulaire, si valide vérifie présence en base de donnée de la personne
+		String vue = VUE_FORMULAIRE;
+		// Vérifie le formulaire, si valide vérifie présence en base de donnée de la
+		// personne
 		// et son instanciation pour traitement
+		
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("nom");
+		String mail = request.getParameter("mail");
+		String telephone = request.getParameter("telephone");
+		String adresse = request.getParameter("adresse");
+		String cp = request.getParameter("cp");
+		String ville = request.getParameter("ville");
+		String password = request.getParameter("password");	
+		
 		try {
-			daoPers = new DaoPersonne();
-			if(checkFormData(request)){
-				// Instanciation de notre objet personne
-				personne = new Personne(
-				request.getParameter("nom"),
-				request.getParameter("prenom"),
-				request.getParameter("adresse"),
-				Integer.parseInt(request.getParameter("cp")),
-				request.getParameter("ville"),
-				request.getParameter("telephone"),
-				request.getParameter("mail"),
-				request.getParameter("password"),
-				false,
-				false,
-				Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
+			// Preparation des attributs pour remplissage des champs sur la vue
+			request.setAttribute("nom", nom);
+			request.setAttribute("prenom", prenom);
+			request.setAttribute("mail", mail);
+			request.setAttribute("telephone", telephone);
+			request.setAttribute("cp", cp);
+			request.setAttribute("ville", ville);
+			request.setAttribute("password", password);
 			
-				// Si formulaire verifié valide et que la personne n'est pas enregistrée
-				// - VERIFICATION DU MAIL EN VERIF FORMULAIRE ET DE PRESENCE DE PERSONNE AVEC NOM, PRENOM, MAIL -
-				// On envoie l'enregistrement en base de données et envoie le mail de confirmation
-				if (!daoPers.ifExist(personne)) {
-					// Insertion de la personne en base de données
-					// Retourne un bouléen indiquant la bonne exécution de la requête
-					if(daoPers.insertInDB(personne)) {
-						// ENVOIE MAIL						
-						
-						//GestionMail.smtpGmail();
-						//EnvoieMail.main(null);
-						System.out.println("Inscription valide !");
-						
-						response.sendRedirect(request.getContextPath() + "/Connexion.jsp");
-					}
-				}
-			}
-			else { // Si formulaire invalide, renvoie sur la page avec les msg d'erreurs correspondant
-				//response.sendRedirect("/Inscription.jsp");
-				getServletContext().getRequestDispatcher("/Inscription.jsp").forward(request, response);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Probleme envoie mail : " + e);
+			// Vérification et insertion de la personne en base de données
+			DaoPersonne daoPers = new DaoPersonne();
+			if (checkFormData(request)) {
+				// Instanciation de notre objet personne
+				Personne personne = new Personne(nom, prenom, mail, telephone, adresse, cp, ville, password, 
+						false, false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
+
+				daoPers.inserer(personne);
+
+			// ENVOIE MAIL REPORTE PROBLEME PROXY
+				// GestionMail.smtpGmail();
+				// EnvoieMail.main(null);
+				// MailEnvoie2.main(null);
+
+				System.out.println("Inscription valide !");
+				vue = VUE_OK;
+			} 
+		} catch (SQLException exc) {
+			exc.printStackTrace();
+			request.setAttribute("message", exc.getMessage());
 		}
+		// Renvoie sur la vue selon réussite ou non de l'insertion
+		request.getRequestDispatcher(vue).forward(request, response);
 	}
-	
+
 	// ATTENTION : GERER AFFICHAGE JSP DES MSG D'ERREURS du CHECK
 
 	/**
-	 * Verifie que le formulaire est valide : champs requis renseignés, plages
-	 * de valeur respectées. Si valide, crée l'objet personne correspondant.
-	 * Sinon, paramètre les messages d'erreur sous
-	 * la forme msgNomDuChamp (ex : msgEmail) en 'request'
+	 * Verifie que le formulaire est valide : champs requis renseignés, plages de
+	 * valeur respectées. Si valide, crée l'objet personne correspondant. Sinon,
+	 * paramètre les messages d'erreur sous la forme msgNomDuChamp (ex : msgEmail)
+	 * en 'request'
 	 *
 	 * @param request
 	 * @throws SQLException
 	 */
-	private boolean checkFormData(HttpServletRequest request)
-			throws SQLException {
+	private boolean checkFormData(HttpServletRequest request) {
 		boolean formIsValid = true;
 
 		request.setAttribute("isInitial", "true");
-		
+
 		// Recuperer les parametres
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String adresse = request.getParameter("adresse");
-		//String cp = request.getParameter("cp");
-		int cp = Integer.parseInt(request.getParameter("cp"));
+		String cp = request.getParameter("cp");
 		String ville = request.getParameter("ville");
 		String telephone = request.getParameter("telephone");
 		String mail = request.getParameter("mail");
@@ -127,16 +119,11 @@ public class InscriptionServlet extends HttpServlet {
 		String password = request.getParameter("mail");
 
 		// Non utiliser pour vérifications basique
-		//boolean isFormateur = Boolean.parseBoolean(request.getParameter("estFormateur"));
-		//boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdmin"));
+		// boolean isFormateur =
+		// Boolean.parseBoolean(request.getParameter("estFormateur"));
+		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdmin"));
 
 		DaoPersonne daoPersonne = new DaoPersonne();
-		if (!daoPersonne.checkEmail(mail)) {
-			formIsValid = false;
-			request.setAttribute("msgEmail", "L'email " + mail
-					+ " existe déjà.");
-		}
-
 		// Les tests pour vérifier si les champs sont vides
 		if (nom.isEmpty()) {
 			formIsValid = false;
@@ -152,21 +139,19 @@ public class InscriptionServlet extends HttpServlet {
 		}
 		if (mailVerif.matches("^ *") && !mailVerif.contentEquals(mail)) {
 			formIsValid = false;
-			request.setAttribute("msgEmailVerif",
-					"La confirmation du courriel n'est pas valide.");
-		}		
+			request.setAttribute("msgEmailVerif", "La confirmation du courriel n'est pas valide.");
+		}
 		if (password.isEmpty()) {
 			formIsValid = false;
-			request.setAttribute("msgMotDePasse",
-					"Le mot de passe est obligatoire.");
+			request.setAttribute("msgMotDePasse", "Le mot de passe est obligatoire.");
 		}
 		if (adresse.isEmpty()) {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
 		}
-		if (cp < 0) {
+		if (cp.isEmpty()) { // PROBLEME : !cp.matches("/^\\d{5}$/")
 			formIsValid = false;
-			request.setAttribute("msgCodePostal", "Le code postal est obligatoire.");
+			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
 		}
 		if (ville.isEmpty()) {
 			formIsValid = false;
@@ -177,15 +162,12 @@ public class InscriptionServlet extends HttpServlet {
 			request.setAttribute("msgTel", "Un numéro de téléphone est obligatoire.");
 		}
 
-		// Si formulaire valide alors...
-		if (formIsValid) {
-			Personne personne = new Personne(request.getParameter("nom"), request.getParameter("prenom"),
-											request.getParameter("adresse"),
-											Integer.parseInt(request.getParameter("cp")), request.getParameter("ville"),
-											request.getParameter("telephone"), request.getParameter("mail"), "password",
-											Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
-			System.out.println("Formulaire valide !");
-		}
+		System.out.println("Formulaire valide : " + formIsValid);
+
+//			if (!daoPersonne.checkEmail(mail)) {
+//				formIsValid = false;
+//				request.setAttribute("msgEmail", "L'email " + mail + " existe déjà.");
+//			}
 		return formIsValid;
 	}
 }
