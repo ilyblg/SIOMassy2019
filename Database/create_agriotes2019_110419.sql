@@ -431,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`passage_qcm` (
     FOREIGN KEY (`id_personne`)
     REFERENCES `agriotes2019`.`personne` (`id_personne`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)question
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
