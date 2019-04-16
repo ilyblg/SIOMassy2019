@@ -111,6 +111,7 @@ h1{
 h2{
 	font-size: 1.8em;
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 p{
@@ -158,11 +159,13 @@ legend + p{
 	margin-bottom: 30px;
 }
 
-input[type="text"]{
+input[type="text"],[type="password"]{
 	width: 200px;		
 	font-size: 1.1em;
 	margin-bottom: 10px;
+	padding-bottom: 8px;
 }
+
 
 .button{
 	color: white;

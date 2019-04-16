@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Repr�sente la base de donn�es. Fournit une connexion � cette base (via

@@ -52,11 +52,11 @@ public class DaoPersonne {
 		stmt.setString(3, personne.getMail());
 		stmt.setString(4, personne.getTelephone());
 		stmt.setString(5, personne.getAdresse());
-		stmt.setString(6, personne.getCp());
+		stmt.setString(6, personne.getCodePostal());
 		stmt.setString(7, personne.getVille());
-		stmt.setString(8, personne.getPassword());
+		stmt.setString(8, personne.getMotDePasse());
 		stmt.setBoolean(9, personne.isEstFormateur());
-		stmt.setBoolean(10, personne.isEstAdmin()); 
+		stmt.setBoolean(10, personne.isEstAdministration()); 
 		stmt.setTimestamp(11, personne.getDateInscription());
 
 		// Renvoie le nombre de ligne affectées, si 1 alors insertion réalisée

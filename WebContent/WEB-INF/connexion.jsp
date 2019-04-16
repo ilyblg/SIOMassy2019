@@ -5,23 +5,25 @@
 <html>
 <head>
 <meta charset="utf-8">
-	<title>Insert title here</title>
+	<title>Connexion</title>
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<div  id = " bloc " >
+	<div  id = "bloc" >
 		<%@ include  file="./header.jsp"%>
 			<fieldset>
 				<legend>CONNEXION</legend><br>
 				<p>Veuillez saisir vos information</p><br>
 				<form action="connexion" method="post">
+					<p>
 					<label For="mail">Email : </label> 
 					<input type="text" name="mail" value="${param['mail'] }">
-					<br/>
+					</p>
 					
+					<p>
 					<label For="mdp">Mot de passe : </label> 
 					<input type="password" name="mdp">
-					<br/>
+					</p>
 					
 					<button type="submit" class="button">Se connecter</button>
 					<div class="erreur">${msgConnexion}</div>
