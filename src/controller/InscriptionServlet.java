@@ -13,15 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DaoPersonne;
+import dao.Database;
 import entity.Personne;
-import tool.EnvoieMail;
-import tool.GestionMail;
-import tool.MailEnvoie2;
 
 /**
  * Servlet implementation class InscriptionServlet
  */
-@WebServlet("/Inscription")
+@WebServlet("/inscription")
 public class InscriptionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -46,7 +44,7 @@ public class InscriptionServlet extends HttpServlet {
 		// Vérifie le formulaire, si valide vérifie présence en base de donnée de la
 		// personne
 		// et son instanciation pour traitement
-		
+
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("nom");
 		String mail = request.getParameter("mail");
@@ -54,8 +52,8 @@ public class InscriptionServlet extends HttpServlet {
 		String adresse = request.getParameter("adresse");
 		String cp = request.getParameter("cp");
 		String ville = request.getParameter("ville");
-		String password = request.getParameter("password");	
-		
+		String password = request.getParameter("password");
+
 		try {
 			// Preparation des attributs pour remplissage des champs sur la vue
 			request.setAttribute("nom", nom);
@@ -65,27 +63,29 @@ public class InscriptionServlet extends HttpServlet {
 			request.setAttribute("cp", cp);
 			request.setAttribute("ville", ville);
 			request.setAttribute("password", password);
-			
+
 			// Vérification et insertion de la personne en base de données
 			DaoPersonne daoPers = new DaoPersonne();
 			if (checkFormData(request)) {
 				// Instanciation de notre objet personne
-				Personne personne = new Personne(nom, prenom, mail, telephone, adresse, cp, ville, password, 
-						false, false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
+				Personne personne = new Personne(-1, nom, prenom, mail, telephone, adresse, cp, ville, password, false,
+						false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
 
 				daoPers.inserer(personne);
-
-			// ENVOIE MAIL REPORTE PROBLEME PROXY
+				System.out.println(personne.getId());
+				// ENVOIE MAIL REPORTE PROBLEME PROXY
 				// GestionMail.smtpGmail();
 				// EnvoieMail.main(null);
 				// MailEnvoie2.main(null);
 
 				System.out.println("Inscription valide !");
 				vue = VUE_OK;
-			} 
+			}
 		} catch (SQLException exc) {
+			String message = (exc.getErrorCode() == Database.DOUBLON) ? "Le email existe déjà"
+					: "Pb avec la base de données";
 			exc.printStackTrace();
-			request.setAttribute("message", exc.getMessage());
+			request.setAttribute("message", message);
 		}
 		// Renvoie sur la vue selon réussite ou non de l'insertion
 		request.getRequestDispatcher(vue).forward(request, response);

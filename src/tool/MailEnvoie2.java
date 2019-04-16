@@ -1,3 +1,4 @@
+/*
 package tool;
 
 import java.io.IOException;
@@ -46,5 +47,5 @@ public class MailEnvoie2 {
 		   os.close();
 		   con.close();
 		}
-}
+} */
 

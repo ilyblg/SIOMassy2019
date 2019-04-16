@@ -3,6 +3,7 @@ package entity;
 import java.sql.Timestamp;
 
 public class Personne {
+	int id;
 	String nom;
 	String prenom;
 	String adresse;
@@ -16,12 +17,12 @@ public class Personne {
 	Timestamp dateInscription;
 
 	Session session;	
-
 	
 	// Full parameters
-	public Personne(String nom, String prenom, String mail,
-			 String telephone, String adresse, String cp, String ville, String password,
-			 boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {		
+	public Personne(int idPersonne, String nom, String prenom,
+			 String mail, String telephone, String adresse, String cp, String ville,
+			 String password, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
+		this.id = idPersonne;
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
@@ -35,6 +36,20 @@ public class Personne {
 		setDateInscription(dateInscription);
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public String getNom() {
 		return nom;
 	}

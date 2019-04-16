@@ -9,28 +9,6 @@ import java.sql.Statement;
 import dao.Database;
 
 public class DaoPersonne {
-
-	/**
-	 * Fournit la Personne par son ID
-	 * 
-	 * @param id
-	 * @return Object Personne
-	 * @throws SQLException
-	 */
-	public Personne getById(int id) throws SQLException {
-		Personne result = null;
-		Statement stmt = Database.getConnection().createStatement();
-		String sql = "SELECT * FROM personne WHERE id_personne=" + id;
-		ResultSet rs = stmt.executeQuery(sql);
-		if (rs.next()) {
-			result = new Personne(rs.getString("nom"), rs.getString("prenom"), rs.getString("mail"),
-					rs.getString("telephone"), rs.getString("adresse"), rs.getString("code_postal"), rs.getString("ville"),
-					rs.getString("mot_de_passe"), rs.getBoolean("est_formateur"), rs.getBoolean("est_administration"),
-					rs.getTimestamp("date_inscription"));
-		}
-		return result;
-	}
-
 	/**
 	 * Permet d'insérer en base de données une nouvelles personne
 	 * 
