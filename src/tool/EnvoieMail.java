@@ -22,16 +22,16 @@ public class EnvoieMail {
 		Session session = Session.getDefaultInstance(props,
 			new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("recursiveness.liberty@gmail.com","btssio2019");
+					return new PasswordAuthentication("LE MAIL POUR AUTHENTIFICATION","MOT DE PASSE");
 				}
 			});
 		session.setDebug(true);		
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("recursiveness.liberty@gmail.com"));
+			message.setFrom(new InternetAddress("MAIL EXPEDITEUR"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("pro.info.lmm@gmail.com"));
+					InternetAddress.parse("MAIL OU ENVOYER"));
 			message.setSubject("Testing Subject");
 			message.setText("Dear Mail Crawler," +
 					"\n\n No spam to my email, please!");

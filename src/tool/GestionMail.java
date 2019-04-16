@@ -16,12 +16,12 @@ public class GestionMail {
 		try {
 			// Protocole authentification mail
 			String smtpHost = "smtp.gmail.com";
-		    String username = "recursiveness.liberty@gmail.com";
-		    String password = "btssio2019";
+		    String username = "LE MAIL POUR AUTHENTIFICATION";
+		    String password = "MOT DE PASSE";
 	
 		    // Parametres d'envoie
-		    String from = "recursiveness.liberty@gmail.com";
-		    String to = "pro.info.lmm@gmail.com";
+		    String from = "MAIL EXPEDITEUR";
+		    String to = "MAIL OU ENVOYER";
 		    
 		    String contenuMessage = "Ceci est le contenu du courriel. Pour test.";
 		    String contenuObjet = "Message pour test envoie courriel.";
