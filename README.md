@@ -1,4 +1,5 @@
-# SIOMassy2019
+# SIO2019
+**Dénomination : Agriotes**
 
 Conception et production. Projet E4 de BTS SIO 2019, Greta Massy 91
 
@@ -11,33 +12,20 @@ Cette épreuve vise à  évaluer les compétences acquises par le candidat dans 
 ## Composition de l'équipe
 
 Ce projet réalisé en équipe dont la composition est la classe de BTS 2018/2019.
-Il s'agit d'une répartition des tâches sur plusieurs niveaux, à savoir l'encadrement de l'implémentation d'un projet et sa conception, ici évaluées au travers de :
+Il s'agit d'une répartition des tâches sur plusieurs niveaux, à savoir l'encadrement de l'implémentation d'un projet et sa conception, ici évaluées au travers de responsabilités partagées ainsi que de la répartition de la dite implémentation des fonctionnalités au travers de binôme, sur méthodes Agile, Scrum.
 
-| Résponsabilité     | Membres          |
-| :---------------   |---------------:|
-| Base de donnée            | Steph, Bougary, Blaise      |
-| Cahier des charges        | Ilyes, Bougary, Othmane                 |
-| Cas d'utilisation         | Blaise, Abdellah, Ilyes     |
-| Convention de nommage     | Abdellah, Imed, Khalil      |
-| Diagramme de navigation   | Philippe, Miguel            |
-| Documentation technique   | Miguel                      |
-| Documentation utilisateur | Steph, Thomas               |
-| Doc. Fiche d'incident     | Philippe, Imed              |
-| Gestion de projet         | Florian, Khalil, Thomas     |
-| Gestion de version Github | Miguel                      |
-| Interface Homme-Machine   | Blaise, Abdellah, Ilyes     |
-
-Ainsi que de la répartition de l'implémentation des fonctionnalités au travers de binôme, sur méthodes Agile, Scrum :
-
-| Fonctionnalité     | Numero          | Membres          |
-| :---------------   |:---------------:|---------------:|
-
-~~EN ATTENTE DE FORMATION DES BINOME~~
+ Voir [le wiki du projet][2] pour plus d'informations.
 
 ## Structure du projet
-Le projet se matérialisera en gestion des version par plusieurs niveaux de branches :
- * La **Master** qui reflétera le projet en cours après implémentation et validation par l'équipe des codes.
+Le projet se matérialisera en gestion des version par plusieurs niveaux de branches (sans espaces) :
+ * La **Master** (**A NE PAS TOUCHER**) qui reflétera le projet en cours après implémentation et validation par l'équipe des codes.
  * Une **branche dédié** _par fonctionnalités_ (binôme) permettra de sécuriser les développements (voir convention de nommage).
+ * Une branche **votre prenom** par élève est crée, sur laquel vous travaillerez en solo.
+ 
+### Procédure de gestion de version ###
+
+Votre binome possède donc une branche lié à la fonctionnalité.
+Chacun d'entre-vous possède une branche qui lui est propre. Une fois que vous avez réalisez votre travail, il faudra faire un *merge* (fusion)  en concertation avec votre binôme sur la branche dédié à la fonctionnalité. Une fois que tout est validé entre vous vous transmettrez l'information aux chef de projets qui réaliserons un audit, **une implémentation suivra** une fois validé, la branche dédié à la fonctionnalité sera *merge* (fusionné) sur le *Master*.
 
 ### Informations complémentaires
 
@@ -50,3 +38,4 @@ Il est rappelé que ce projet est à vocation étudiante, dans le cadre d'un cur
 *Rédacteur du présent document, responsable github/ProjetE4: Miguel.M*
 
   [1]: https://www.gnu.org/licenses/gpl-3.0.fr.html
+  [2]: https://github.com/michel-plasse/SIOMassy2019/wiki/The-Team---Composition-et-t%C3%A2ches
