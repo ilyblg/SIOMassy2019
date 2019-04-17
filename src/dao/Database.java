@@ -44,8 +44,8 @@ public class Database {
      */
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     protected static final String DB_NAME = "agriotes2019";
-    protected static final String USER = "root";
-    protected static final String PASSWORD = "philaemafillejetaime";
+    protected static final String USER = "agriotes2019user";
+    protected static final String PASSWORD = "agriotes2019pwd";
 
     /**
      * Chaine de connexion (adresse TCP/IP de la base de donn�es
@@ -85,12 +85,12 @@ public class Database {
     }
 
     /**
-     * Réinitialise la base à la date passée en paramètre. Si ce paramètre vaut
+     * R�initialise la base � la date pass�e en param�tre. Si ce param�tre vaut
      * null, prend l'instant courant.
      */
     public static void reset(LocalDateTime date) throws SQLException {
         Connection con = Database.getConnection();
-        CallableStatement stmt = con.prepareCall("CALL agriotes2018_reset(?)");
+        CallableStatement stmt = con.prepareCall("CALL agriotes2019_reset(?)");
         Timestamp ts = null;
         if (date != null) {
             ts = Timestamp.valueOf(date);
@@ -100,8 +100,8 @@ public class Database {
         stmt.close();
         con.close();
     }
-    
-    /** Recupère sous forme de liste de tableaux associatifs (HashMap) un ResultSet
+
+        /** Recupère sous forme de liste de tableaux associatifs (HashMap) un ResultSet
      * 
      * @param rs
      * @return
@@ -120,6 +120,4 @@ public class Database {
         }
         return result;
      }
-
-
 }

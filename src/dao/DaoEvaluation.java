@@ -12,7 +12,10 @@ public class DaoEvaluation {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Evaluation getEvaluationById(int id) throws SQLException {
+	/**
+	 * Recupère le titre d'une évaluation par son id (ici à REVOIR, RENVOIE OBJET)
+	 */
+	public Evaluation getTitleEvaluationById(int id) throws SQLException {
 		Evaluation result = null;
 		Statement stmt = Database.getConnection().createStatement();
 		String sql = "SELECT * FROM evaluation WHERE id_evaluation=" + id;
