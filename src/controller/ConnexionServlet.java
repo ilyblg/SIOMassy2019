@@ -19,7 +19,7 @@ import entity.Personne;
 public class ConnexionServlet extends HttpServlet {
 	private final String FORM_PATH = "/WEB-INF/connexion.jsp";
 	private final String HOME_PATH = "./accueil";
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher(FORM_PATH).forward(request, response);
@@ -30,6 +30,7 @@ public class ConnexionServlet extends HttpServlet {
 		// recup�re les param�tres
 		String mail = request.getParameter("mail");
 		String mdp = request.getParameter("mdp");
+		
 		boolean saisieOk = (mail != null && !mail.isEmpty() && mdp != null && !mdp.isEmpty());
 		boolean daoOk = false;
 		Personne user;

@@ -50,7 +50,7 @@ public class InscriptionServlet extends HttpServlet {
 		String mail = request.getParameter("mail");
 		String telephone = request.getParameter("telephone");
 		String adresse = request.getParameter("adresse");
-		String cp = request.getParameter("cp");
+		String cp = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 		String password = request.getParameter("password");
 
@@ -60,7 +60,7 @@ public class InscriptionServlet extends HttpServlet {
 			request.setAttribute("prenom", prenom);
 			request.setAttribute("mail", mail);
 			request.setAttribute("telephone", telephone);
-			request.setAttribute("cp", cp);
+			request.setAttribute("codePostal", cp);
 			request.setAttribute("ville", ville);
 			request.setAttribute("password", password);
 
@@ -111,7 +111,7 @@ public class InscriptionServlet extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String adresse = request.getParameter("adresse");
-		String cp = request.getParameter("cp");
+		String cp = request.getParameter("codePostal");
 		String ville = request.getParameter("ville");
 		String telephone = request.getParameter("telephone");
 		String mail = request.getParameter("mail");
@@ -121,7 +121,7 @@ public class InscriptionServlet extends HttpServlet {
 		// Non utiliser pour vérifications basique
 		// boolean isFormateur =
 		// Boolean.parseBoolean(request.getParameter("estFormateur"));
-		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdmin"));
+		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdministration"));
 
 		DaoPersonne daoPersonne = new DaoPersonne();
 		// Les tests pour vérifier si les champs sont vides
@@ -149,7 +149,7 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
 		}
-		if (cp.isEmpty()) { // PROBLEME : !cp.matches("/^\\d{5}$/")
+		if (cp.isEmpty()) { // PROBLEME : !codePostal.matches("/^\\d{5}$/")
 			formIsValid = false;
 			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
 		}

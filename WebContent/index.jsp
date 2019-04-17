@@ -8,6 +8,6 @@
 </head>
 <body>
 <a href="inscription">inscription</a>
-<a href="evaluation">Evaluation des stagiaires </a>
+<a href="noter-stagiaire">Eval</a>
 </body>
 </html>

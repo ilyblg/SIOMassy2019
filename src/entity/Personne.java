@@ -7,13 +7,13 @@ public class Personne {
 	String nom;
 	String prenom;
 	String adresse;
-	String cp;
+	String codePostal;
 	String ville;
 	String telephone;
 	String mail;
-	String password;
+	String motDePasse;
 	boolean estFormateur;
-	boolean estAdmin;
+	boolean estAdministration;
 	Timestamp dateInscription;
 
 	Session session;	
@@ -21,18 +21,18 @@ public class Personne {
 	// Full parameters
 	public Personne(int idPersonne, String nom, String prenom,
 			 String mail, String telephone, String adresse, String cp, String ville,
-			 String password, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
+			 String motDePasse, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
 		this.id = idPersonne;
 		setNom(nom);
 		setPrenom(prenom);
 		setAdresse(adresse);
-		setCp(cp);
+		setCodePostal(cp);
 		setVille(ville);
 		setTelephone(telephone);
 		setMail(mail);
-		setPassword(password);
+		setMotDePasse(motDePasse);
 		setEstFormateur(estFormateur);
-		setEstAdmin(estAdmin);
+		setEstAdministration(estAdmin);
 		setDateInscription(dateInscription);
 	}
 	
@@ -75,12 +75,12 @@ public class Personne {
 		this.adresse = adresse;
 	}
 
-	public String getCp() {
-		return cp;
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-	public void setCp(String cp) {
-		this.cp = cp;
+	public void setCodePostal(String cp) {
+		this.codePostal = cp;
 	}
 
 	public String getVille() {
@@ -107,14 +107,14 @@ public class Personne {
 		this.mail = mail;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getMotDePasse() {
+		return motDePasse;
 	}
 
-	public void setPassword(String password) {
+	public void setMotDePasse(String motDePasse) {
 		
 		// CRYPTER ICI
-		this.password = password;
+		this.motDePasse = motDePasse;
 	}
 
 	public boolean isEstFormateur() {
@@ -125,12 +125,12 @@ public class Personne {
 		this.estFormateur = estFormateur;
 	}
 
-	public boolean isEstAdmin() {
-		return estAdmin;
+	public boolean isEstAdministration() {
+		return estAdministration;
 	}
 
-	public void setEstAdmin(boolean estAdmin) {
-		this.estAdmin = estAdmin;
+	public void setEstAdministration(boolean estAdmin) {
+		this.estAdministration = estAdmin;
 	}
 
 	public Session getSession() {
@@ -155,8 +155,8 @@ public class Personne {
 
 	@Override
 	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", cp=" + cp + ", ville="
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", codePostal=" + codePostal + ", ville="
 				+ ville + ", telephone=" + telephone + ", mail=" + mail + ", estFormateur=" + estFormateur
-				+ ", estAdmin=" + estAdmin + ", dateInscription=" + dateInscription + "]";
+				+ ", estAdministration=" + estAdministration + ", dateInscription=" + dateInscription + "]";
 	}
 }

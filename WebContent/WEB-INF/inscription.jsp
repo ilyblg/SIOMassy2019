@@ -1,21 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<%@page 
-	import="entity.Personne"
-%>
- 
-<%
-
-	final String message = (String) request.getAttribute ("nom");
-	final String message2 = (String) request.getParameter ("nom");
-	Personne personne = new Personne();
-	
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
@@ -23,7 +13,7 @@ Formulaire d'inscription <br>
 			<section id="contain">
 			
 			<!-- zone de connexion -->     
-		    <form action="Inscription" method="POST">
+		    <form action="inscription" method="POST">
 		    	<fieldset>
 			 		<legend>Ajouter un eleve</legend>
 		    	    <label for="nom">Nom</label>
@@ -67,6 +57,6 @@ Formulaire d'inscription <br>
 		     	</fieldset>
 		     </form>
 		</section>
-		<h2>${message}</h2>
+		<h2 class="erreur">${message}</h2>
 </body>
 </html>
