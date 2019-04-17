@@ -29,7 +29,7 @@ public class ListeNotesEvaluationServlet extends HttpServlet {
 			List<HashMap<String, Object>> notes = dao.getNoteByIdEvaluation(idEvaluation);
 			request.setAttribute("notes", notes);
 			request.setAttribute("idEvaluation", idEvaluation);
-			request.getRequestDispatcher("/WEB-INF/noter-stagiaire.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/noterStagiaire.jsp").forward(request, response);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

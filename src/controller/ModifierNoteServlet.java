@@ -14,7 +14,7 @@ import dao.DaoNote;
 /**
  * Servlet implementation class ModifierNoteServlet
  */
-@WebServlet("/noter-stagiaire")
+@WebServlet("/soumettreNote")
 public class ModifierNoteServlet extends HttpServlet {
 	/**
 	 * Servlet de vérification des données saisie sur la page d'affichage des stagiaires avec leur note
