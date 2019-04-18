@@ -10,6 +10,7 @@ import java.util.List;
 import entity.Candidature;
 
 public class DaoSession {
+
 	// Defini une seule fois => les concatenations aussi
 	private static final String CANDIDATURES_PAR_SESSION =
 			" SELECT " +
@@ -24,6 +25,12 @@ public class DaoSession {
 			"   etat_candidature e ON c.id_etat_candidature = e.id_etat_candidature " +
 			" WHERE c.id_session_formation = ?";
 	
+	/**
+	 * OU SONT VOS COMMENTAIRES ?
+	 * @param idSession
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Candidature> getCandidatures(int idSession) throws SQLException {
 		ArrayList<Candidature> result = new ArrayList<>();
 		Connection connection = Database.getConnection();

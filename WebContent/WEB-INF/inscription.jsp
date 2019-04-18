@@ -8,12 +8,12 @@
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-
-Formulaire d'inscription <br>
+	<div  id="bloc">
+		<%@ include  file="./header.jsp"%>
 			<section id="contain">
 			
 			<!-- zone de connexion -->     
-		    <form action="inscription" method="POST">
+		    <form id="inscrip" action="inscription" method="POST">
 		    	<fieldset>
 			 		<legend>Ajouter un eleve</legend>
 		    	    <label for="nom">Nom</label>
@@ -37,7 +37,7 @@ Formulaire d'inscription <br>
 		            <span class="erreur">${msgVille}</span>
 		            <br>
 		            <label for="telephone">Telephone</label>
-		            <input type="text" placeholder=Telephone" name="telephone" value="${telephone}">
+		            <input type="text" placeholder="Telephone" name="telephone" value="${telephone}">
 		            <span class="erreur">${msgTel}</span>
 		            <br>
 		            <label for="mail">Email</label>
@@ -58,5 +58,7 @@ Formulaire d'inscription <br>
 		     </form>
 		</section>
 		<h2 class="erreur">${message}</h2>
+		<%@ include  file="./footer.jsp"%>
+	</div >
 </body>
 </html>

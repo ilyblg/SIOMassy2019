@@ -13,7 +13,7 @@ import dao.Database;
 public class DaoPersonne {
 
 	/**
-	 * Fournit la Personne par son ID
+	 * Fournit une Personne par son ID
 	 * 
 	 * @param id
 	 * @return Object Personne
@@ -22,7 +22,7 @@ public class DaoPersonne {
 	public Personne getById(int id) throws SQLException {
 		Personne result = null;
 		Statement stmt = Database.getConnection().createStatement();
-		String sql = "SELECT * FROM personne WHERE id_personne=" + id;
+		final String sql = "SELECT * FROM personne WHERE id_personne=" + id;
 		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
 			result = new Personne(-1, rs.getString("nom"), rs.getString("prenom"),
@@ -35,15 +35,15 @@ public class DaoPersonne {
 
 	/**
 	 * Permet d'insérer en base de données une nouvelles personne
-	 * 
+	 * (Leur status formateur et administration est par défaut à FALSE)
 	 * @param personne
-	 * @return
+	 * @return booléen indiquant la bonne insertion ou non
 	 * @throws SQLException
 	 */
 	public boolean inserer(Personne personne) throws SQLException {
 		boolean result = false;
 		Connection db = Database.getConnection();
-		String sql = "INSERT INTO personne(prenom, nom, mail, tel, adresse, code_postal,"
+		final String sql = "INSERT INTO personne(prenom, nom, mail, tel, adresse, code_postal,"
 				+ "ville, mot_de_passe, est_formateur, est_administration, date_inscription)" 
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, PASSWORD(?), ?, ?, ?)";
 		PreparedStatement stmt = db.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -69,10 +69,17 @@ public class DaoPersonne {
 		return result;
 	}
 	
+	/**
+	 * VOS COMMENTAIRES SVP !
+	 * @param mail
+	 * @param mdp
+	 * @return
+	 * @throws SQLException
+	 */
 	public Personne getByLoginMdp(String mail, String mdp)  throws SQLException {
 		Personne personne = null;
 		Connection connection = Database.getConnection();
-		String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=?";
+		final String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=?";
 		PreparedStatement requete = connection.prepareStatement(sql);
 		requete.setString(1, mail);
 		requete.setString(2, mdp);

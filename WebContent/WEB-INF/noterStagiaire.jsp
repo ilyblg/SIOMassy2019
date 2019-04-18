@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="css/style.css"/>
 <title>Noter les stagiaires</title>
 
 <script type="text/javascript">
@@ -49,9 +50,14 @@
 
 </head>
 <body>
+
+	<div  id="bloc">
+		<%@ include  file="./headerFormateur.jsp"%>
+		
+		
 	<section id="contain">
-	<h3>Vous voici sur la liste des stagiaires de l'évaluation n° ${idEvaluation}</h3>
-	<p>Veuillez indiquer une note (les décimales prennent une virgule), puis valider avec la touche 'Entrée'.</p>
+	<h3>Liste de notes des stagiaires de l'évaluation n° ${idEvaluation}</h3>
+	<p>Veuillez indiquer une note (les décimales prennent une virgule), puis valider avec la touche 'Entrée' ou le bouton.</p>
 		<table>
 		  <tr>
     			<th>ID</th>
@@ -76,5 +82,7 @@
 			</c:forEach>
 		</table>
 	</section>
+		<%@ include  file="./footer.jsp"%>
+	</div >
 </body>
 </html>

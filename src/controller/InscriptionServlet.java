@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DaoPersonne;
-import dao.Database;
 import entity.Personne;
 
 /**
@@ -44,48 +43,43 @@ public class InscriptionServlet extends HttpServlet {
 		// Vérifie le formulaire, si valide vérifie présence en base de donnée de la
 		// personne
 		// et son instanciation pour traitement
-
+		
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("nom");
 		String mail = request.getParameter("mail");
 		String telephone = request.getParameter("telephone");
 		String adresse = request.getParameter("adresse");
-		String cp = request.getParameter("codePostal");
+		String cp = request.getParameter("cp");
 		String ville = request.getParameter("ville");
-		String password = request.getParameter("password");
-
+		String password = request.getParameter("password");	
+		
 		try {
 			// Preparation des attributs pour remplissage des champs sur la vue
 			request.setAttribute("nom", nom);
 			request.setAttribute("prenom", prenom);
 			request.setAttribute("mail", mail);
 			request.setAttribute("telephone", telephone);
-			request.setAttribute("codePostal", cp);
+			request.setAttribute("cp", cp);
 			request.setAttribute("ville", ville);
 			request.setAttribute("password", password);
-
+			
 			// Vérification et insertion de la personne en base de données
 			DaoPersonne daoPers = new DaoPersonne();
 			if (checkFormData(request)) {
 				// Instanciation de notre objet personne
-				Personne personne = new Personne(-1, nom, prenom, mail, telephone, adresse, cp, ville, password, false,
-						false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
+				Personne personne = new Personne(-1,nom, prenom, mail, telephone, adresse, cp, ville, password, 
+						false, false, Timestamp.valueOf(LocalDateTime.now(ZoneId.of("UTC"))));
 
 				daoPers.inserer(personne);
-				System.out.println(personne.getId());
-				// ENVOIE MAIL REPORTE PROBLEME PROXY
-				// GestionMail.smtpGmail();
-				// EnvoieMail.main(null);
-				// MailEnvoie2.main(null);
+
+			// ENVOIE MAIL REPORTE PROBLEME PROXY
 
 				System.out.println("Inscription valide !");
 				vue = VUE_OK;
-			}
+			} 
 		} catch (SQLException exc) {
-			String message = (exc.getErrorCode() == Database.DOUBLON) ? "Le email existe déjà"
-					: "Pb avec la base de données";
 			exc.printStackTrace();
-			request.setAttribute("message", message);
+			request.setAttribute("message", exc.getMessage());
 		}
 		// Renvoie sur la vue selon réussite ou non de l'insertion
 		request.getRequestDispatcher(vue).forward(request, response);
@@ -111,7 +105,7 @@ public class InscriptionServlet extends HttpServlet {
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
 		String adresse = request.getParameter("adresse");
-		String cp = request.getParameter("codePostal");
+		String cp = request.getParameter("cp");
 		String ville = request.getParameter("ville");
 		String telephone = request.getParameter("telephone");
 		String mail = request.getParameter("mail");
@@ -121,7 +115,7 @@ public class InscriptionServlet extends HttpServlet {
 		// Non utiliser pour vérifications basique
 		// boolean isFormateur =
 		// Boolean.parseBoolean(request.getParameter("estFormateur"));
-		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdministration"));
+		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdmin"));
 
 		DaoPersonne daoPersonne = new DaoPersonne();
 		// Les tests pour vérifier si les champs sont vides
@@ -137,7 +131,7 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgEmail", "L'email est obligatoire.");
 		}
-		if (mailVerif.matches("^ *") && !mailVerif.contentEquals(mail)) {
+		if (mailVerif.isEmpty() || !mailVerif.contentEquals(mail)) {
 			formIsValid = false;
 			request.setAttribute("msgEmailVerif", "La confirmation du courriel n'est pas valide.");
 		}
@@ -149,7 +143,7 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
 		}
-		if (cp.isEmpty()) { // PROBLEME : !codePostal.matches("/^\\d{5}$/")
+		if (cp.isEmpty() || cp.length() > 5) { // PROBLEME : !cp.matches("/^\\d{5}$/")
 			formIsValid = false;
 			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
 		}

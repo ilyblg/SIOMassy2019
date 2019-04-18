@@ -28,14 +28,14 @@ public class DaoNote {
 		return Database.getAsList(rs);
 	}
 	
+	/**
+	 * Insère ou met à jour la nouvelle note pour l'élève seletionné par ID
+	 * Sur une évaluation dont l'ID est fournis en TABLE "note".
+	 * @param idPersonne, idEvaluation, note
+	 * @return boolean
+	 * @throws SQLException
+	 */
 	public boolean insertNoteStagiaire(String idPersonne, String idEvaluation, double note) throws SQLException {	
-		/**
-		 * Insère ou met à jour la nouvelle note pour l'élève seletionné par ID
-		 * Sur une évaluation dont l'ID est fournis en TABLE "note".
-		 * @param idPersonne, idEvaluation, note
-		 * @return boolean
-		 * @throws SQLException
-		 */
 		boolean result = false;
 		Connection db = Database.getConnection();
 		String sql = "UPDATE note SET note = ? WHERE id_personne = ? AND id_evaluation = ?";
@@ -43,7 +43,9 @@ public class DaoNote {
 		stmt.setDouble(1, note);
 		stmt.setString(2, idPersonne);
 		stmt.setString(3, idEvaluation);
+		
 		/*
+		// VERSION AVEC UN INSERT + UPDATE SI EXISTE
 		String sql = "INSERT INTO note "
 					+ " VALUES (SELECT id_personne FROM personne WHERE id_personne = ?),"
 					+ " (SELECT id_evaluation FROM evaluation WHERE id_evaluation = ?), ?)"
@@ -56,7 +58,7 @@ public class DaoNote {
 		stmt.setDouble(4, note);
 		*/
 
-		// Renvoie le nombre de ligne affectées, si 1 alors insertion réalisée
+		// Renvoie le nombre de ligne affectées, si 1 alors insertion réalisée donc 'true' au retour
 		if (stmt.executeUpdate() > 0) {
 			result = true;
 		}
