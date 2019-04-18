@@ -18,13 +18,13 @@ USE `agriotes2019` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`personne` (
   `id_personne` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NOT NULL,
+  `nom` VARCHAR(60) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
   `mail` VARCHAR(45) NOT NULL,
-  `tel` VARCHAR(10) NOT NULL,
+  `tel` VARCHAR(12) NOT NULL,
   `adresse` VARCHAR(45) NULL,
-  `code_postal` INT NULL,
-  `ville` VARCHAR(45) NULL,
+  `code_postal` VARCHAR(5) NULL,
+  `ville` VARCHAR(50) NULL,
   `mot_de_passe` VARCHAR(255) NOT NULL,
   `est_formateur` TINYINT(1) NOT NULL DEFAULT 0,
   `est_administration` TINYINT(1) NOT NULL DEFAULT 0,
