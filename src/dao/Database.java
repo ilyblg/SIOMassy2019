@@ -2,6 +2,9 @@ package dao;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Repr�sente la base de donn�es. Fournit une connexion � cette base (via
@@ -98,4 +101,23 @@ public class Database {
         con.close();
     }
 
+        /** Recupère sous forme de liste de tableaux associatifs (HashMap) un ResultSet
+     * 
+     * @param rs
+     * @return
+     * @throws SQLException
+     */
+    public static List<HashMap<String, Object>> getAsList(ResultSet rs) throws SQLException {
+        ResultSetMetaData md = rs.getMetaData();
+        int columns = md.getColumnCount();
+        List<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
+        while (rs.next()) {
+           HashMap<String, Object> row = new HashMap<String, Object>(columns);
+           for (int i = 1; i <= columns; ++i) {
+              row.put(md.getColumnName(i), rs.getObject(i));
+           }
+           result.add(row);
+        }
+        return result;
+     }
 }
