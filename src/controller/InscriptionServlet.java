@@ -85,8 +85,6 @@ public class InscriptionServlet extends HttpServlet {
 		request.getRequestDispatcher(vue).forward(request, response);
 	}
 
-	// ATTENTION : GERER AFFICHAGE JSP DES MSG D'ERREURS du CHECK
-
 	/**
 	 * Verifie que le formulaire est valide : champs requis renseignés, plages de
 	 * valeur respectées. Si valide, crée l'objet personne correspondant. Sinon,
@@ -111,11 +109,7 @@ public class InscriptionServlet extends HttpServlet {
 		String mail = request.getParameter("mail");
 		String mailVerif = request.getParameter("mailVerif");
 		String password = request.getParameter("mail");
-
-		// Non utiliser pour vérifications basique
-		// boolean isFormateur =
-		// Boolean.parseBoolean(request.getParameter("estFormateur"));
-		// boolean isAdmin = Boolean.parseBoolean(request.getParameter("estAdmin"));
+		String passwordVerif = request.getParameter("passwordVerif");
 
 		DaoPersonne daoPersonne = new DaoPersonne();
 		// Les tests pour vérifier si les champs sont vides
@@ -139,6 +133,10 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgMotDePasse", "Le mot de passe est obligatoire.");
 		}
+		if (passwordVerif.isEmpty() || !passwordVerif.contentEquals(mail)) {
+			formIsValid = false;
+			request.setAttribute("msgPasswordVerif", "Les mots de passe ne correspondent pas.");
+		}
 		if (adresse.isEmpty()) {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
@@ -155,13 +153,6 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgTel", "Un numéro de téléphone est obligatoire.");
 		}
-
-		System.out.println("Formulaire valide : " + formIsValid);
-
-//			if (!daoPersonne.checkEmail(mail)) {
-//				formIsValid = false;
-//				request.setAttribute("msgEmail", "L'email " + mail + " existe déjà.");
-//			}
 		return formIsValid;
 	}
 }

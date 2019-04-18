@@ -52,6 +52,10 @@
 		            <input type="text" placeholder="Mot de passe" name="password" value="${password}">
 		            <span class="erreur">${msgMotDePasse}</span>
 		            <br>
+		            <label for="passwordVerif">Confirmation de mot de passe</label>
+		            <input type="text" placeholder="Répéter le mot de passe" name="passwordVerif" value="${passwordVerif}">
+		            <span class="erreur">${msgPasswordVerif}</span>
+		            <br>
 		
 		           	<button type="submit">Ajouter</button>
 		     	</fieldset>
