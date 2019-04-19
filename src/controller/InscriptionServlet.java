@@ -121,6 +121,22 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgPrenom", "Le prénom est obligatoire.");
 		}
+		if (adresse.isEmpty()) {
+			formIsValid = false;
+			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
+		}		
+		if (cp.isEmpty() || cp.length() > 5) { // PROBLEME : !cp.matches("/^\\d{5}$/")
+			formIsValid = false;
+			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
+		}
+		if (ville.isEmpty()) {
+			formIsValid = false;
+			request.setAttribute("msgVille", "La ville est obligatoire.");
+		}
+		if (telephone.isEmpty()) {
+			formIsValid = false;
+			request.setAttribute("msgTel", "Un numéro de téléphone est obligatoire.");
+		}
 		if (mail.isEmpty()) {
 			formIsValid = false;
 			request.setAttribute("msgEmail", "L'email est obligatoire.");
@@ -136,22 +152,6 @@ public class InscriptionServlet extends HttpServlet {
 		if (passwordVerif.isEmpty() || !passwordVerif.contentEquals(mail)) {
 			formIsValid = false;
 			request.setAttribute("msgPasswordVerif", "Les mots de passe ne correspondent pas.");
-		}
-		if (adresse.isEmpty()) {
-			formIsValid = false;
-			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
-		}
-		if (cp.isEmpty() || cp.length() > 5) { // PROBLEME : !cp.matches("/^\\d{5}$/")
-			formIsValid = false;
-			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
-		}
-		if (ville.isEmpty()) {
-			formIsValid = false;
-			request.setAttribute("msgVille", "La ville est obligatoire.");
-		}
-		if (telephone.isEmpty()) {
-			formIsValid = false;
-			request.setAttribute("msgTel", "Un numéro de téléphone est obligatoire.");
 		}
 		return formIsValid;
 	}
