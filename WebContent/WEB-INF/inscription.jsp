@@ -18,13 +18,13 @@
 			 		<legend>Ajouter un eleve</legend>
 		    	    <label for="nom">Nom</label>
 		            <input type="text" placeholder="Nom" name="nom" value="${nom}">
-		            <span class="erreur">${msgNom}</span>
+		            <span class="erreur">${msgNom}</span> 
 		            <br>
 		        	<label for="prenom">Prenom</label>
 		            <input type="text" placeholder="Prenom" name="prenom" value="${prenom}">
 		            <span class="erreur">${msgPrenom}</span>
 		            <br>
-		            <label for="adresse">adresse</label>
+		            <label for="adresse">Adresse</label>
 		            <input type="text" placeholder="Numero et rue" name="adresse" value="${adresse}">
 		            <span class="erreur">${msgAdresse}</span>
 		            <br>
@@ -49,11 +49,11 @@
 		            <span class="erreur">${msgEmailVerif}</span>
 		            <br>
 		            <label for="password">Mot de passe</label>
-		            <input type="text" placeholder="Mot de passe" name="password" value="${password}">
+		            <input type="password" placeholder="Mot de passe" name="password" value="${password}">
 		            <span class="erreur">${msgMotDePasse}</span>
 		            <br>
 		            <label for="passwordVerif">Confirmation de mot de passe</label>
-		            <input type="text" placeholder="Répéter le mot de passe" name="passwordVerif" value="${passwordVerif}">
+		            <input type="password" placeholder="Répéter le mot de passe" name="passwordVerif" value="${passwordVerif}">
 		            <span class="erreur">${msgPasswordVerif}</span>
 		            <br>
 		

@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -108,7 +109,7 @@ public class InscriptionServlet extends HttpServlet {
 		String telephone = request.getParameter("telephone");
 		String mail = request.getParameter("mail");
 		String mailVerif = request.getParameter("mailVerif");
-		String password = request.getParameter("mail");
+		String password = request.getParameter("password");
 		String passwordVerif = request.getParameter("passwordVerif");
 
 		DaoPersonne daoPersonne = new DaoPersonne();
@@ -121,7 +122,7 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgPrenom", "Le prénom est obligatoire.");
 		}
-		if (adresse.isEmpty()) {
+		if (adresse.isEmpty() || adresse.length() < 5) {
 			formIsValid = false;
 			request.setAttribute("msgAdresse", "L'adresse est obligatoire.");
 		}		
@@ -129,15 +130,15 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgCodePostal", "Le code postal est obligatoire et doit avoir 5 chiffres.");
 		}
-		if (ville.isEmpty()) {
+		if (ville.isEmpty() || ville.length() > 3) {
 			formIsValid = false;
 			request.setAttribute("msgVille", "La ville est obligatoire.");
 		}
-		if (telephone.isEmpty()) {
+		if (telephone.isEmpty()  || telephone.length() < 10) {
 			formIsValid = false;
 			request.setAttribute("msgTel", "Un numéro de téléphone est obligatoire.");
 		}
-		if (mail.isEmpty()) {
+		if (mail.isEmpty() || !Pattern.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)+$", mail)) {
 			formIsValid = false;
 			request.setAttribute("msgEmail", "L'email est obligatoire.");
 		}
@@ -145,11 +146,11 @@ public class InscriptionServlet extends HttpServlet {
 			formIsValid = false;
 			request.setAttribute("msgEmailVerif", "La confirmation du courriel n'est pas valide.");
 		}
-		if (password.isEmpty()) {
+		if (password.isEmpty() || !Pattern.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[-+!*$@%_])([-+!*$@%_\\w]{8,15})$", password)) {
 			formIsValid = false;
-			request.setAttribute("msgMotDePasse", "Le mot de passe est obligatoire.");
+			request.setAttribute("msgMotDePasse", "Le mot de passe 'doit contenir au moins' : 8 caractères dont une majuscule, majuscule, chiffre et un spécial ($ @ % * + - _ !)");
 		}
-		if (passwordVerif.isEmpty() || !passwordVerif.contentEquals(mail)) {
+		if (passwordVerif.isEmpty() || !passwordVerif.contentEquals(password)) {
 			formIsValid = false;
 			request.setAttribute("msgPasswordVerif", "Les mots de passe ne correspondent pas.");
 		}
