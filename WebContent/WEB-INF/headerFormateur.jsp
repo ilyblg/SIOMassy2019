@@ -15,7 +15,7 @@
 				<ul>
 					<li><a href=" # "> QCM </a></li>
 					<li><a href="liste-evaluations"> Evaluer </a></li>
-					<li><a href=" # "> Résultat </a></li>
+					<li><a href=" # "> RÃ©sultat </a></li>
 				</ul></li>
 			<li><a href=" # "> PROJET </a>
 				<ul>
@@ -28,8 +28,8 @@
 					<li><a href=" # "> Afficher </a></li>
 					<li><a href=" # "> Modifier </a>
 					<li><a href=" # "> Changer mot de passe </a></li>
-					<li><a href=" # "> Se déconnecter </a></li>
+					<li><a href=" # "> Se dÃ©connecter </a></li>
 				</ul></li>
 		</ul>
-	</nav>
+  </nav>
 </header>

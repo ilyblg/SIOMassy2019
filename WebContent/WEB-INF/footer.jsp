@@ -1,7 +1,7 @@
 	<footer >
-				<p style="text-align:center"> Conditions d'utilisation générale <br>
-				Protection des Politiques de Données Personnelles <br>
+				<p style="text-align:center"> Conditions d'utilisation gÃ©nÃ©rale <br>
+				Protection des Politiques de DonnÃ©es Personnelles <br>
 				Nous contacter </p >
 						
 	</footer >
-	<p > <span > Tous droits réservés - greta 2019 </span > </p >
+	<p > <span > Tous droits rÃ©servÃ©s - greta 2019 </span > </p >

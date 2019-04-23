@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 import dao.Database;
 
-public class DaoPersonne {
+public class PersonneDao {
 
 	/**
 	 * Fournit une Personne par son ID

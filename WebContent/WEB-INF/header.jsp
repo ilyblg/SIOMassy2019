@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 		<header >
 				<h1 > Agriotes </h1 >	
 			<nav >
 				<ul >
 					<li> <a  href = " index.jsp "  class = " index " > Accueil </a> </li >
-					<li> <a  href = " # " > Présentation </a >
+					<li> <a  href = " # " > PrÃ©sentation </a >
 						<ul >
 							<li > <a  href = " # " > Le centre </a > </li >
 							<li > <a  href = " # " > Les EQUIPES </a > </li >

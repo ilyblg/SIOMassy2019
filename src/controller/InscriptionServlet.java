@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoPersonne;
+import dao.PersonneDao;
 import entity.Personne;
 
 /**
@@ -65,7 +65,7 @@ public class InscriptionServlet extends HttpServlet {
 			request.setAttribute("password", password);
 			
 			// Vérification et insertion de la personne en base de données
-			DaoPersonne daoPers = new DaoPersonne();
+			PersonneDao daoPers = new PersonneDao();
 			if (checkFormData(request)) {
 				// Instanciation de notre objet personne
 				Personne personne = new Personne(-1,nom, prenom, mail, telephone, adresse, cp, ville, password, 
@@ -112,7 +112,7 @@ public class InscriptionServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String passwordVerif = request.getParameter("passwordVerif");
 
-		DaoPersonne daoPersonne = new DaoPersonne();
+		PersonneDao personneDao = new PersonneDao();
 		// Les tests pour vérifier si les champs sont vides
 		if (nom.isEmpty()) {
 			formIsValid = false;
