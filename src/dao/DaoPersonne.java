@@ -96,7 +96,8 @@ public class DaoPersonne {
 					rs.getString("ville"), 
 					rs.getString("mot_de_passe"), 
 					rs.getBoolean("est_formateur"),
-					rs.getBoolean("est_administration"), rs.getTimestamp("date_inscription"));
+					rs.getBoolean("est_administration"),
+					rs.getTimestamp("date_inscription"));
 		}
 		return personne;
 	}

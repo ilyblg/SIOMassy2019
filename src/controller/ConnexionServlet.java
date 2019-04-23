@@ -40,6 +40,7 @@ public class ConnexionServlet extends HttpServlet {
 				user = dao.getByLoginMdp(mail, mdp);
 				if (user != null) {
 					request.getSession(true).setAttribute("user", user);
+					request.getSession(true).setAttribute("id_personne", user.getId());
 					daoOk = true;
 				} else {
 					request.setAttribute("msgConnexion", "Utilisateur inconnu ou mot de passe invalide");

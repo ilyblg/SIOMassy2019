@@ -14,7 +14,7 @@
 			<li><a href=" # "> EVALUATION </a>
 				<ul>
 					<li><a href=" # "> QCM </a></li>
-					<li><a href=" # "> Evaluer </a></li>
+					<li><a href="liste-evaluations"> Evaluer </a></li>
 					<li><a href=" # "> Résultat </a></li>
 				</ul></li>
 			<li><a href=" # "> PROJET </a>

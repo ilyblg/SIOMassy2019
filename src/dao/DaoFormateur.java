@@ -20,7 +20,7 @@ public class DaoFormateur extends DaoPersonne{
 	public Personne getById(int id) throws SQLException {
 		Personne result = null;
 		Statement stmt = Database.getConnection().createStatement();
-		String sql = "SELECT * FROM personne WHERE id_personne=" + id;
+		String sql = "SELECT * FROM personne WHERE id_personne= ?" + id;
 		ResultSet rs = stmt.executeQuery(sql);
 		if (rs.next()) {
 			if(rs.getBoolean("est_formateur")) {

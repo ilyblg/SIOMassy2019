@@ -24,7 +24,7 @@ public class EvaluationDesStagiairesServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DaoNote dao = new DaoNote();
 		try {
-			List<HashMap<String, Object>> notes = dao.getNoteByIdEvaluation(3);
+			List<HashMap<String, Object>> notes = dao.getNoteByIdEvaluation(Integer.parseInt(request.getParameter("idEvaluation")));
 			request.setAttribute("notes", notes);
 			request.getRequestDispatcher("/WEB-INF/evaluation.jsp").forward(request, response);
 		} catch (SQLException e) {

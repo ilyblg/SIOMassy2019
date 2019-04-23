@@ -1,28 +1,34 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
+import java.util.ArrayList;
 import entity.Evaluation;
 
 public class DaoEvaluation {
-
-	public DaoEvaluation() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	/**
-	 * Recupère le titre d'une évaluation par son id (ici à REVOIR, RENVOIE OBJET)
+	 * Renvoie la liste de toutes les évaluation en cours pour un formateur donné
+	 * @param id du formateur
+	 * @return
+	 * @throws SQLException
 	 */
-	public Evaluation getTitleEvaluationById(int id) throws SQLException {
-		Evaluation result = null;
-		Statement stmt = Database.getConnection().createStatement();
-		String sql = "SELECT * FROM evaluation WHERE id_evaluation=" + id;
-		ResultSet rs = stmt.executeQuery(sql);
-		if (rs.next()) {
-			result = new Evaluation(null, null, null, null, null, null, rs.getString("titre"));
+	public ArrayList<Evaluation> getListByIdFormateur(int idFormateur) throws SQLException {
+		ArrayList<Evaluation> evaluationList = new ArrayList<>();
+		Connection db = Database.getConnection();		
+		final String sql = "SELECT * FROM evaluation WHERE id_formateur = ?";
+		
+		PreparedStatement stmt = db.prepareStatement(sql);
+		stmt.setInt(1, idFormateur);
+
+		ResultSet rs = stmt.executeQuery();
+		while (rs.next()) {
+			evaluationList.add(new Evaluation( rs.getString("id_evaluation"), rs.getString("id_session_formation"),
+													rs.getString("id_module"), rs.getString("id_formateur"),
+													rs.getTimestamp("date_debut"), rs.getString("nb_minutes"), rs.getString("titre")) );
 		}
-		return result;
+		return evaluationList;
 	}
 }

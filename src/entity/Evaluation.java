@@ -1,11 +1,6 @@
 package entity;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
-
-import dao.Database;
 
 public class Evaluation {
 	String id_evaluation;
@@ -85,5 +80,12 @@ public class Evaluation {
 
 	public void setTitre(String titre) {
 		this.titre = titre;
+	}
+
+	@Override
+	public String toString() {
+		return "Evaluation [id_evaluation=" + id_evaluation + ", id_session_formation=" + id_session_formation
+				+ ", id_module=" + id_module + ", id_formateur=" + id_formateur + ", date_debut=" + date_debut
+				+ ", nbr_minutes=" + nbr_minutes + ", titre=" + titre + "]";
 	}
 }
