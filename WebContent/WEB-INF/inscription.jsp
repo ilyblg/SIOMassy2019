@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,23 +7,23 @@
 	<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-
-Formulaire d'inscription <br>
+	<div  id="bloc">
+		<%@ include  file="./header.jsp"%>
 			<section id="contain">
 			
 			<!-- zone de connexion -->     
-		    <form action="inscription" method="POST">
+		    <form id="inscrip" action="inscription" method="POST">
 		    	<fieldset>
 			 		<legend>Ajouter un eleve</legend>
 		    	    <label for="nom">Nom</label>
 		            <input type="text" placeholder="Nom" name="nom" value="${nom}">
-		            <span class="erreur">${msgNom}</span>
+		            <span class="erreur">${msgNom}</span> 
 		            <br>
 		        	<label for="prenom">Prenom</label>
 		            <input type="text" placeholder="Prenom" name="prenom" value="${prenom}">
 		            <span class="erreur">${msgPrenom}</span>
 		            <br>
-		            <label for="adresse">adresse</label>
+		            <label for="adresse">Adresse</label>
 		            <input type="text" placeholder="Numero et rue" name="adresse" value="${adresse}">
 		            <span class="erreur">${msgAdresse}</span>
 		            <br>
@@ -37,7 +36,7 @@ Formulaire d'inscription <br>
 		            <span class="erreur">${msgVille}</span>
 		            <br>
 		            <label for="telephone">Telephone</label>
-		            <input type="text" placeholder=Telephone" name="telephone" value="${telephone}">
+		            <input type="text" placeholder="Telephone" name="telephone" value="${telephone}">
 		            <span class="erreur">${msgTel}</span>
 		            <br>
 		            <label for="mail">Email</label>
@@ -49,8 +48,12 @@ Formulaire d'inscription <br>
 		            <span class="erreur">${msgEmailVerif}</span>
 		            <br>
 		            <label for="password">Mot de passe</label>
-		            <input type="text" placeholder="Mot de passe" name="password" value="${password}">
+		            <input type="password" placeholder="Mot de passe" name="password" value="${password}">
 		            <span class="erreur">${msgMotDePasse}</span>
+		            <br>
+		            <label for="passwordVerif">Confirmation de mot de passe</label>
+		            <input type="password" placeholder="Répéter le mot de passe" name="passwordVerif" value="${passwordVerif}">
+		            <span class="erreur">${msgPasswordVerif}</span>
 		            <br>
 		
 		           	<button type="submit">Ajouter</button>
@@ -58,5 +61,7 @@ Formulaire d'inscription <br>
 		     </form>
 		</section>
 		<h2 class="erreur">${message}</h2>
+		<%@ include  file="./footer.jsp"%>
+	</div >
 </body>
 </html>

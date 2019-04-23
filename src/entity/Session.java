@@ -4,6 +4,12 @@ public class Session extends Personne {
 	String login;
 	String mdp;
 	
+	public Session(String login, String mdp) {
+		super();
+		this.login = login;
+		this.mdp = mdp;
+	}
+	
 	public String getLogin() {
 		return login;
 	}
@@ -23,11 +29,4 @@ public class Session extends Personne {
 	public Session() {
 		super();
 	}
-
-	public Session(String login, String mdp) {
-		super();
-		this.login = login;
-		this.mdp = mdp;
-	}
-
 }

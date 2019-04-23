@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <header>
 	<h1>Agriotes</h1>
 	<nav>
@@ -16,7 +14,7 @@
 			<li><a href=" # "> EVALUATION </a>
 				<ul>
 					<li><a href=" # "> QCM </a></li>
-					<li><a href=" # "> Evaluer </a></li>
+					<li><a href="liste-evaluations"> Evaluer </a></li>
 					<li><a href=" # "> Résultat </a></li>
 				</ul></li>
 			<li><a href=" # "> PROJET </a>
@@ -33,5 +31,5 @@
 					<li><a href=" # "> Se déconnecter </a></li>
 				</ul></li>
 		</ul>
-	</nav>
+  </nav>
 </header>
