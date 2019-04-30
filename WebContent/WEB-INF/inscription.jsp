@@ -15,42 +15,52 @@
 		    <form id="inscrip" action="inscription" method="POST">
 		    	<fieldset>
 			 		<legend>Ajouter un eleve</legend>
+		    	    
 		    	    <label for="nom">Nom</label>
 		            <input type="text" placeholder="Nom" name="nom" value="${nom}">
 		            <span class="erreur">${msgNom}</span> 
 		            <br>
+		        	
 		        	<label for="prenom">Prenom</label>
 		            <input type="text" placeholder="Prenom" name="prenom" value="${prenom}">
 		            <span class="erreur">${msgPrenom}</span>
 		            <br>
+		            
 		            <label for="adresse">Adresse</label>
 		            <input type="text" placeholder="Numero et rue" name="adresse" value="${adresse}">
 		            <span class="erreur">${msgAdresse}</span>
 		            <br>
+		            
 		            <label for="cp">Code postal</label>
 		            <input type="text" placeholder="Code postal" name="cp" value="${cp}">
 		            <span class="erreur">${msgCodePostal}</span>
 		            <br>
-		            <label for="ville">Ville</label>
+    	   
+		           	<label for="ville">ville</label>
 		            <input type="text" placeholder="Ville" name="ville" value="${ville}">
-		            <span class="erreur">${msgVille}</span>
+		            <span class="erreur">${msgVille}</span> 
 		            <br>
+		            
 		            <label for="telephone">Telephone</label>
 		            <input type="text" placeholder="Telephone" name="telephone" value="${telephone}">
 		            <span class="erreur">${msgTel}</span>
 		            <br>
+		            
 		            <label for="mail">Email</label>
 	            	<input type="text" placeholder="votre-email@exemple.fr" name="mail" value="${mail}">
 	            	<span class="erreur">${msgEmail}</span>
 		            <br>
+		            
 		            <label for="mailVerif">Email pour vérification</label>
-		            <input type="text" placeholder="Repetez votre email" name="mailVerif">
+		            <input type="text" placeholder="Repetez votre email" name="mailVerif" value="${mailVerif}">
 		            <span class="erreur">${msgEmailVerif}</span>
 		            <br>
+		            
 		            <label for="password">Mot de passe</label>
 		            <input type="password" placeholder="Mot de passe" name="password" value="${password}">
 		            <span class="erreur">${msgMotDePasse}</span>
 		            <br>
+		            
 		            <label for="passwordVerif">Confirmation de mot de passe</label>
 		            <input type="password" placeholder="Répéter le mot de passe" name="passwordVerif" value="${passwordVerif}">
 		            <span class="erreur">${msgPasswordVerif}</span>

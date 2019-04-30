@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoSession;
+import dao.SessionDao;
 import entity.Candidature;
 
 /**
@@ -33,7 +33,7 @@ public class CandidatureServlet extends HttpServlet {
 		String vue = VUE_CANDIDATURES;
 		try {
 			int idSession = Integer.parseInt(request.getParameter("idSession"));
-			DaoSession dao = new DaoSession();
+			SessionDao dao = new SessionDao();
 			List<Candidature> candidatures = dao.getCandidatures(idSession);
 			request.setAttribute("candidatures", candidatures);
 			request.setAttribute("idSession", idSession);
