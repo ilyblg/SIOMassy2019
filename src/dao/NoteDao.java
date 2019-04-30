@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 
-public class DaoNote {
+public class NoteDao {
 
 	/**
 	 * 

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoNote;
+import dao.NoteDao;
 
 /**
  * Servlet implementation class ListeNotesEvaluationServlet
@@ -28,7 +28,7 @@ public class ListeNotesEvaluationServlet extends HttpServlet {
 	 * d'une evaluation choisi par son ID.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DaoNote dao = new DaoNote();
+		NoteDao dao = new NoteDao();
 		try {
 			int idEvaluation = Integer.parseInt(request.getParameter("id_evaluation"));
 			List<HashMap<String, Object>> notes = dao.getNoteByIdEvaluation(idEvaluation);

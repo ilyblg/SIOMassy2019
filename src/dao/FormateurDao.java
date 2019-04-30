@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 import entity.Personne;
 
-public class DaoFormateur extends DaoPersonne{
+public class FormateurDao extends DaoPersonne{
 	
 	/**
 	 * Fournit la Personne Formateur par son ID

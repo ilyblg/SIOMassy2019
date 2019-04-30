@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dao.DaoEvaluation;
+import dao.EvaluationDao;
 import entity.Evaluation;
 
 /**
@@ -25,7 +25,7 @@ public class EvaluationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Evaluation> evaluations = null;
-		DaoEvaluation dao = new DaoEvaluation();
+		EvaluationDao dao = new EvaluationDao();
 		try {
 			evaluations = dao.getListByIdFormateur(7);
 			request.setAttribute("listeEvaluations", evaluations);

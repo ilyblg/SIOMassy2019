@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import entity.Evaluation;
 
-public class DaoEvaluation {
+public class EvaluationDao {
 	
 	/**
 	 * Renvoie la liste de toutes les évaluation en cours pour un formateur donné

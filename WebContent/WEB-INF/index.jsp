@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="bloc">
-		<%@ include file="/header.jsp" %>
+		<%@ include file="./header.jsp"%>
 		<!-- Banniere informations et news diverses -->
 		<div class="banniere">
 			<img src="banner_1.jpg" title="banniere d'informations" width="900" >
@@ -36,7 +36,7 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
 						<a href="#">En savoir plus</a></p>					
 					</section>
-		<%@ include file="/footer.jsp" %>
+		<%@ include file="./footer.jsp"%>
 	</div>
 </body>
 </html>

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoNote;
+import dao.NoteDao;
 
 /**
  * Servlet implementation class ModifierNoteServlet
@@ -33,7 +33,7 @@ public class ModifierNoteServlet extends HttpServlet {
 				body = "Une note ne peut être négative ou supérieur à 20";
 			}
 			else {
-				DaoNote dao = new DaoNote();
+				NoteDao dao = new NoteDao();
 				if(dao.insertNoteStagiaire(idPerson , idEval, note)) {
 					body = "La note à été modifiée.";
 				}
