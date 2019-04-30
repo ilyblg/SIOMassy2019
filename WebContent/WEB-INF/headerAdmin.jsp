@@ -4,10 +4,10 @@
 	<h1>Agriotes</h1>
 	<nav>
 		<ul>
-			<li><a href=" index.jsp " class=" index "> Accueil </a></li>
+			<li><a href="accueil" class=" index "> Accueil </a></li>
 			<li><a href=" # "> GESTION ELEVE</a>
 				<ul>
-					<li><a href="./candidature.jsp"> Candidatures </a></li>
+					<li><a href="candidatures"> Candidatures </a></li>
 					<li><a href=" # "> Présences </a></li>
 
 					<li><a href=" # "> Sessions </a></li>
