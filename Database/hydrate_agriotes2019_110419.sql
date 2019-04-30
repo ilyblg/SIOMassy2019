@@ -112,9 +112,9 @@ BEGIN
     (6, 'Economie - droit');    
     
     INSERT INTO personne(id_personne, prenom, nom, mail, tel, adresse, code_postal, ville, mot_de_passe, est_formateur, est_administration, date_inscription) VALUES
-    (1,'Théo','Moreau',         't,moreau@proboite.net',       '0691564808','82, Cours Marechal-Joffre','78180','MONTIGNY-LE-BRETONNEUX','condimentum', 0, 1,   date_effet - INTERVAL 1 YEAR + INTERVAL 2 DAY), # administrateur
-    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL','aubertfraterie', 1, 0,                date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur - 2
-    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE','motdepasserigoureux', 0, 0,       date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur - 3
+    (1,'Théo','Moreau',         't.moreau@proboite.net',       '0691564808','82, Cours Marechal-Joffre','78180','MONTIGNY-LE-BRETONNEUX', PASSWORD('admin'), 0, 1,   date_effet - INTERVAL 1 YEAR + INTERVAL 2 DAY), # administrateur
+    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL', PASSWORD('formateur'), 1, 0,                date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur - 2
+    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE', PASSWORD('stagiaire'), 0, 0,       date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur - 3
     (4,'Mirabelle','Huppé',     'm.huppé@gougleu.com',         '0646971033','56, rue Jean-Monnet','95190','GOUSSAINVILLE','gousshupp', 0, 0,                    date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
     (5,'Silvia','Gonzalez',     's.gonzalez@gmale.edu',        '0648369680','53, rue du Faubourg National','95150','TAVERNY','rictusmaloficus', 0, 0,           date_effet - INTERVAL 6 MONTH + INTERVAL 1 DAY),
     (6,'Dylan','Briar',         'd.briar@classprepa.edu',      '0187396561','52, boulevard Bryas','92400','COURBEVOIE','1234', 0, 0,                        date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),

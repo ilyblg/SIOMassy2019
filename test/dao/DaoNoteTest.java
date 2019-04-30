@@ -15,7 +15,7 @@ public class DaoNoteTest {
 	@Test
 	public void testGetNoteByIdEvaluation() throws SQLException {
 		System.out.println("getNoteByIdEvaluation  - TEST");
-		DaoNote dao = new DaoNote();
+		NoteDao dao = new NoteDao();
 		assertEquals(4, dao.getNoteByIdEvaluation(3).size());
 	}
 
@@ -25,7 +25,7 @@ public class DaoNoteTest {
 	@Test
 	public void test() {
 		System.out.println("insertNoteStagiaire - TEST");
-		DaoNote dao = new DaoNote();
+		NoteDao dao = new NoteDao();
 		try {
 			assertTrue("Insertion réussie.", dao.insertNoteStagiaire("4", "1", 0));
 

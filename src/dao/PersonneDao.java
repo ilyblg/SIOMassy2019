@@ -79,7 +79,7 @@ public class PersonneDao {
 	public Personne getByLoginMdp(String mail, String mdp)  throws SQLException {
 		Personne personne = null;
 		Connection connection = Database.getConnection();
-		final String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=?";
+		final String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=PASSWORD(?)";
 		PreparedStatement requete = connection.prepareStatement(sql);
 		requete.setString(1, mail);
 		requete.setString(2, mdp);

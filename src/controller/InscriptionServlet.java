@@ -64,7 +64,6 @@ public class InscriptionServlet extends HttpServlet {
 			request.setAttribute("telephone", telephone);
 			request.setAttribute("cp", cp);
 			request.setAttribute("ville", ville);
-
 			request.setAttribute("mail", mail);
 			request.setAttribute("mailVerif", mailVerif);
 			request.setAttribute("password", password);
