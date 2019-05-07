@@ -1,1 +1,7 @@
+Dynamic Web Project/*
 /bin/*
+.project
+CONVENTIONS.md
+README.md
+.settings
+.classpath
