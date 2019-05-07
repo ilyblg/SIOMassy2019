@@ -195,7 +195,7 @@ form a{
 
 /*--------FOOTER--------*/
 footer{
-	background: url(banniere_2.png) repeat-x top;
+	background: url(./images/banniere_2.png) repeat-x top;
 	height: 150px;
 	background-color: #1c140d;
 	color: white;

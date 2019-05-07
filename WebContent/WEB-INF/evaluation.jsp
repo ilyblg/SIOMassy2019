@@ -7,18 +7,21 @@
 <title>Noter les stagiaires</title>
 </head>
 <body>
-	<section id="contain">
-		<table>
-			<c:forEach items="${notes}" var="note">
-			<tr>
-				<th>Propriétaire</th>
-				<td>${note["id_personne"]}</td>
-				<td>${note["nom"]}</td>
-				<td>${note["prenom"]}</td>
-				<td><input type="note" placeholder="note" name="note" value="${note['note']}"></td>
-			</tr>
-			</c:forEach>
-		</table>
-	</section>
+	<div id="bloc">
+		<section id="contain">
+			<table>
+				<c:forEach items="${notes}" var="note">
+					<tr>
+						<th>Propriétaire</th>
+						<td>${note["id_personne"]}</td>
+						<td>${note["nom"]}</td>
+						<td>${note["prenom"]}</td>
+						<td><input type="note" placeholder="note" name="note"
+							value="${note['note']}"></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</section>
+	</div>
 </body>
 </html>

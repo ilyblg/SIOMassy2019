@@ -1,11 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<link rel="stylesheet" href="css/style.css"/>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<link rel="stylesheet" href="css/style.css" />
 <title>Noter les stagiaires</title>
 
 <script type="text/javascript">
@@ -50,38 +52,39 @@
 </head>
 <body>
 
-	<div  id="bloc">
-		<%@ include  file="./headerFormateur.jsp"%>
-		
-		
-	<section id="contain">
-	<h3>Liste de notes des stagiaires de l'évaluation n° ${idEvaluation}</h3>
-	<p>Veuillez indiquer une note (les décimales prennent une virgule), puis valider avec la touche 'Entrée' ou le bouton.</p>
-		<table>
-		  <tr>
-    			<th>ID</th>
-    			<th>Nom</th> 
-    			<th>Prenom</th>
-    			<th>Note</th>
-  			</tr>
-			<c:forEach items="${notes}" var="note">
+	<div id="bloc">
+		<%@ include file="./header.jsp"%>
+
+
+		<section id="contain">
+			<h2>Liste de notes des stagiaires de l'évaluation n°${idEvaluation}</h2>
+			<p style="text-align:center;">Veuillez indiquer une note (les décimales prennent une virgule), 
+			puis valider avec la touche 'Entrée' ou le bouton.</p>
+			<table>
 				<tr>
-					<td>${note["id_personne"]}</td>
-					<td>${note["nom"]}</td>
-					<td>${note["prenom"]}</td>
-					<td>
-						<form action="javascript: soumettreNote(${note['id_personne']})">
-							<input type="number"  step="0.5"placeholder="note"
-								id="note${note['id_personne']}" value="${note['note']}">
-							<button type="submit">Envoyer</button>
-							<span id="erreur${note['id_personne']}"></span>
-						</form>
-					</td>
+					<th>ID</th>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Note</th>
 				</tr>
-			</c:forEach>
-		</table>
-	</section>
-		<%@ include  file="./footer.jsp"%>
-	</div >
+				<c:forEach items="${notes}" var="note">
+					<tr>
+						<td>${note["id_personne"]}</td>
+						<td>${note["nom"]}</td>
+						<td>${note["prenom"]}</td>
+						<td>
+							<form action="javascript: soumettreNote(${note['id_personne']})">
+								<input type="number" step="0.5" placeholder="note"
+									id="note${note['id_personne']}" value="${note['note']}">
+								<button type="submit">Envoyer</button>
+								<span id="erreur${note['id_personne']}"></span>
+							</form>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</section>
+		<%@ include file="./footer.jsp"%>
+	</div>
 </body>
 </html>

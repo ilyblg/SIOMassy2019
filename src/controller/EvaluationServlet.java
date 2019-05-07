@@ -16,7 +16,7 @@ import entity.Evaluation;
  * Permet de traiter les pages d'affichage de la liste des Evluation en cours
  * pour les personne "Formateur"
  */
-@WebServlet("/liste-evaluations")
+@WebServlet("/evaluations")
 public class EvaluationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
