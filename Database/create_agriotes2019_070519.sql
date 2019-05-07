@@ -18,13 +18,13 @@ USE `agriotes2019` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`personne` (
   `id_personne` INT NOT NULL AUTO_INCREMENT,
-  `nom` VARCHAR(45) NOT NULL,
+  `nom` VARCHAR(60) NOT NULL,
   `prenom` VARCHAR(45) NOT NULL,
   `mail` VARCHAR(45) NOT NULL,
-  `tel` VARCHAR(10) NOT NULL,
+  `tel` VARCHAR(12) NOT NULL,
   `adresse` VARCHAR(45) NULL,
-  `code_postal` INT NULL,
-  `ville` VARCHAR(45) NULL,
+  `code_postal` VARCHAR(5) NULL,
+  `ville` VARCHAR(50) NULL,
   `mot_de_passe` VARCHAR(255) NOT NULL,
   `est_formateur` TINYINT(1) NOT NULL DEFAULT 0,
   `est_administration` TINYINT(1) NOT NULL DEFAULT 0,
@@ -457,11 +457,13 @@ ENGINE = InnoDB;
 -- Table `agriotes2019`.`reponse_donnee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `agriotes2019`.`reponse_donnee` (
+  `id_question` INT NOT NULL,
   `id_passage_qcm` INT NOT NULL,
-  `id_reponse_possible` INT NOT NULL,
-  PRIMARY KEY (`id_passage_qcm`, `id_reponse_possible`),
+  `id_reponse_possible` INT NULL,
+  PRIMARY KEY (`id_question`, `id_passage_qcm`),
   INDEX `fk_question_has_passage_questionnaire_passage_questionnaire_idx` (`id_passage_qcm` ASC),
   INDEX `fk_reponse_donnee_reponse_possible1_idx` (`id_reponse_possible` ASC),
+  INDEX `fk_reponse_donnee_question1_idx` (`id_question` ASC),
   CONSTRAINT `fk_question_has_passage_questionnaire_passage_questionnaire1`
     FOREIGN KEY (`id_passage_qcm`)
     REFERENCES `agriotes2019`.`passage_qcm` (`id_passage_qcm`)
@@ -470,6 +472,11 @@ CREATE TABLE IF NOT EXISTS `agriotes2019`.`reponse_donnee` (
   CONSTRAINT `fk_reponse_donnee_reponse_possible1`
     FOREIGN KEY (`id_reponse_possible`)
     REFERENCES `agriotes2019`.`reponse_possible` (`id_reponse_possible`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reponse_donnee_question1`
+    FOREIGN KEY (`id_question`)
+    REFERENCES `agriotes2019`.`question` (`id_question`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

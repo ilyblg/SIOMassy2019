@@ -112,24 +112,28 @@ BEGIN
     (6, 'Economie - droit');    
     
     INSERT INTO personne(id_personne, prenom, nom, mail, tel, adresse, code_postal, ville, mot_de_passe, est_formateur, est_administration, date_inscription) VALUES
-    (1,'Théo','Moreau',         't,moreau@proboite.net',       '0691564808','82, Cours Marechal-Joffre','78180','MONTIGNY-LE-BRETONNEUX','condimentum', 0, 1,   date_effet - INTERVAL 1 YEAR + INTERVAL 2 DAY), # administrateur
-    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL','aubertfraterie', 1, 0,                date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur - 2
-    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE','motdepasserigoureux', 0, 0,       date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur - 3
-    (4,'Mirabelle','Huppé',     'm.huppé@gougleu.com',         '0646971033','56, rue Jean-Monnet','95190','GOUSSAINVILLE','gousshupp', 0, 0,                    date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
-    (5,'Silvia','Gonzalez',     's.gonzalez@gmale.edu',        '0648369680','53, rue du Faubourg National','95150','TAVERNY','rictusmaloficus', 0, 0,           date_effet - INTERVAL 6 MONTH + INTERVAL 1 DAY),
-    (6,'Dylan','Briar',         'd.briar@classprepa.edu',      '0187396561','52, boulevard Bryas','92400','COURBEVOIE','1234', 0, 0,                        date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
-    (7,'Alexandre','Morel',     'a.lexandre@gougleu.com',      '0783484403','56, rue des Soeurs','78012', 'LA CELLE-SAINT-CLOUD','Sed', 1, 0,                            date_effet - INTERVAL 5 MONTH + INTERVAL 8 DAY), # formateur - 7
-    (8,'Montoya','Lester',      'm.lester@amasone.com',        '0182954239','73, rue du Château','78100','SAINT-GERMAIN-EN-LAYE','lorem', 0, 0,                 date_effet - INTERVAL 4 MONTH + INTERVAL 4 DAY),
-    (9,'Figueroa','Christian',  'f.christian@gmale.fr',        '0114629593','90, rue du Président Roosevelt','91600','SAVIGNY-SUR-ORGE ','dictum', 0, 0,        date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
-    (10,'Marwane','Roche',      'm.roche@gmale.com',           '0128645819','71, rue La Boétie','75015','PARIS','risus', 0, 0,                                  date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
-    (11,'Justice','Charles',    'j.charles@freelance.edu',     '0131323259','35, rue Lenotre','93240','STAINS','pede', 0, 0,                                    date_effet - INTERVAL 4 MONTH + INTERVAL 1 DAY), # formateur - 11
-    (12,'Nicolas','Colin',      'n.colin@formation.net',       '0133847860','33, rue de Groussay','93230','ROMAINVILLE','venenatis', 0, 1,                      date_effet - INTERVAL 3 MONTH + INTERVAL 1 DAY),
-    (13,'Didier','Vasseur',     'd.vasseur@classprepa.edu',    '0771775852','18, rue Victor Hugo','91940','LES ULIS','risus', 1, 0,                             date_effet - INTERVAL 2 MONTH + INTERVAL 3 DAY),
-    (14,'Stephanie','Platano',  's.platano@proboite.net',      '0642156271','88, rue du Fossé des Tanneurs','75008','PARIS','sed', 1, 1,                        date_effet - INTERVAL 2 MONTH + INTERVAL 4 DAY), # formateur & admin - 14
-    (15,'Brigitte','Masson',    'b.masson@gougleu.com',        '0103946453','15, rue du Clair Bocage','75013','PARIS','ligula', 0, 0,                           date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
-    (16,'Othmane','Fernandez',  'o.fernandez@gmale.net',       '0742542658','23, rue des six frères Ruellan','75018','PARIS','nisl', 0, 0,                      date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
-    (17,'Samuel','Tisserand', 's.tisserand@formation.net',     '0645507077','86, Place Napoléon','59130','LAMBERSART','passwordsecured', 0, 1,                  date_effet - INTERVAL 1 MONTH); # administrateur
-    
+    (1,'Théo','Moreau',         't.moreau@proboite.net',       '0691564808','82, Cours Marechal-Joffre','78180','MONTIGNY-LE-BRETONNEUX', SHA1('admin'), 0, 1,          date_effet - INTERVAL 1 YEAR + INTERVAL 2 DAY), # administrateur
+    (2,'Malik','Aubert',        'm.aubert@freelance.edu',      '0758143009','98, Avenue De Marlioz','95100','ARGENTEUIL',                 SHA1('formateur'), 1, 0,      date_effet - INTERVAL 7 MONTH + INTERVAL 8 DAY), # Formateur - 2
+    (3,'Jérémy','Leclercq',     'j.leclercq@amasone.com',      '0610602483','84, avenue Voltaire','78600','MAISONS-LAFFITTE',             SHA1('stagiaire'), 0, 0,      date_effet - INTERVAL 6 MONTH + INTERVAL 15 DAY), # formateur - 3
+    (4,'Mirabelle','Huppé',     'm.huppé@gougleu.com',         '0646971033','56, rue Jean-Monnet','95190','GOUSSAINVILLE',                SHA1('gousshupp'), 0, 0,      date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
+    (5,'Silvia','Gonzalez',     's.gonzalez@gmale.edu',        '0648369680','53, rue du Faubourg National','95150','TAVERNY',             SHA1('rictusmaloficus'), 0, 0,date_effet - INTERVAL 6 MONTH + INTERVAL 1 DAY),
+    (6,'Dylan','Briar',         'd.briar@classprepa.edu',      '0187396561','52, boulevard Bryas','92400','COURBEVOIE',                   SHA1('1234'), 0, 0,           date_effet - INTERVAL 6 MONTH + INTERVAL 3 DAY),
+    (7,'Alexandre','Morel',     'a.lexandre@gougleu.com',      '0783484403','56, rue des Soeurs','78012', 'LA CELLE-SAINT-CLOUD',         SHA1('Sed'), 1, 0,            date_effet - INTERVAL 5 MONTH + INTERVAL 8 DAY), # formateur - 7
+    (8,'Montoya','Lester',      'm.lester@amasone.com',        '0182954239','73, rue du Château','78100','SAINT-GERMAIN-EN-LAYE',         SHA1('lorem'), 0, 0,          date_effet - INTERVAL 4 MONTH + INTERVAL 4 DAY),
+    (9,'Figueroa','Christian',  'f.christian@gmale.fr',        '0114629593','90, rue du Président Roosevelt','91600','SAVIGNY-SUR-ORGE ', SHA1('dictum'), 0, 0,         date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
+    (10,'Marwane','Roche',      'm.roche@gmale.com',           '0128645819','71, rue La Boétie','75015','PARIS',                          SHA1('risus'), 0, 0,          date_effet - INTERVAL 4 MONTH + INTERVAL 2 DAY),
+    (11,'Justice','Charles',    'j.charles@freelance.edu',     '0131323259','35, rue Lenotre','93240','STAINS',                           SHA1('poude'), 0, 0,          date_effet - INTERVAL 4 MONTH + INTERVAL 1 DAY), # formateur - 11
+    (12,'Nicolas','Colin',      'n.colin@formation.net',       '0133847860','33, rue de Groussay','93230','ROMAINVILLE',                  SHA1('venenatis'), 0, 1,      date_effet - INTERVAL 3 MONTH + INTERVAL 1 DAY),
+    (13,'Didier','Vasseur',     'd.vasseur@classprepa.edu',    '0771775852','18, rue Victor Hugo','91940','LES ULIS',                     SHA1('risus'), 1, 0,          date_effet - INTERVAL 2 MONTH + INTERVAL 3 DAY),
+    (14,'Stephanie','Platano',  's.platano@proboite.net',      '0642156271','88, rue du Fossé des Tanneurs','75008', 'PARIS',             SHA1('sed'), 1, 1,            date_effet - INTERVAL 2 MONTH + INTERVAL 4 DAY), # formateur & admin - 14
+    (15,'Brigitte','Masson',    'b.masson@gougleu.com',        '0103946453','15, rue du Clair Bocage','75013','PARIS',                    SHA1('ligula'), 0, 0,         date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
+    (16,'Othmane','Fernandez',  'o.fernandez@gmale.net',       '0742542658','23, rue des six frères Ruellan','75018', 'PARIS',            SHA1('nisl'), 0, 0,           date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
+    (17,'Jean','Stagiaire',     'stagiaire@sio.fr',            '0742541025','34, rue des sept frères Ruellan','75015', 'PARIS',           SHA1('sio'), 0, 0,            date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (18,'Jean','Formateur',     'formateur@sio.fr',            '0742546589','21, rue des sept frères Ruellan','75015', 'PARIS',           SHA1('sio'), 1, 0,            date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (19,'Jean','Admin',         'admin@sio.fr',                '0742541256','67, rue des sept frères Ruellan','75015', 'PARIS',           SHA1('sio'), 0, 1,            date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (20,'Samuel','Tisserand', 's.tisserand@formation.net',     '0645507077','86, Place Napoléon','59130','LAMBERSART',                    SHA1('SHA1secured'), 0, 1,    date_effet - INTERVAL 1 MONTH); # administrateur
+
+
     INSERT INTO echange(id_echange, id_personne, instant, texte) VALUES
     (1, 15, date_effet - INTERVAL 2 YEAR + INTERVAL 5 MONTH, 'Demande d''information concernant la formation'),
     (2, 15, date_effet - INTERVAL 2 YEAR + INTERVAL 7 MONTH, 'Demande d''inscription'),
@@ -183,10 +187,16 @@ BEGIN
     INSERT INTO evaluation(id_evaluation, id_session_formation, id_module, id_formateur, date_debut, nb_minutes, titre) VALUES
     (1, 1, 1, 2, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 120, 'Evaluation finale de mathématique'),
     (2, 1, 2, 2, date_effet - INTERVAL 1 YEAR - INTERVAL 4 MONTH, 240, 'Evaluation mise en place d''un serveur LAMP'),
-    (3, 2, 2, 7, date_effet, 60, 'Evaluation réseau 2'),
+    (3, 2, 2, 14, date_effet, 60, 'Evaluation réseau 2'),
     (4, 3, 2, 7, date_effet + INTERVAL 4 MONTH, 60, 'Evaluation réseau 3'),
     (5, 3, 1, 7, date_effet, 60, 'Math 2'),
-    (6, 3, 1, 7, date_effet + INTERVAL 4 MONTH, 120, 'Math 3');
+    (6, 3, 1, 7, date_effet + INTERVAL 4 MONTH, 120, 'Math 3'),
+    (7, 3, 1, 14, date_effet, 60, 'Math 2'),
+    (8, 3, 1, 14, date_effet, 60, 'Math 2'),
+    (9, 4, 1, 14, date_effet, 90, 'Algo'),
+    (10, 4, 1, 18, date_effet, 90, 'Algo'),
+    (11, 2, 1, 18, date_effet, 90, 'Algo'),
+    (12, 3, 2, 18, date_effet, 90, 'Algo');
 
     INSERT INTO projet(id_projet, id_formateur, id_session_formation, titre, date_creation, date_butoir) VALUES
     (1, 2, 1, 'Maintient d''un site web', date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH, date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH),
@@ -249,11 +259,6 @@ BEGIN
 
     INSERT INTO passage_qcm(id_passage_qcm, date_passage, id_qcm, id_personne) VALUES
     (1, date_effet - INTERVAL 1 YEAR - INTERVAL 3 MONTH, 1, 4);
-
-    INSERT INTO reponse_donnee(id_passage_qcm, id_reponse_possible) VALUES
-    (1, 2),
-    (1, 5),
-    (1, 11);
   
     INSERT INTO seance(id_seance, id_session_formation, id_formateur, id_module, jour, creneau) VALUES
     (1, 1, 2, 1, date_effet - INTERVAL 2 YEAR + INTERVAL 4 MONTH, 1),
@@ -292,10 +297,26 @@ BEGIN
     (13, 5, 12),
     (15, 5, 14),
     (16, 5, 15),
+    
     (13, 6, 12),
     (10, 6, 16),
     (15, 6, 14),
-    (16, 6, 0);
+    (16, 6, 0),
+    
+    (4, 10, 10),
+    (13, 10, 11),
+    (9, 10, 15),
+    (10, 10, 2),
+    
+    (4, 11, 10),
+    (13, 11, 11),
+    (9, 11, 15),
+    (10, 11, 2),
+    
+    (4, 12, 10),
+    (13, 12, 11),
+    (9, 12, 15),
+    (10, 12, 2);
  
 
     -- La table presence est alimentee par un déclencheur sur seance, qui gere des lignes
