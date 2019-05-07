@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="bloc">
-		<h2>PROJET ${idProjet }</h2>
+		<h2>PROJET ${idProjet}</h2>
 		<table border="1">
 			<tr>
 				<th>Projet</th>
@@ -23,6 +23,7 @@
 					<td>${ligne.idEquipe }</td>
 				</tr>
 			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>

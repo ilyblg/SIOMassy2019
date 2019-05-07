@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import dao.EquipeDao;
 import entity.Equipe;
 import entity.Personne;
@@ -78,7 +76,7 @@ public class CreerEquipeServlet extends HttpServlet {
 			request.setAttribute("message", exc.getMessage());
 		}
 		System.out.println(vue);
-		// request.getRequestDispatcher(vue).forward(request, response);
+		//request.getRequestDispatcher(vue).forward(request, response);
 	}
 
 }
