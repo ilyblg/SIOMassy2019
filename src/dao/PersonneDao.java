@@ -45,7 +45,7 @@ public class PersonneDao {
 		Connection db = Database.getConnection();
 		final String sql = "INSERT INTO personne(prenom, nom, mail, tel, adresse, code_postal,"
 				+ "ville, mot_de_passe, est_formateur, est_administration, date_inscription)" 
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, PASSWORD(?), ?, ?, ?)";
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, SHA1(?), ?, ?, ?)";
 		PreparedStatement stmt = db.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, personne.getPrenom());
 		stmt.setString(2, personne.getNom());
@@ -79,7 +79,7 @@ public class PersonneDao {
 	public Personne getByLoginMdp(String mail, String mdp)  throws SQLException {
 		Personne personne = null;
 		Connection connection = Database.getConnection();
-		final String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=PASSWORD(?)";
+		final String sql = " SELECT * FROM personne WHERE mail=? AND mot_de_passe=SHA1(?)";
 		PreparedStatement requete = connection.prepareStatement(sql);
 		requete.setString(1, mail);
 		requete.setString(2, mdp);
