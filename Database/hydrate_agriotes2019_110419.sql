@@ -127,8 +127,11 @@ BEGIN
     (13,'Didier','Vasseur',     'd.vasseur@classprepa.edu',    '0771775852','18, rue Victor Hugo','91940','LES ULIS',                     PASSWORD('risus'), 1, 0,          date_effet - INTERVAL 2 MONTH + INTERVAL 3 DAY),
     (14,'Stephanie','Platano',  's.platano@proboite.net',      '0642156271','88, rue du Fossé des Tanneurs','75008', 'PARIS',             PASSWORD('sed'), 1, 1,            date_effet - INTERVAL 2 MONTH + INTERVAL 4 DAY), # formateur & admin - 14
     (15,'Brigitte','Masson',    'b.masson@gougleu.com',        '0103946453','15, rue du Clair Bocage','75013','PARIS',                    PASSWORD('ligula'), 0, 0,         date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
-    (16,'Othmane','Fernandez',  'o.fernandez@gmale.net',       '0742542658','23, rue des six frères Ruellan','75018', 'PARIS',            PASSWORD('nisl'), 0, 0,           date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
-    (17,'Samuel','Tisserand', 's.tisserand@formation.net',     '0645507077','86, Place Napoléon','59130','LAMBERSART',                    PASSWORD('passwordsecured'), 0, 1,date_effet - INTERVAL 1 MONTH); # administrateur
+    (16,'Othmane','Fernandez',  'o.fernandez@gmale.net',       '0742542658','23, rue des six frères Ruellan','75018', 'PARIS',            PASSWORD('nisl'), 0, 0,           date_effet - INTERVAL 2 MONTH + INTERVAL 2 DAY),
+    (17,'Jean','Stagiaire',  'stagiaire@sio.fr',               '0742541025','34, rue des sept frères Ruellan','75015', 'PARIS',           PASSWORD('sio'), 0, 0,           date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (18,'Jean','Formateur',  'formateur@sio.fr',               '0742546589','21, rue des sept frères Ruellan','75015', 'PARIS',           PASSWORD('sio'), 1, 0,           date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (19,'Jean','Admin',      'admin@sio.fr',                    '0742541256','67, rue des sept frères Ruellan','75015', 'PARIS',           PASSWORD('sio'), 0, 1,           date_effet - INTERVAL 2 MONTH + INTERVAL 1 DAY),
+    (20,'Samuel','Tisserand', 's.tisserand@formation.net',     '0645507077','86, Place Napoléon','59130','LAMBERSART',                    PASSWORD('passwordsecured'), 0, 1,date_effet - INTERVAL 1 MONTH); # administrateur
     
     INSERT INTO echange(id_echange, id_personne, instant, texte) VALUES
     (1, 15, date_effet - INTERVAL 2 YEAR + INTERVAL 5 MONTH, 'Demande d''information concernant la formation'),
