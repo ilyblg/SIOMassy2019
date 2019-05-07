@@ -13,8 +13,10 @@ import entity.Evaluation;
 
 /**
  * Servlet implementation class of EvaluationServlet
- * Permet de traiter les pages d'affichage de la liste des Evluation en cours
- * pour les personne "Formateur"
+ * 
+ * Permet de traiter la page d'affichage de 'la liste des Evaluation en cours'
+ * pour les personne dites "Formateur"
+ * @author Luis Martins
  */
 @WebServlet("/liste-evaluations")
 public class EvaluationServlet extends HttpServlet {
