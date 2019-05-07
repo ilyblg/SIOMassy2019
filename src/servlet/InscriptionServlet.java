@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entite.Personne;
-import dao.DaoPersonne;
+import dao.PersonneDao;
 
 /**
  * Servlet implementation class InscriptionServlet
@@ -73,10 +73,10 @@ public class InscriptionServlet extends HttpServlet {
 		// Si les parametres de saisie sont ok j'ins�re la personne dans la dao
 		if (saisieOk) {
 			try {
-				DaoPersonne dao = new DaoPersonne();
+				PersonneDao dao = new PersonneDao();
 				Personne instance = new Personne(-1, nom, prenom, mail, tel, adresse, codePostal, ville, motDePasse2,
 						estFormateur, estAdministration, LocalDateTime.now());
-				dao.insert(instance);
+				dao.inserer(instance);
 				System.out.println("personne inscrite sous le id " + instance.getId());
 			}
 			// si l'insertion de la personne dans la dao ne se fait j'affiche le message
