@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DaoPersonne;
+import dao.PersonneDao;
 import entity.Personne;
 
 /**
@@ -36,7 +36,7 @@ public class ConnexionServlet extends HttpServlet {
 		Personne user;
 		if (saisieOk) {
 			try {
-				DaoPersonne dao = new DaoPersonne();
+				PersonneDao dao = new PersonneDao();
 				user = dao.getByLoginMdp(mail, mdp);
 				if (user != null) {
 					request.getSession(true).setAttribute("user", user);

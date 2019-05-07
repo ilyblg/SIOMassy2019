@@ -90,7 +90,7 @@ public class Database {
      */
     public static void reset(LocalDateTime date) throws SQLException {
         Connection con = Database.getConnection();
-        CallableStatement stmt = con.prepareCall("CALL agriotes2018_reset(?)");
+        CallableStatement stmt = con.prepareCall("CALL agriotes2019_reset(?)");
         Timestamp ts = null;
         if (date != null) {
             ts = Timestamp.valueOf(date);
