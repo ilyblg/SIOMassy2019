@@ -125,7 +125,7 @@ p{
 /*--------CONTENT--------*/
 .banniere img{
 	padding: 20px;
-	width: 1000px;
+	width: 1200px;
 }
 
 section{
@@ -266,5 +266,20 @@ td form input {
 	  padding: 15px;
 	  width: 60px;  
 }
+ol{
+	display: block;
+	list-style-type: none;
+}
+ol li a.lienSession{
+	list-style-type: none;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+}
 
+.lienSession:hover{
+	text-align: center;
+	color: red;
+	list-style-type: none;
+	display: block;
 }

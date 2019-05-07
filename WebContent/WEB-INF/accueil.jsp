@@ -36,7 +36,7 @@
 		</c:if>
 		<!-- Banniere informations et news diverses -->
 		<div class="banniere">
-			<img src="images/banner_1.jpg" title="banniere d'informations" width="1200">
+			<img src="images/banner_1.jpg" title="banniere d'informations">
 		</div>
 
 		<!-- Présentaions du site inetrnet et des formations -->
