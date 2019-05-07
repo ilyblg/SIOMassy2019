@@ -12,12 +12,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/accueil")
 public class AccueilServlet extends HttpServlet {
-	private final String JSP_PATH = "/WEB-INF/accueil.jsp";
-	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher(JSP_PATH).forward(request, response);
+		System.out.println("/accueil demandé");
+		request.getRequestDispatcher("WEB-INF/index.jsp").forward(request, response);
 	}
+
 }

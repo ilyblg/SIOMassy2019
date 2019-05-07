@@ -17,15 +17,9 @@ Il s'agit d'une répartition des tâches sur plusieurs niveaux, à savoir l'enca
  Voir [le wiki du projet][2] pour plus d'informations.
 
 ## Structure du projet
-Le projet se matérialisera en gestion des version par plusieurs niveaux de branches (sans espaces) :
- * La **Master** (**A NE PAS TOUCHER**) qui reflétera le projet en cours après implémentation et validation par l'équipe des codes.
+Le projet se matérialisera en gestion des version par plusieurs niveaux de branches :
+ * La **Master** qui reflétera le projet en cours après implémentation et validation par l'équipe des codes.
  * Une **branche dédié** _par fonctionnalités_ (binôme) permettra de sécuriser les développements (voir convention de nommage).
- * Une branche **votre prenom** par élève est crée, sur laquel vous travaillerez en solo.
- 
-### Procédure de gestion de version ###
-
-Votre binome possède donc une branche lié à la fonctionnalité.
-Chacun d'entre-vous possède une branche qui lui est propre. Une fois que vous avez réalisez votre travail, il faudra faire un *merge* (fusion)  en concertation avec votre binôme sur la branche dédié à la fonctionnalité. Une fois que tout est validé entre vous vous transmettrez l'information aux chef de projets qui réaliserons un audit, **une implémentation suivra** une fois validé, la branche dédié à la fonctionnalité sera *merge* (fusionné) sur le *Master*.
 
 ### Informations complémentaires
 

@@ -1,102 +1,61 @@
 package entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class Personne {
-	int id;
-	String nom;
-	String prenom;
-	String adresse;
-	String codePostal;
-	String ville;
-	String telephone;
-	String mail;
-	String motDePasse;
-	boolean estFormateur;
-	boolean estAdministration;
-	Timestamp dateInscription;
+	private int id;
+	private String nom;
+	private String prenom;
+	private String mail;
+	private String tel;
+	private String adresse;
+	private String codePostal;
+	private String ville;
+	private String motDePasse;
+	private boolean estFormateur;
+	private boolean estAdministration;
+	private LocalDateTime dateInscription;
 
-	Session session;	
-	
-	// Full parameters
-	public Personne(int idPersonne, String nom, String prenom,
-			 String mail, String telephone, String adresse, String cp, String ville,
-			 String motDePasse, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
-		this.id = idPersonne;
-		setNom(nom);
-		setPrenom(prenom);
-		setAdresse(adresse);
-		setCodePostal(cp);
-		setVille(ville);
-		setTelephone(telephone);
-		setMail(mail);
-		setMotDePasse(motDePasse);
-		setEstFormateur(estFormateur);
-		setEstAdministration(estAdmin);
-		setDateInscription(dateInscription);
-	}
-	
-	
-	
+	public Personne(int id, String nom, String prenom, String mail, String tel, String adresse, String codePostal,
+			String ville, String motDePasse, boolean estFormateur, boolean estAdministration,
+			LocalDateTime dateInscription) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.mail = mail;
+		this.tel = tel;
+		this.adresse = adresse;
+		this.codePostal = codePostal;
+		this.ville = ville;
+		this.motDePasse = motDePasse;
+		this.estFormateur = estFormateur;
+		this.estAdministration = estAdministration;
+		this.dateInscription = dateInscription;
+	}	
+
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public String getNom() {
 		return nom;
 	}
-	
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+
 	public String getPrenom() {
 		return prenom;
 	}
-	
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
-	}
-	
-	
-	public String getAdresse() {
-		return adresse;
-	}
-
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
-	}
-
-	public String getCodePostal() {
-		return codePostal;
-	}
-
-	public void setCodePostal(String cp) {
-		this.codePostal = cp;
-	}
-
-	public String getVille() {
-		return ville;
-	}
-
-	public void setVille(String ville) {
-		this.ville = ville;
-	}
-
-	public String getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
 	}
 
 	public String getMail() {
@@ -107,13 +66,43 @@ public class Personne {
 		this.mail = mail;
 	}
 
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}	
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}	
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
 	public String getMotDePasse() {
 		return motDePasse;
 	}
 
 	public void setMotDePasse(String motDePasse) {
-		
-		// CRYPTER ICI
 		this.motDePasse = motDePasse;
 	}
 
@@ -129,34 +118,17 @@ public class Personne {
 		return estAdministration;
 	}
 
-	public void setEstAdministration(boolean estAdmin) {
-		this.estAdministration = estAdmin;
+	public void setEstAdministration(boolean estAdministration) {
+		this.estAdministration = estAdministration;
 	}
 
-	public Session getSession() {
-		return session;
-	}
-	
-	public void setSession(Session session) {
-		this.session = session;
-	}
-	
-	public Timestamp getDateInscription() {
+	public LocalDateTime getDateInscription() {
 		return dateInscription;
 	}
 
-	public void setDateInscription(Timestamp dateInscription) {
+	public void setDateInscription(LocalDateTime dateInscription) {
 		this.dateInscription = dateInscription;
-	}	
-
-	public Personne() {
-		
 	}
+	
 
-	@Override
-	public String toString() {
-		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", codePostal=" + codePostal + ", ville="
-				+ ville + ", telephone=" + telephone + ", mail=" + mail + ", estFormateur=" + estFormateur
-				+ ", estAdministration=" + estAdministration + ", dateInscription=" + dateInscription + "]";
-	}
 }

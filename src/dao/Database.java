@@ -2,16 +2,13 @@ package dao;
 
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
- * Repr�sente la base de donn�es. Fournit une connexion � cette base (via
+ * Représente la base de donn�es. Fournit une connexion à cette base (via
  * <code>getConnection()</code>.
  *
- * ATTENTION : ajouter dans cette classe tous les codes erreur pr�vus par les
- * d�clencheurs �crits par nous dans MySQL (apr�s FOREIGN_KEY_NOT_FOUND).
+ * ATTENTION : ajouter dans cette classe tous les codes erreur prévus par les
+ * déclencheurs écrits par nous dans MySQL (aprés FOREIGN_KEY_NOT_FOUND).
  *
  * @author plasse
  */
@@ -40,15 +37,15 @@ public class Database {
     public static final int FOREIGN_KEY_NOT_FOUND = 1452;
 
     /**
-     * Pilote MySQL (biblioth�que contenant les impl�mentations de jdbc)
+     * Pilote MySQL (biblioth�que contenant les implémentations de jdbc)
      */
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     protected static final String DB_NAME = "agriotes2019";
-    protected static final String USER = "agriotes2019user";
-    protected static final String PASSWORD = "agriotes2019pwd";
+    protected static final String USER = "root";
+    protected static final String PASSWORD = "";
 
     /**
-     * Chaine de connexion (adresse TCP/IP de la base de donn�es
+     * Chaine de connexion (adresse TCP/IP de la base de données
      */
     protected static String URL = "jdbc:mysql://localhost/" + DB_NAME;
     // La chaine de connexion diff�re d'un SGBD � l'autre.
@@ -64,7 +61,7 @@ public class Database {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException exc) {
             // Depuis java 1.7, on peut rassembler ainsi les exceptions
             exc.printStackTrace();
-            throw new RuntimeException("Pilote pas charg�");
+            throw new RuntimeException("Pilote pas chargé");
         }
     }
 
@@ -73,10 +70,10 @@ public class Database {
     }
 
     /**
-     * Fournit une connexion � la base de donn�es. Ne fait pas appel � un pool
-     * de connexion, m�me si cela est envisageable plus tard (ne changerait rien
-     * � l'appel de la m�thode)
-     * <br><strong>Requiert</strong> que le pilote soir charg�
+     * Fournit une connexion à la base de données. Ne fait pas appel à un pool
+     * de connexion, même si cela est envisageable plus tard (ne changerait rien
+     * à l'appel de la méthode)
+     * <br><strong>Requiert</strong> que le pilote soir chargé
      *
      * @throws java.sql.SQLException
      */
@@ -85,7 +82,7 @@ public class Database {
     }
 
     /**
-     * R�initialise la base � la date pass�e en param�tre. Si ce param�tre vaut
+     * Réinitialise la base à la date passée en paramétre. Si ce paramétre vaut
      * null, prend l'instant courant.
      */
     public static void reset(LocalDateTime date) throws SQLException {
@@ -101,23 +98,4 @@ public class Database {
         con.close();
     }
 
-        /** Recupère sous forme de liste de tableaux associatifs (HashMap) un ResultSet
-     * 
-     * @param rs
-     * @return
-     * @throws SQLException
-     */
-    public static List<HashMap<String, Object>> getAsList(ResultSet rs) throws SQLException {
-        ResultSetMetaData md = rs.getMetaData();
-        int columns = md.getColumnCount();
-        List<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
-        while (rs.next()) {
-           HashMap<String, Object> row = new HashMap<String, Object>(columns);
-           for (int i = 1; i <= columns; ++i) {
-              row.put(md.getColumnName(i), rs.getObject(i));
-           }
-           result.add(row);
-        }
-        return result;
-     }
 }
