@@ -1,0 +1,17 @@
+@startuml
+participant Navigateur
+participant Vue
+
+Navigateur -> Controleur: GET /inscrire
+Controleur -> Vue: inscription.jsp
+Vue -> Navigateur: affiche le formulaire vierge
+
+Navigateur -> Controleur: POST /inscrire\navec champs de saisie
+Controleur -> Controleur: vérifie tous les champs
+Controleur -> Dao: DaoPersonne dao = new DaoPersonne()\ndao.insert(personne)
+Dao -> SGBD: INSERT INTO personne ...
+Dao -> Controleur: rien ou SQLException si pb
+Controleur -> Serveur_SMTP: envoi d'un mail
+Controleur -> Vue: inscriptionOk.jsp
+Vue -> Navigateur: Inscription réussie ...
+@enduml
