@@ -3,22 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>nouvelle_equipe</title>
+<link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 	<header>Creer une nouvelle equipe pour un projet</header>
-		
-		<form action="CreerEquipe" method="post">
-			<label>Nom : </label><input type="text" name="leNom"><br>
-			<label>Prenom : </label><input type="text" name="lePrenom"><br>
-			<div><label>Projet : </label><br>
-				<table class="table">
-					<tr>
-						<td class="projet" type="text" name="nomProjet">
-						<% String t = (String) session.getAttribute("VarProjet");
-						out.print(t);%>
-						</td><td class="radioBouton"><INPUT type="radio"></td>
-				</table>
-			</div>
+	
+		<c:forEach items="${equipe}" var="equipe">
+		<li>${user.getIdUser}</li>
+		<li>${projet.getIdProjet}</li>
+		<li>${equipe.getIdEquipe}</li>
+		<li>${createur.getIdCreateur};</li>
+	</c:forEach>
 				
 			
 			<input type="submit" value="Valider"><br>
