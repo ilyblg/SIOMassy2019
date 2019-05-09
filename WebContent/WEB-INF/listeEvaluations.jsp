@@ -11,11 +11,11 @@
 <body>
 
 	<div  id="bloc">
-		<%@ include  file="./headerFormateur.jsp"%>
+		<%@ include  file="./header.jsp"%>
 		
 		
 	<section id="contain">
-		<h3>Liste des évaluations disponibles</h3>
+		<h2>Liste des évaluations disponibles</h2>
 		<table>
 			<tr>
     			<th>ID</th>
