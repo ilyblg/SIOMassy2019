@@ -1,17 +1,55 @@
 package entity;
 
-<<<<<<< HEAD
-import dao.DaoPersonne;
+import java.sql.Timestamp;
 
 public class Personne {
+	int id;
 	String nom;
 	String prenom;
-	Contact contact;
-	Session session;
-	Fonction fonction;
-	DaoPersonne dao;
-	int id;
+	String adresse;
+	String codePostal;
+	String ville;
+	String telephone;
+	String mail;
+	String motDePasse;
+	boolean estFormateur;
+	boolean estAdministration;
+	Timestamp dateInscription;
+
+	Session session;	
 	
+	// Full parameters
+	public Personne(int idPersonne, String nom, String prenom,
+			 String mail, String telephone, String adresse, String cp, String ville,
+			 String motDePasse, boolean estFormateur, boolean estAdmin, Timestamp dateInscription) {	
+		this.id = idPersonne;
+		setNom(nom);
+		setPrenom(prenom);
+		setAdresse(adresse);
+		setCodePostal(cp);
+		setVille(ville);
+		setTelephone(telephone);
+		setMail(mail);
+		setMotDePasse(motDePasse);
+		setEstFormateur(estFormateur);
+		setEstAdministration(estAdmin);
+		setDateInscription(dateInscription);
+	}
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
 	public String getNom() {
 		return nom;
 	}
@@ -28,14 +66,73 @@ public class Personne {
 		this.prenom = prenom;
 	}
 	
-	public Contact getContact() {
-		return contact;
-	}
 	
-	public void setContact(Contact contact) {
-		this.contact = contact;
+	public String getAdresse() {
+		return adresse;
 	}
-	
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String cp) {
+		this.codePostal = cp;
+	}
+
+	public String getVille() {
+		return ville;
+	}
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMotDePasse() {
+		return motDePasse;
+	}
+
+	public void setMotDePasse(String motDePasse) {
+		
+		// CRYPTER ICI
+		this.motDePasse = motDePasse;
+	}
+
+	public boolean isEstFormateur() {
+		return estFormateur;
+	}
+
+	public void setEstFormateur(boolean estFormateur) {
+		this.estFormateur = estFormateur;
+	}
+
+	public boolean isEstAdministration() {
+		return estAdministration;
+	}
+
+	public void setEstAdministration(boolean estAdmin) {
+		this.estAdministration = estAdmin;
+	}
+
 	public Session getSession() {
 		return session;
 	}
@@ -44,48 +141,22 @@ public class Personne {
 		this.session = session;
 	}
 	
-	public Fonction getFonction() {
-		return fonction;
+	public Timestamp getDateInscription() {
+		return dateInscription;
 	}
-	
-	public void setFonction(Fonction fonction) {
-		this.fonction = fonction;
-	}
-	
+
+	public void setDateInscription(Timestamp dateInscription) {
+		this.dateInscription = dateInscription;
+	}	
+
 	public Personne() {
 		
 	}
-	
-	public Personne(String nom, String prenom, int numero, String rue, String ville, int cp, String telephoneMobile, String telephoneFixe, String mail, String login, String mdp, int id, String nomF) {
-		this.nom = nom;
-		this.prenom = prenom;
-		
-		contact = new Contact();
-		contact.setNumero(numero);
-		contact.setRue(rue);
-		contact.setVille(ville);
-		contact.setCp(cp);
-		contact.setTelephoneMobile(telephoneMobile);
-		contact.setTelephoneFixe(telephoneFixe);
-		contact.setMail(mail);
-		
-		session = new Session();
-		session.setLogin(login);
-		session.setMdp(mdp);
-		
-		fonction = new Fonction();
-		fonction.setId(id);
-		fonction.setNom(nomF);
-	}
 
-	public void creeQcm() {
-		if (dao.estFormateur(id)) {
-			
-		}
+	@Override
+	public String toString() {
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", codePostal=" + codePostal + ", ville="
+				+ ville + ", telephone=" + telephone + ", mail=" + mail + ", estFormateur=" + estFormateur
+				+ ", estAdministration=" + estAdministration + ", dateInscription=" + dateInscription + "]";
 	}
-	
-=======
-public class Personne {
-
->>>>>>> refs/heads/abdellah
 }

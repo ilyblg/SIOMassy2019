@@ -1,0 +1,22 @@
+@startuml
+participant Navigateur
+participant JS
+participant Vue
+
+== creation du passage ==
+Navigateur ->Controleur: POST /passage_qcm?id_qcm={id_qcm}
+Controleur -> Controleur: récupère user en session\ndonne le idPersonne
+Controleur ->DAO: PassageQcm passage =\nnew PassageQcm (idQcm, idPersonne, now);\ndao.insert(passage)
+DAO ->SGBD: INSERT INTO passage_qcm ... 
+SGBD -> DAO: id_passage du passage
+Controleur -> Navigateur : redirect vers passage_qcm?id=...
+== afficher le questionnaire ==
+Navigateur -> Controleur: GET /passage_qcm?id_passage=...
+Controleur -> DAO: dao.getQuestions(idQcm)
+DAO -> SGBD: SELECT * FROM question\nINNER JOIN reponse_possible WHERE id_qcm=...
+DAO -> Controleur: List<Question> questions
+Controleur -> Vue: passageQcm.jsp
+Vue -> Navigateur: liste de questions,\navec choix possibles en radio bouton
+== soumettre les reponses ==
+JS -> Controleur: POST ou PUT
+@enduml

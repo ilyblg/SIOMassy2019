@@ -1,0 +1,24 @@
+﻿@startuml
+Participant Navigateur
+Participant Vue
+Participant Contrôleur
+Participant Modèle
+Participant SGBD
+
+Navigateur -> Contrôleur: GET avis?id={idAvis}
+Contrôleur -> Contrôleur: vérifie si utilisateur connecté
+== connecté non ok ==
+Contrôleur -> Vue: vous devez vous connecter
+Vue -> Navigateur: affiche le message
+== connecté ok ==
+Contrôleur -> Vue: formAvis.jsp
+Vue -> Navigateur: affiche formulaire à remplir
+== Donner l'avis ==
+Navigateur -> Contrôleur: POST avis?id={idAvis}
+Contrôleur -> Contrôleur: vérifie si utilisateur connecté
+Contrôleur -> Contrôleur: verifie les champs
+Contrôleur -> Modèle: avis = new Avis(...);\ndao = new AvisDao();\ndao.insert(avis);
+Modèle -> SGBD: INSERT INTO avis ...
+Contrôleur -> Vue: formAvis.jsp
+Vue -> Navigateur: affiche formulaire rempli
+@enduml
