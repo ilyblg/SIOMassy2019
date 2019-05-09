@@ -44,13 +44,17 @@ public class Database {
      */
     protected static final String DRIVER_NAME = "com.mysql.jdbc.Driver";
     protected static final String DB_NAME = "agriotes2019";
-    protected static final String USER = "agriotes2019user";
-    protected static final String PASSWORD = "agriotes2019pwd";
+    //protected static final String USER = "agriotes2019user";
+    //protected static final String PASSWORD = "agriotes2019pwd";
+    protected static final String USER = "root";
+    protected static final String PASSWORD = "root";
+
 
     /**
      * Chaine de connexion (adresse TCP/IP de la base de donn�es
      */
-    protected static String URL = "jdbc:mysql://localhost/" + DB_NAME;
+    //protected static String URL = "jdbc:mysql://localhost/" + DB_NAME;
+    protected static String URL = "jdbc:mysql://localhost/" + DB_NAME + "?characterEncoding=latin1&useConfigs=maxPerformance";
     // La chaine de connexion diff�re d'un SGBD � l'autre.
     // Pour Oracle : "jdbc:oracle:oci8:@localhost:1521:XE/" + DB_NAME
     // Pour Derby (BD en m�moire en Java) : "jdbc:derby://localhost:1527/" + DB_NAME
