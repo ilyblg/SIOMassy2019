@@ -14,7 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import dao.NoteDao;
 
 /**
- * Servlet implementation class ListeNotesEvaluationServlet
+ * Servlet implementation class of EvaluationServlet
+ * 
+ * Permet au formateur de modifier les notes d'une évaluation donnée.
+ * Affichage de la liste des stagiaires et leur notes, d'une évaluation
+ * AJAX : Modification à la volée des notes par le formateur 
+ * id fournis lors de l'appel du controller depuis la liste des évaluations (EvaluationServlet)
+ * 
+ * @author Luis Martins
  */
 @WebServlet("/noter-stagiaire")
 public class ListeNotesEvaluationServlet extends HttpServlet {
