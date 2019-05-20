@@ -1,0 +1,26 @@
+delimiter $$
+
+create trigger passage_qcm_after_insert
+after insert
+on passage_qcm
+for each row
+begin
+	DECLARE termine BOOLEAN DEFAULT false;
+    DECLARE v_id_question INT;
+    --
+	DECLARE questions CURSOR FOR
+    SELECT id_question
+    FROM question
+    WHERE id_qcm = NEW.id_qcm;
+    --
+    OPEN questions;
+    BEGIN
+		DECLARE EXIT HANDLER FOR NOT FOUND SET termine = TRUE;
+        REPEAT
+			FETCH questions INTO v_id_question;
+            INSERT INTO reponse_donnee(id_question, id_passage_qcm)
+            VALUES(v_id_question, NEW.id_passage_qcm);
+		UNTIL termine 
+        END REPEAT;
+    END;
+end$$
