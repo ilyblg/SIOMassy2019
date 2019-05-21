@@ -1,10 +1,15 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Map;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,33 +20,23 @@ import dao.SessionDao;
 import entity.Candidature;
 
 /**
- * Servlet implementation class CandidatureServlet
+ * Servlet implementation class ServletCandidature
  */
 @WebServlet("/candidatures")
 public class CandidatureServlet extends HttpServlet {
 	private final String VUE_CANDIDATURES = "WEB-INF/candidatures.jsp";
-	private final String VUE_SESSIONS = "WEB-INF/sessionPourCandidatures.jsp";
 	private final String VUE_ERREUR = "WEB-INF/erreur.jsp";
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// En dur
 		String vue = VUE_CANDIDATURES;
-
 		try {
+			int idSession = Integer.parseInt(request.getParameter("idSession"));
 			SessionDao dao = new SessionDao();
-			System.out.println("idSession : " + request.getParameter("idSession"));
-			if (request.getParameter("idSession") == null) {
-				System.out.println("pas de idSession");
-				Map<Integer, String> sessions = dao.getToutesLesSessions();
-				request.setAttribute("sessions", sessions);
-				vue = VUE_SESSIONS;
-			} else {
-				int idSession = Integer.parseInt(request.getParameter("idSession"));
-				List<Candidature> candidatures = dao.getCandidatures(idSession);
-				request.setAttribute("candidatures", candidatures);
-				request.setAttribute("idSession", idSession);
-			}
+			List<Candidature> candidatures = dao.getCandidatures(idSession);
+			request.setAttribute("candidatures", candidatures);
+			request.setAttribute("idSession", idSession);
 		} catch (SQLException exc) {
 			exc.printStackTrace();
 			// positionner un message
@@ -55,8 +50,8 @@ public class CandidatureServlet extends HttpServlet {
 		request.getRequestDispatcher(vue).forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		throw new UnsupportedOperationException("not yet implemented");
 	}
 

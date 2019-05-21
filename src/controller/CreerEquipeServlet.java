@@ -34,11 +34,11 @@ public class CreerEquipeServlet extends HttpServlet {
 		// Recuperer l'utilisateur connecté
 		Personne user = (Personne) request.getSession(true).getAttribute("user");
 		try {
-			if (user != null) { // if (user == null)
+			if (user == null) { // if (user == null)
 				request.setAttribute("message", "Vous devez être connecté");
 			} else {
 				ProjetDao dao = new ProjetDao();
-				List<Projet> projets = dao.getByIdStagiaire(4);
+				List<Projet> projets = dao.getByIdStagiaire(user.getId());
 				//List<Projet> projets = dao.getByIdStagiaire(user.getId());
 				request.setAttribute("projets", projets);
 				vue = PROJETS_PATH;
@@ -88,6 +88,7 @@ public class CreerEquipeServlet extends HttpServlet {
 				dao.insert(equipe);
 				request.setAttribute("equipe", equipe);
 				vue = FORM_PATH;
+				
 			}
 		} catch (NumberFormatException exc) {
 			request.setAttribute("message", "idEquipe doit être indiqué et un entier");

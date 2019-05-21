@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
+<meta charset="Utf-8">
+<title>Les projets</title>
 </head>
 <body>
 	<c:forEach items="${projets}" var="projet">

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="Utf-8">
-<title>Insert title here</title>
+<title>Mon projet</title>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>

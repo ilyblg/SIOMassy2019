@@ -1,23 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=Utf-8"
+	pageEncoding="Utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>nouvelle_equipe</title>
+<title>nouvelle equipe</title>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-	<header>Creer une nouvelle equipe pour un projet</header>
+	<div id="bloc">
+		<h2>Equipe ${idEquipe}</h2>
+		<table border="1">
+			<tr>
+				<th>Equipe</th>
+				<th>Projet</th>
+				<th>Créateur</th>
+			</tr>
+			<c:forEach items="${equipe}" var="ligne">
+				<tr>
+					<td>${ligne.idEquipe }</td>
+					<td>${ligne.idProjet }</td>
+					<td>${ligne.idUser }</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 	
-		<c:forEach items="${equipe}" var="equipe">
-		<li>${user.getIdUser}</li>
-		<li>${projet.getIdProjet}</li>
-		<li>${equipe.getIdEquipe}</li>
-		<li>${createur.getIdCreateur};</li>
-	</c:forEach>
-				
-			
-			<input type="submit" value="Valider"><br>
-		</form>
-
 </body>
 </html>

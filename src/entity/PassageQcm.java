@@ -15,6 +15,12 @@ public class PassageQcm {
 		this.idPersonne = idPersonne;
 	}
 	
+	public PassageQcm(LocalDateTime datePassage, int idQcm, int idPersonne) {
+		this.datePassage = datePassage;
+		this.idQcm = idQcm;
+		this.idPersonne = idPersonne;
+	}
+	
 	public PassageQcm(int idQcm, LocalDateTime datePassage,  int idPersonne) {
 		this.idQcm = idQcm;
 		this.datePassage = datePassage;
@@ -92,6 +98,5 @@ public class PassageQcm {
 			return false;
 		return true;
 	}
-
 
 }
